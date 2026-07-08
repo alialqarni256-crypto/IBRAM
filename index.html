@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ورش إبرام | النموذج الأولي التفاعلي الكامل</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#14283C;--navy2:#1B3A5C;--teal:#2BA8D8;--teal-d:#1E86AE;--gold:#E2A53D;--paper:#F6F8FA;--ink:#22364B;--slate:#5B7186;--line:#E3E9EF;--ok:#2E9E6B;--warn:#C9762B;--red:#C0392B;--full:#8A94A0;--r:12px;--sh:0 8px 24px rgba(20,40,60,.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:15px}
+h1,h2,h3{font-family:"Amiri","IBM Plex Sans Arabic",serif;color:var(--navy)}
+a{text-decoration:none;color:inherit;cursor:pointer}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:9px;padding:11px 22px;font-weight:600;font-size:14.5px;transition:.15s}
+.btn-p{background:var(--teal);color:#fff}.btn-p:hover{background:var(--teal-d)}
+.btn-g{background:var(--navy2);color:#fff}.btn-g:hover{background:var(--navy)}
+.btn-o{background:#fff;color:var(--navy2);border:1.5px solid var(--line)}.btn-o:hover{border-color:var(--teal)}
+.btn-gold{background:var(--gold);color:#3A2A08}
+.btn-sm{padding:7px 14px;font-size:13px;border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:100px;padding:3px 12px}
+.bg-ok{background:#E5F5EE;color:var(--ok)}.bg-warn{background:#FBEEDC;color:var(--warn)}
+.bg-full{background:#EBEEF1;color:var(--full)}.bg-teal{background:#E3F4FB;color:var(--teal-d)}
+.bg-gold{background:rgba(226,165,61,.16);color:#8A6A2B}.bg-red{background:#F9E7E4;color:var(--red)}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+.screen{display:none;min-height:calc(100vh - 46px)}
+.screen.on{display:block}
+input,select,textarea{width:100%;border:1.5px solid var(--line);border-radius:9px;padding:10px 13px;font-family:inherit;font-size:14px;background:#fff}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal)}
+label{display:block;font-size:13px;font-weight:600;color:var(--slate);margin-bottom:5px}
+.field{margin-bottom:14px}
+.err{color:var(--red);font-size:12px;margin-top:3px;display:none}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{background:#F1F5F8;color:var(--navy2);font-size:12.5px;padding:10px 12px;text-align:right}
+td{padding:10px 12px;border-top:1px solid var(--line)}
+.tag{font-size:11px;color:var(--teal-d);font-weight:700}
+
+/* demo role bar */
+.rolebar{position:sticky;top:0;z-index:100;background:var(--navy);color:#B7C6D4;display:flex;align-items:center;gap:6px;padding:7px 16px;font-size:12.5px;flex-wrap:wrap}
+.rolebar b{color:var(--gold);margin-inline-end:6px}
+.rolebar button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#DCE6EE;border-radius:100px;padding:4px 14px;font-size:12px;font-weight:600}
+.rolebar button.on{background:var(--gold);color:#3A2A08;border-color:var(--gold)}
+
+/* customer header */
+.chead{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:46px;z-index:90}
+.chead .in{display:flex;align-items:center;gap:20px;height:60px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--navy);font-size:16.5px}
+.logo .mk{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--navy2),var(--teal));display:grid;place-items:center;color:#fff;font-family:"Amiri";font-size:18px}
+.cnav{display:flex;gap:18px;font-size:14px;font-weight:500}
+.cnav a:hover,.cnav a.on{color:var(--teal-d)}
+.chead .grow{flex:1}
+
+/* hero mini */
+.hero{background:radial-gradient(900px 400px at 85% -10%,rgba(43,168,216,.25),transparent 60%),linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;padding:56px 0;text-align:center}
+.hero h1{font-size:34px;color:#fff;margin-bottom:10px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{color:#C9D6E2;max-width:560px;margin:0 auto 22px}
+.trust{display:flex;justify-content:center;gap:0;margin-top:34px;flex-wrap:wrap}
+.trust div{padding:0 26px;border-inline-start:1px solid rgba(255,255,255,.16)}
+.trust div:first-child{border:none}
+.trust b{display:block;font-size:21px;font-family:"Amiri"}
+.trust span{font-size:12px;color:#A9BBCB}
+.conf{background:#fff;border:1px solid var(--line);border-inline-start:5px solid var(--gold);border-radius:var(--r);box-shadow:var(--sh);padding:16px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:-30px auto 26px;position:relative;max-width:1100px}
+.conf .ct{flex:1;min-width:200px}.conf .ct b{display:block;color:var(--navy)}
+.conf .ct span{color:var(--slate);font-size:13px}
+.cd{display:flex;gap:8px}.cd div{background:var(--navy);color:#fff;border-radius:9px;padding:6px 12px;text-align:center;min-width:52px}
+.cd b{display:block;font-size:17px;font-family:"Amiri"}.cd span{font-size:10.5px;color:#B7C6D4}
+
+/* workshop cards */
+.grid{display:grid;gap:18px}
+.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.wcard{display:flex;flex-direction:column;overflow:hidden;transition:.18s}
+.wcard:hover{transform:translateY(-3px)}
+.wcard .top{height:74px;position:relative;display:flex;align-items:flex-end;padding:11px;color:#fff}
+.t1{background:linear-gradient(135deg,#1B3A5C,#2BA8D8)}.t2{background:linear-gradient(135deg,#274B71,#3D6E96)}
+.t3{background:linear-gradient(135deg,#8A6A2B,#E2A53D)}.t4{background:linear-gradient(135deg,#1E5E63,#2E9E8F)}
+.wcard .top .mode{font-size:12px;font-weight:600;background:rgba(0,0,0,.28);border-radius:7px;padding:2px 9px}
+.wcard .top .badge{position:absolute;top:10px;inset-inline-start:10px;background:rgba(255,255,255,.93);color:var(--navy2)}
+.wcard .bd{padding:15px;display:flex;flex-direction:column;gap:8px;flex:1}
+.wcard h3{font-size:16.5px;line-height:1.5}
+.meta{font-size:12.5px;color:var(--slate)}
+.seat .lb{display:flex;justify-content:space-between;font-size:12px;font-weight:600;margin-bottom:4px}
+.seat .bar{height:6px;border-radius:100px;background:#EDF1F5;overflow:hidden}
+.seat .bar b{display:block;height:100%;border-radius:100px}
+.pb{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:11px;margin-top:auto}
+.pb .pr b{font-size:17px;color:var(--navy)}.pb .pr s{color:#A6B2BD;font-size:12px;margin-inline-end:5px}.pb .pr small{font-size:11.5px;color:var(--slate)}
+
+/* section */
+.sec{padding:44px 0}
+.sec h2{font-size:26px;margin-bottom:4px}
+.sec .lead{color:var(--slate);margin-bottom:24px;font-size:14px}
+.crumb{font-size:12.5px;color:var(--slate);padding:16px 0 0}
+.crumb a{color:var(--teal-d)}
+
+/* listing */
+.lys{display:grid;grid-template-columns:250px 1fr;gap:22px;align-items:start}
+.filters{padding:18px;position:sticky;top:120px}
+.filters h4{font-size:14px;margin-bottom:10px;color:var(--navy2)}
+.fgroup{margin-bottom:16px}
+.fgroup .op{display:flex;align-items:center;gap:8px;font-size:13.5px;padding:4px 0;cursor:pointer}
+.fgroup .op input{width:auto}
+.fgroup .op span.n{color:var(--slate);font-size:12px;margin-inline-start:auto}
+
+/* details */
+.dts{display:grid;grid-template-columns:1fr 340px;gap:26px;align-items:start}
+.dts .main .card{padding:22px;margin-bottom:16px}
+.dts h3{font-size:17px;margin-bottom:10px}
+.buy{position:sticky;top:120px;padding:20px}
+.buy .row{display:flex;justify-content:space-between;font-size:13.5px;padding:5px 0;color:var(--slate)}
+.buy .row b{color:var(--ink)}
+.plan{border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;cursor:pointer;font-size:13.5px}
+.plan.on{border-color:var(--teal);background:#F2FAFD}
+.plan b{color:var(--navy)}
+.rev{border-top:1px solid var(--line);padding:12px 0;font-size:13.5px}
+.rev .st{color:var(--gold);letter-spacing:2px;font-size:12px}
+.faqi{border:1px solid var(--line);border-radius:9px;padding:10px 14px;margin-bottom:8px;font-size:13.5px;cursor:pointer}
+.faqi p{display:none;color:var(--slate);margin-top:6px}
+.faqi.open p{display:block}
+
+/* checkout */
+.steps{display:flex;gap:0;margin:26px 0;justify-content:center}
+.steps div{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--slate);padding:0 18px;position:relative}
+.steps div i{width:26px;height:26px;border-radius:50%;background:#E3E9EF;color:var(--slate);display:grid;place-items:center;font-style:normal;font-weight:700;font-size:12.5px}
+.steps div.on{color:var(--navy);font-weight:600}
+.steps div.on i{background:var(--teal);color:#fff}
+.steps div.done i{background:var(--ok);color:#fff}
+.cobox{max-width:760px;margin:0 auto;padding:26px}
+.cogrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+.summ{background:#F6F9FB;border:1px solid var(--line);border-radius:10px;padding:16px;font-size:13.5px}
+.summ .row{display:flex;justify-content:space-between;padding:4px 0}
+.summ .tot{border-top:1px solid var(--line);margin-top:8px;padding-top:10px;font-weight:700;font-size:15px;color:var(--navy)}
+.hold{background:#FBEEDC;color:var(--warn);border-radius:9px;padding:8px 14px;font-size:12.5px;font-weight:700;text-align:center;margin-bottom:14px}
+.payop{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 18px}
+.payop button{border:1.5px solid var(--line);background:#fff;border-radius:9px;padding:9px 18px;font-size:13px;font-weight:700;color:var(--navy2)}
+.payop button.on{border-color:var(--teal);background:#F2FAFD}
+.qr{width:130px;height:130px;margin:14px auto;display:grid;grid-template-columns:repeat(7,1fr);gap:3px;background:#fff;padding:10px;border:1px solid var(--line);border-radius:10px}
+.qr i{background:var(--navy);border-radius:2px}
+.qr i.o{background:transparent}
+.okball{width:64px;height:64px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;font-size:30px;margin:0 auto 12px}
+
+/* account/portal layouts */
+.dash{display:grid;grid-template-columns:220px 1fr;gap:22px;align-items:start;padding:26px 0}
+.side{padding:14px;position:sticky;top:120px}
+.side a{display:flex;gap:9px;align-items:center;padding:9px 12px;border-radius:9px;font-size:14px;color:var(--slate);font-weight:500}
+.side a.on{background:#EAF6FC;color:var(--teal-d);font-weight:700}
+.side a:hover{background:#F1F5F8}
+.pane{display:none}.pane.on{display:block}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.kpi{padding:16px}.kpi b{display:block;font-size:22px;font-family:"Amiri";color:var(--navy)}
+.kpi span{font-size:12px;color:var(--slate)}
+.kpi .up{color:var(--ok);font-size:11.5px;font-weight:700}
+.kpi .dn{color:var(--red);font-size:11.5px;font-weight:700}
+.alert{display:flex;gap:10px;align-items:flex-start;border-inline-start:4px solid var(--warn);background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:9px;font-size:13.5px}
+.alert.red{border-inline-start-color:var(--red)}
+.alert.teal{border-inline-start-color:var(--teal)}
+.alert b{display:block;font-size:13.5px}
+.alert span{color:var(--slate);font-size:12.5px}
+.alert .btn{margin-inline-start:auto}
+
+/* admin layout */
+.ahead{background:var(--navy2);color:#fff;position:sticky;top:46px;z-index:90}
+.ahead .in{display:flex;align-items:center;gap:16px;height:54px}
+.ahead .who{margin-inline-start:auto;font-size:12.5px;color:#B7C6D4}
+.anav{display:flex;gap:4px;font-size:13.5px;flex-wrap:wrap}
+.anav a{padding:7px 13px;border-radius:8px;color:#C9D6E2}
+.anav a.on{background:rgba(255,255,255,.14);color:#fff;font-weight:600}
+.bars{display:flex;align-items:flex-end;gap:14px;height:140px;padding:10px 4px 0}
+.bars div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;text-align:center;font-size:11px;color:var(--slate)}
+.bars i{border-radius:6px 6px 0 0;display:block}
+.bars .a{background:var(--navy2)}.bars .b{background:var(--teal)}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--slate);margin-bottom:6px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-inline-end:5px;vertical-align:-1px}
+.pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pcol{background:#F1F5F8;border-radius:10px;padding:10px}
+.pcol h4{font-size:12.5px;color:var(--slate);margin-bottom:8px}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px;font-size:12.5px;margin-bottom:8px}
+.pcard b{display:block;color:var(--navy);font-size:13px}
+.wiz{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.wiz div{flex:1;min-width:120px;text-align:center;font-size:12px;padding:8px;border-radius:8px;background:#EDF1F5;color:var(--slate)}
+.wiz div.on{background:var(--teal);color:#fff;font-weight:700}
+.wiz div.done{background:#E5F5EE;color:var(--ok);font-weight:700}
+.mc{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
+.attrow{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-top:1px solid var(--line);font-size:13.5px}
+.big{font-size:44px;font-family:"Amiri";color:var(--navy);line-height:1}
+.perm td:not(:first-child){text-align:center}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.dot.g{background:var(--ok)}.dot.r{background:var(--red)}.dot.y{background:var(--gold)}
+.log{font-size:12.5px;color:var(--slate)}
+.log b{color:var(--ink)}
+.note{background:#FDF6E9;border:1px solid #F0DFBB;border-radius:10px;padding:10px 14px;font-size:12.5px;color:#8A6A2B;margin-bottom:16px}
+footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;padding:18px;margin-top:40px}
+@media(max-width:960px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr 1fr}.lys{grid-template-columns:1fr}.filters{position:static}.dts{grid-template-columns:1fr}.buy{position:static}.dash{grid-template-columns:1fr}.side{position:static;display:flex;flex-wrap:wrap;gap:4px}.kpis{grid-template-columns:1fr 1fr}.mc{grid-template-columns:1fr}.pipe{grid-template-columns:1fr 1fr}.cogrid{grid-template-columns:1fr}.cnav{display:none}}
+@media(max-width:600px){.g4,.g3{grid-template-columns:1fr}.pipe{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="rolebar">
+  <b>محاكاة تفاعلية | اختر الدور:</b>
+  <button data-role="cust" class="on" onclick="setRole('cust')">زائر / عميل</button>
+  <button data-role="org" onclick="setRole('org')">مسؤول منشأة</button>
+  <button data-role="trainer" onclick="setRole('trainer')">مدرب</button>
+  <button data-role="admin" onclick="setRole('admin')">فريق الإدارة</button>
+  <button data-role="super" onclick="setRole('super')">المشرف الأعلى</button>
+  <span style="margin-inline-start:auto;font-size:11px">بيانات توضيحية | ورش إبرام</span>
+</div>
+
+<!-- ============ CUSTOMER HEADER ============ -->
+<div class="chead" id="custHead">
+  <div class="wrap in">
+    <a class="logo" onclick="go('home')"><span class="mk">إ</span> ورش إبرام</a>
+    <nav class="cnav">
+      <a data-nav="list" onclick="go('list')">الورش والبرامج</a>
+      <a onclick="go('corp')">تدريب المنشآت</a>
+      <a onclick="go('list')">التقويم</a>
+      <a onclick="go('verify')">التحقق من شهادة</a>
+      <a style="color:var(--gold);font-weight:700" onclick="alert('يحول إلى نظام مؤتمر إبرام القائم')">مؤتمر إبرام</a>
+    </nav>
+    <span class="grow"></span>
+    <a class="btn btn-o btn-sm" onclick="go('account')">👤 حسابي</a>
+    <a class="btn btn-p btn-sm" onclick="go('list')">تصفح الورش</a>
+  </div>
+</div>
+
+<!-- ============ SCREEN: HOME ============ -->
+<section class="screen on" id="s-home">
+  <div class="hero">
+    <div class="wrap">
+      <span class="badge bg-gold" style="margin-bottom:14px">الامتداد السنوي لمؤتمر إبرام</span>
+      <h1>ورش <em>إبرام</em>: تدريب متخصص في المشتريات والعقود على مدار العام</h1>
+      <p>ورش عملية وبرامج تنفيذية بشهادات موثقة، وتجربة تسجيل لا تتجاوز الدقيقتين.</p>
+      <a class="btn btn-p" onclick="go('list')">تصفح الورش القادمة</a>
+      <a class="btn btn-o" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.5)" onclick="go('corp')">تدريب المنشآت</a>
+      <div class="trust">
+        <div><b>+4,800</b><span>متدرب ومتدربة</span></div>
+        <div><b>+120</b><span>جهة حكومية وخاصة</span></div>
+        <div><b>4.8/5</b><span>متوسط الرضا</span></div>
+        <div><b>24 ساعة</b><span>لإصدار الشهادة آلياً</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="conf">
+      <span class="badge bg-gold">الحدث المرساة السنوي</span>
+      <div class="ct"><b>مؤتمر إبرام للمشتريات والمشاريع الحكومية 2026</b><span>13 - 14 ديسمبر | دبل تري باي هيلتون، الرياض</span></div>
+      <div class="cd"><div><b id="cdD">157</b><span>يوم</span></div><div><b id="cdH">08</b><span>ساعة</span></div><div><b id="cdM">42</b><span>دقيقة</span></div></div>
+      <a class="btn btn-g btn-sm" onclick="alert('يحول إلى نظام مؤتمر إبرام القائم')">سجل في المؤتمر</a>
+    </div>
+  </div>
+  <div class="wrap sec" style="padding-top:10px">
+    <h2>الورش القادمة</h2>
+    <p class="lead">الأقرب موعداً أولاً. انقر أي بطاقة لفتح صفحة التفاصيل.</p>
+    <div class="grid g4" id="homeCards"></div>
+    <div style="text-align:center;margin-top:24px"><a class="btn btn-g" onclick="go('list')">عرض التقويم الكامل</a></div>
+  </div>
+</section>
+
+<!-- ============ SCREEN: LISTING ============ -->
+<section class="screen" id="s-list">
+  <div class="wrap">
+    <div class="crumb"><a onclick="go('home')">الرئيسية</a> › الورش والبرامج</div>
+    <div class="sec" style="padding-top:14px">
+      <h2>الورش والبرامج التدريبية</h2>
+      <p class="lead">الفلاتر تعمل فعلياً على البطاقات. عدد النتائج: <b id="resCount"></b></p>
+      <div class="lys">
+        <aside class="card filters">
+          <h4>نمط التنفيذ</h4>
+          <div class="fgroup" id="fMode">
+            <label class="op"><input type="checkbox" value="حضوري" onchange="renderList()"> حضوري <span class="n"></span></label>
+            <label class="op"><input type="checkbox" value="عن بعد" onchange="renderList()"> مباشر عن بعد <span class="n"></span></label>
+            <label class="op"><input type="checkbox" value="هجين" onchange="renderList()"> هجين <span class="n"></span></label>
+          </div>
+          <h4>المجال</h4>
+          <div class="fgroup" id="fCat">
+            <label class="op"><input type="checkbox" value="مشتريات" onchange="renderList()"> المشتريات والمنافسات <span class="n"></span></label>
+            <label class="op"><input type="checkbox" value="عقود" onchange="renderList()"> العقود وإدارتها <span class="n"></span></label>
+            <label class="op"><input type="checkbox" value="تنفيذي" onchange="renderList()"> برامج تنفيذية <span class="n"></span></label>
+          </div>
+          <button class="btn btn-o btn-sm" style="width:100%" onclick="clearFilters()">مسح الفلاتر</button>
+        </aside>
+        <div class="grid g3" id="listCards"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREEN: DETAILS ============ -->
+<section class="screen" id="s-details">
+  <div class="wrap">
+    <div class="crumb"><a onclick="go('home')">الرئيسية</a> › <a onclick="go('list')">الورش</a> › <span id="dCrumb"></span></div>
+    <div class="sec dts" style="padding-top:14px">
+      <div class="main">
+        <div class="card">
+          <span id="dBadges"></span>
+          <h2 id="dTitle" style="font-size:24px;margin:8px 0 6px"></h2>
+          <p class="meta" id="dMeta"></p>
+        </div>
+        <div class="card"><h3>ماذا ستكتسب</h3>
+          <p style="font-size:14px">تطبيق أحكام النظام على حالات واقعية من بيئة العمل، وقراءة التعديلات الأخيرة قراءة تشغيلية، وصياغة القرارات والمخاطبات ذات الصلة بثقة، وتجنب أشهر خمس مخالفات ترصدها الجهات الرقابية.</p>
+        </div>
+        <div class="card"><h3>المدرب</h3>
+          <div style="display:flex;gap:14px;align-items:center">
+            <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--navy2),var(--teal));color:#fff;display:grid;place-items:center;font-family:'Amiri';font-size:22px" id="dTrIni"></div>
+            <div><b id="dTr"></b><p class="meta">خبير ممارس، أكثر من 15 عاماً في المشتريات والعقود الحكومية | تقييم 4.9 من 320 متدرباً</p></div>
+          </div>
+        </div>
+        <div class="card"><h3>تقييمات دفعات سابقة</h3>
+          <div class="rev"><span class="st">★★★★★</span><p>"محتوى عملي مباشر، طبقت ما تعلمته في أول منافسة بعد الورشة بأسبوع." <b>أ. محمد الغامدي</b> | أخصائي عقود، جهة حكومية</p></div>
+          <div class="rev"><span class="st">★★★★★</span><p>"أفضل ما فيها الحالات الواقعية والنقاش. الشهادة وصلتني في اليوم التالي." <b>أ. هند العنزي</b> | إدارة المشتريات</p></div>
+        </div>
+        <div class="card"><h3>أسئلة شائعة عن الورشة</h3>
+          <div class="faqi" onclick="this.classList.toggle('open')"><b>هل الشهادة معتمدة؟</b><p>نعم، شهادة موثقة برمز تحقق عام تصدر آلياً خلال 24 ساعة من انتهاء الورشة لمن أتم 80% من الحضور.</p></div>
+          <div class="faqi" onclick="this.classList.toggle('open')"><b>هل يمكن لجهة عملي دفع الرسوم؟</b><p>نعم، حمل الملف التعريفي وعرض السعر من هذه الصفحة، وعند الموافقة تصدر فاتورة ضريبية باسم الجهة.</p></div>
+          <div class="faqi" onclick="this.classList.toggle('open')"><b>ما سياسة الإلغاء؟</b><p>استرداد كامل قبل 7 أيام، و50% قبل 72 ساعة، ورصيد محفظة بعد ذلك.</p></div>
+        </div>
+      </div>
+      <aside class="card buy">
+        <div class="row"><span>التاريخ</span><b id="dDate"></b></div>
+        <div class="row"><span>النمط</span><b id="dMode"></b></div>
+        <div class="row" style="margin-bottom:10px"><span>المقاعد</span><b id="dSeats"></b></div>
+        <label>اختر الخطة</label>
+        <div id="dPlans"></div>
+        <div id="dEarly" class="hold" style="display:none"></div>
+        <button class="btn btn-p" style="width:100%" id="dCta" onclick="startCheckout()">سجل الآن</button>
+        <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="alert('نموذج قصير: بريدك وجوالك، ويصلك إشعار فوري عند شغور مقعد بأولوية 24 ساعة')" id="dWait" hidden>انضم لقائمة الانتظار</button>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <button class="btn btn-o btn-sm" style="flex:1" onclick="alert('يفتح محادثة واتساب أعمال')">استفسر واتساب</button>
+          <button class="btn btn-o btn-sm" style="flex:1" onclick="alert('يولد PDF تعريفياً بترويسة إبرام لرفعه لجهة العمل')">الملف التعريفي PDF</button>
+        </div>
+        <p class="meta" style="text-align:center;margin-top:10px">🔒 دفع آمن | فاتورة إلكترونية فورية</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREEN: CHECKOUT ============ -->
+<section class="screen" id="s-checkout">
+  <div class="wrap">
+    <div class="steps">
+      <div id="st1" class="on"><i>1</i> بياناتك</div>
+      <div id="st2"><i>2</i> المراجعة والدفع</div>
+      <div id="st3"><i>3</i> التأكيد</div>
+    </div>
+
+    <!-- step 1 -->
+    <div class="card cobox" id="co1">
+      <h3 style="margin-bottom:14px">بيانات المتدرب</h3>
+      <div class="cogrid">
+        <div class="field"><label>الاسم الثلاثي (سيطبع في شهادتك)</label><input id="fName" placeholder="مثال: خالد عبدالله العتيبي"><div class="err" id="eName">فضلاً أدخل الاسم الثلاثي كما تريده في الشهادة</div></div>
+        <div class="field"><label>رقم الجوال</label><input id="fPhone" placeholder="+966 5x xxx xxxx" dir="ltr" style="text-align:right"><div class="err" id="ePhone">رقم الجوال غير مكتمل</div></div>
+        <div class="field"><label>البريد الإلكتروني</label><input id="fMail" placeholder="name@entity.gov.sa"><div class="err" id="eMail">تحقق من كتابة البريد</div></div>
+        <div class="field"><label>جهة العمل (اختياري)</label><input placeholder="مثال: الهيئة العامة لـ..."></div>
+      </div>
+      <div class="field"><label>نوع الفاتورة</label>
+        <select id="fInv" onchange="document.getElementById('vatWrap').style.display=this.value=='ent'?'block':'none'">
+          <option value="ind">فرد (فاتورة ضريبية مبسطة)</option>
+          <option value="ent">منشأة (فاتورة ضريبية كاملة)</option>
+        </select>
+      </div>
+      <div class="field" id="vatWrap" style="display:none"><label>الرقم الضريبي للمنشأة (15 رقماً)</label><input id="fVat" placeholder="3xxxxxxxxxxxxx3" dir="ltr" style="text-align:right"><div class="err" id="eVat">الرقم الضريبي المدخل غير صحيح</div></div>
+      <button class="btn btn-p" style="width:100%" onclick="coNext1()">متابعة إلى الدفع</button>
+      <p class="meta" style="text-align:center;margin-top:8px">لن يطلب منك إنشاء كلمة مرور؛ ينشأ حسابك تلقائياً ويصلك رابط تفعيل بعد التأكيد</p>
+    </div>
+
+    <!-- step 2 -->
+    <div class="card cobox" id="co2" style="display:none">
+      <div class="hold">⏱ مقعدك محجوز مؤقتاً: <span id="holdT">15:00</span></div>
+      <h3 style="margin-bottom:12px">مراجعة الطلب</h3>
+      <div class="summ" id="coSumm"></div>
+      <div class="field" style="margin-top:14px"><label>كود الخصم (جرب: IBRAM10)</label>
+        <div style="display:flex;gap:8px"><input id="fCoupon" placeholder="أدخل الكود" dir="ltr" style="text-align:right"><button class="btn btn-o" onclick="applyCoupon()">تطبيق</button></div>
+        <div class="err" id="eCoupon">انتهت صلاحية هذا الكود أو غير مطابق</div>
+        <div class="err" id="okCoupon" style="color:var(--ok)">تم تطبيق خصم 10%</div>
+      </div>
+      <label>وسيلة الدفع</label>
+      <div class="payop" id="payops">
+        <button class="on" onclick="pickPay(this)">مدى</button>
+        <button onclick="pickPay(this)">بطاقة ائتمانية</button>
+        <button onclick="pickPay(this)">Apple Pay</button>
+        <button onclick="pickPay(this)">تابي | تمارا (4 دفعات)</button>
+      </div>
+      <button class="btn btn-p" style="width:100%" onclick="coNext2()">ادفع الآن</button>
+      <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="coBack()">رجوع لتعديل البيانات</button>
+    </div>
+
+    <!-- step 3 -->
+    <div class="card cobox" id="co3" style="display:none;text-align:center">
+      <div class="okball">✓</div>
+      <h2 style="font-size:24px">تم تأكيد تسجيلك</h2>
+      <p class="meta" id="confLine"></p>
+      <div class="qr" id="qrBox"></div>
+      <p style="font-size:13px;color:var(--slate)">هذا رمز حضورك الشخصي. سيصلك أيضاً بالبريد والواتساب مع الفاتورة الإلكترونية</p>
+      <div style="display:flex;gap:8px;justify-content:center;margin:16px 0;flex-wrap:wrap">
+        <button class="btn btn-o btn-sm" onclick="alert('يحمل ملف ICS متوافقاً مع تقويم آبل وقوقل وأوتلوك')">📅 أضف للتقويم</button>
+        <button class="btn btn-o btn-sm" onclick="alert('يفتح الفاتورة الضريبية PDF المتوافقة مع فاتورة')">🧾 الفاتورة</button>
+        <button class="btn btn-p btn-sm" onclick="go('account')">اذهب لحسابي</button>
+      </div>
+      <div class="card" style="padding:14px;text-align:right;box-shadow:none">
+        <span class="tag">قد يهمك أيضاً</span>
+        <p style="font-size:14px;margin-top:4px"><b>إدارة العقود بعد الترسية</b> | المستوى المكمل لهذه الورشة، تقام الشهر القادم. <a style="color:var(--teal-d);font-weight:700" onclick="openDetails(3)">التفاصيل ←</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREEN: CUSTOMER ACCOUNT ============ -->
+<section class="screen" id="s-account">
+  <div class="wrap dash">
+    <aside class="card side">
+      <a class="on" data-p="regs" onclick="pane(this,'account')">🎫 تسجيلاتي</a>
+      <a data-p="certs" onclick="pane(this,'account')">🎓 شهاداتي</a>
+      <a data-p="invs" onclick="pane(this,'account')">🧾 فواتيري</a>
+      <a data-p="saved" onclick="pane(this,'account')">♡ المحفوظات</a>
+      <a data-p="prof" onclick="pane(this,'account')">⚙ ملفي وتفضيلاتي</a>
+    </aside>
+    <div>
+      <h2 style="margin-bottom:4px">مرحباً، م. خالد العتيبي</h2>
+      <p class="lead">نقاط الولاء: <b style="color:var(--gold)">450 ★</b> | تستبدل في الورش وتذاكر مؤتمر إبرام</p>
+
+      <div class="pane on" id="account-regs">
+        <div class="card" style="padding:16px;margin-bottom:14px;border-inline-start:4px solid var(--teal)">
+          <span class="badge bg-teal">التالي لديك</span>
+          <h3 style="margin:6px 0 2px" id="accNext">أحكام التعاقد الحكومي والتعديلات النظامية</h3>
+          <p class="meta">الأحد 9 أغسطس | 9:00 صباحاً | فندق حياة، الرياض</p>
+          <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+            <button class="btn btn-p btn-sm" onclick="alert('يعرض رمز QR بسطوع مرفوع للمسح عند بوابة القاعة')">عرض رمز الحضور QR</button>
+            <button class="btn btn-o btn-sm" onclick="alert('ملف ICS')">أضف للتقويم</button>
+            <button class="btn btn-o btn-sm" onclick="alert('يعرض سياسة التعديل: مجاني قبل 72 ساعة حسب التوفر')">تعديل أو إلغاء</button>
+          </div>
+        </div>
+        <div class="card"><table>
+          <tr><th>البرنامج</th><th>الموعد</th><th>الحالة</th><th></th></tr>
+          <tr><td>إدارة المنافسات عبر منصة اعتماد</td><td>12 مايو 2026</td><td><span class="badge bg-ok">حضرت</span></td><td><a class="tag" onclick="alert('يفتح تسجيل الورشة المرئي، متاح 90 يوماً')">مشاهدة التسجيل</a></td></tr>
+          <tr><td>أساسيات نظام المنافسات والمشتريات</td><td>3 فبراير 2026</td><td><span class="badge bg-ok">حضرت</span></td><td><a class="tag" onclick="pane(document.querySelector('[data-p=certs]'),'account')">الشهادة</a></td></tr>
+        </table></div>
+      </div>
+
+      <div class="pane" id="account-certs">
+        <div class="grid g2">
+          <div class="card" style="padding:18px;border-top:4px solid var(--gold)">
+            <span class="badge bg-gold">شهادة موثقة</span>
+            <h3 style="margin:8px 0 2px">إدارة المنافسات عبر منصة اعتماد</h3>
+            <p class="meta">16 ساعة تدريبية | 12 مايو 2026 | رمز التحقق: IBR-2026-08412</p>
+            <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+              <button class="btn btn-o btn-sm" onclick="alert('يحمل الشهادة PDF بلغة حسابك مع خيار النسخة الإنجليزية')">تحميل PDF</button>
+              <button class="btn btn-o btn-sm" onclick="go('verify')">صفحة التحقق</button>
+              <button class="btn btn-p btn-sm" onclick="alert('ينشر بطاقة الشهادة على لينكدإن باسم البرنامج وورش إبرام')">مشاركة على لينكدإن</button>
+            </div>
+          </div>
+          <div class="card" style="padding:18px">
+            <span class="badge bg-teal">قيد الإصدار</span>
+            <h3 style="margin:8px 0 2px">أحكام التعاقد الحكومي</h3>
+            <p class="meta">تصدر الشهادة آلياً خلال 24 ساعة من انتهاء البرنامج واكتمال شرط الحضور</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pane" id="account-invs">
+        <div class="card"><table>
+          <tr><th>رقم الفاتورة</th><th>البرنامج</th><th>المبلغ</th><th>النوع</th><th></th></tr>
+          <tr><td>INV-2026-1180</td><td>أحكام التعاقد الحكومي</td><td>1,350 ر.س</td><td>مبسطة</td><td><a class="tag" onclick="alert('PDF متوافق مع فاتورة برمز QR')">تحميل</a></td></tr>
+          <tr><td>INV-2026-0742</td><td>إدارة المنافسات عبر اعتماد</td><td>950 ر.س</td><td>مبسطة</td><td><a class="tag" onclick="alert('PDF')">تحميل</a></td></tr>
+        </table></div>
+      </div>
+
+      <div class="pane" id="account-saved">
+        <div class="card" style="padding:16px">
+          <p style="font-size:14px"><b>قياس أداء الموردين وإدارة العقود</b> <span class="badge bg-warn">آخر 3 مقاعد</span></p>
+          <p class="meta">حفظته قبل 5 أيام | سيصلك تنبيه آلي عند اقتراب إغلاق التسجيل أو انتهاء السعر المبكر</p>
+          <button class="btn btn-p btn-sm" style="margin-top:8px" onclick="openDetails(2)">سجل الآن</button>
+        </div>
+      </div>
+
+      <div class="pane" id="account-prof">
+        <div class="card" style="padding:18px">
+          <div class="cogrid">
+            <div class="field"><label>الاسم</label><input value="خالد عبدالله العتيبي"></div>
+            <div class="field"><label>لغة التواصل</label><select><option>العربية</option><option>English</option></select></div>
+          </div>
+          <label>موافقاتي التسويقية (تحدث فوراً وتسجل بتاريخها وفق نظام حماية البيانات)</label>
+          <div style="display:flex;gap:16px;font-size:13.5px;margin-top:6px;flex-wrap:wrap">
+            <label class="op" style="display:flex;gap:6px"><input type="checkbox" checked style="width:auto"> البريد</label>
+            <label class="op" style="display:flex;gap:6px"><input type="checkbox" checked style="width:auto"> واتساب</label>
+            <label class="op" style="display:flex;gap:6px"><input type="checkbox" style="width:auto"> الرسائل النصية</label>
+          </div>
+          <button class="btn btn-p btn-sm" style="margin-top:14px" onclick="alert('حفظ')">حفظ التغييرات</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREEN: VERIFY ============ -->
+<section class="screen" id="s-verify">
+  <div class="wrap" style="max-width:560px;padding:60px 20px">
+    <div class="card" style="padding:26px;text-align:center">
+      <h2>التحقق من شهادة</h2>
+      <p class="lead">صفحة عامة تتأكد منها أي جهة دون تسجيل دخول</p>
+      <input id="vCode" value="IBR-2026-08412" dir="ltr" style="text-align:center;font-weight:700">
+      <button class="btn btn-p" style="width:100%;margin-top:10px" onclick="document.getElementById('vRes').style.display='block'">تحقق</button>
+      <div id="vRes" style="display:none;margin-top:16px;text-align:right" class="summ">
+        <div class="row"><span>الحالة</span><b style="color:var(--ok)">✓ شهادة صحيحة وسارية</b></div>
+        <div class="row"><span>الحامل</span><b>خالد عبدالله العتيبي</b></div>
+        <div class="row"><span>البرنامج</span><b>إدارة المنافسات عبر منصة اعتماد (16 ساعة)</b></div>
+        <div class="row"><span>تاريخ الإصدار</span><b>13 مايو 2026</b></div>
+        <div class="row"><span>الجهة</span><b>ورش إبرام | إنسبيراكور للاستشارات</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREEN: CORPORATE (PUBLIC + ORG DASHBOARD) ============ -->
+<section class="screen" id="s-corp">
+  <div class="wrap sec">
+    <h2>تدريب المنشآت</h2>
+    <p class="lead">حزمة واحدة: تدريب سنوي + رعاية مؤتمر إبرام، بمدير حساب واحد ولوحة واحدة</p>
+    <div class="grid g2">
+      <div class="card" style="padding:22px">
+        <h3>اطلب عرض سعر</h3>
+        <div class="field"><label>اسم الجهة</label><input placeholder="مثال: الهيئة العامة لـ..."></div>
+        <div class="cogrid">
+          <div class="field"><label>رقم الجوال</label><input placeholder="+966 5x xxx xxxx" dir="ltr" style="text-align:right"></div>
+          <div class="field"><label>حجم المجموعة</label><select><option>10 - 25 متدرباً</option><option>26 - 50</option><option>أكثر من 50</option></select></div>
+        </div>
+        <button class="btn btn-gold" style="width:100%" onclick="alert('ينشئ فرصة آلياً في خط المبيعات وينبه مسؤول النجاح المؤسسي. الوعد المعلن: أول رد خلال 4 ساعات عمل')">أرسل الطلب</button>
+        <p class="meta" style="text-align:center;margin-top:8px">يصلك رد خلال 4 ساعات عمل</p>
+      </div>
+      <div class="card" style="padding:22px">
+        <h3>ماذا تشمل الحزمة</h3>
+        <p style="font-size:14px">دفعات خاصة بموظفي جهتك حضورياً أو عن بعد، وفوترة آجلة نظامية، وتقارير حضور وشهادات جاهزة للرفع ومتوافقة مع متطلبات جهات الدعم، ولوحة متابعة لحظية لجهتك، وامتيازات رعاية في مؤتمر إبرام (شريك رئيسي، بلاتيني، ذهبي) برصيد مقاعد تدريبية.</p>
+        <button class="btn btn-o btn-sm" style="margin-top:8px" onclick="setRole('org')">جرب لوحة المنشأة (محاكاة) ←</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCREEN: ORG ADMIN DASHBOARD ============ -->
+<section class="screen" id="s-org">
+  <div class="wrap dash">
+    <aside class="card side">
+      <a class="on" data-p="ov" onclick="pane(this,'org')">📊 نظرة عامة</a>
+      <a data-p="emp" onclick="pane(this,'org')">👥 متدربو جهتي</a>
+      <a data-p="rep" onclick="pane(this,'org')">📄 التقارير والشهادات</a>
+      <a data-p="fin" onclick="pane(this,'org')">🧾 الفواتير والعقد</a>
+    </aside>
+    <div>
+      <h2 style="margin-bottom:2px">لوحة المنشأة: الهيئة العامة لـ{الجهة}</h2>
+      <p class="lead">دور "مسؤول منشأة" | عقد سنوي: تدريب + رعاية ذهبية لمؤتمر إبرام | مدير الحساب: أ. فيصل</p>
+
+      <div class="pane on" id="org-ov">
+        <div class="kpis">
+          <div class="card kpi"><b>42</b><span>متدرباً مسجلاً هذا العام</span></div>
+          <div class="card kpi"><b>91%</b><span>نسبة الحضور</span><span class="up">▲ ممتازة</span></div>
+          <div class="card kpi"><b>36</b><span>شهادة صادرة</span></div>
+          <div class="card kpi"><b>8 / 10</b><span>مقاعد الرعاية المتبقية للمؤتمر</span></div>
+        </div>
+        <div class="card" style="padding:16px">
+          <h3 style="font-size:15px;margin-bottom:8px">البرنامج القادم لجهتكم</h3>
+          <p style="font-size:14px"><b>برنامج خاص: إدارة المطالبات التعاقدية</b> | 24 - 25 أغسطس | دفعة مغلقة لا تظهر في الكتالوج العام</p>
+          <p class="meta">مسجل: 18 من 20 | تصل روابط الترحيب للمتدربين آلياً بعد رفع الأسماء</p>
+        </div>
+      </div>
+
+      <div class="pane" id="org-emp">
+        <div style="display:flex;gap:8px;margin-bottom:10px">
+          <button class="btn btn-p btn-sm" onclick="alert('يحمل قالب إكسل، وعند رفعه تنشأ سجلات المتدربين وتطابق آلياً بالجوال وترسل رسائل الترحيب')">⬆ رفع أسماء (تسجيل جماعي)</button>
+        </div>
+        <div class="card"><table>
+          <tr><th>المتدرب</th><th>البرنامج</th><th>الحضور</th><th>الشهادة</th></tr>
+          <tr><td>سارة المطيري</td><td>إدارة المطالبات التعاقدية</td><td><span class="badge bg-teal">مسجلة</span></td><td>-</td></tr>
+          <tr><td>عبدالله الشمري</td><td>أحكام التعاقد الحكومي</td><td><span class="badge bg-ok">حضر 100%</span></td><td><a class="tag">تحميل</a></td></tr>
+          <tr><td>نورة القحطاني</td><td>أحكام التعاقد الحكومي</td><td><span class="badge bg-ok">حضرت 88%</span></td><td><a class="tag">تحميل</a></td></tr>
+          <tr><td>فهد الدوسري</td><td>أحكام التعاقد الحكومي</td><td><span class="badge bg-red">تغيب</span></td><td>-</td></tr>
+        </table></div>
+      </div>
+
+      <div class="pane" id="org-rep">
+        <div class="card" style="padding:18px">
+          <h3 style="font-size:15px">الحزمة الختامية للبرنامج المنتهي</h3>
+          <p class="meta" style="margin-bottom:10px">تولد آلياً عند إغلاق كل دفعة: تقرير حضور تفصيلي + الشهادات + ملخص التقييمات + خطاب إتمام، بصيغ تلائم متطلبات جهات الدعم (هدف)</p>
+          <button class="btn btn-p btn-sm" onclick="alert('يحمل ملفاً مضغوطاً بالحزمة كاملة PDF')">تحميل الحزمة الختامية</button>
+        </div>
+      </div>
+
+      <div class="pane" id="org-fin">
+        <div class="card"><table>
+          <tr><th>المستند</th><th>المبلغ</th><th>الاستحقاق</th><th>الحالة</th></tr>
+          <tr><td>فاتورة ضريبية آجلة INV-C-2026-031</td><td>84,000 ر.س</td><td>30 يوماً</td><td><span class="badge bg-warn">بانتظار السداد</span></td></tr>
+          <tr><td>فاتورة العقد الإطاري (الربع الأول)</td><td>120,000 ر.س</td><td>-</td><td><span class="badge bg-ok">مسددة</span></td></tr>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAINER PORTAL ============ -->
+<section class="screen" id="s-trainer">
+  <div class="wrap dash">
+    <aside class="card side">
+      <a class="on" data-p="ws" onclick="pane(this,'trainer')">📚 ورشي القادمة</a>
+      <a data-p="mat" onclick="pane(this,'trainer')">📎 موادي</a>
+      <a data-p="att" onclick="pane(this,'trainer')">✅ قائمة الحضور</a>
+      <a data-p="rate" onclick="pane(this,'trainer')">⭐ تقييماتي</a>
+      <a data-p="prof" onclick="pane(this,'trainer')">👤 ملفي التعريفي</a>
+    </aside>
+    <div>
+      <h2 style="margin-bottom:2px">بوابة المدرب: د. عبدالعزيز الحربي</h2>
+      <p class="lead">شريك عرض | متوسط تقييمك: <b style="color:var(--gold)">4.9 ★</b> عبر 320 متدرباً</p>
+
+      <div class="pane on" id="trainer-ws">
+        <div class="card"><table>
+          <tr><th>الورشة</th><th>الموعد</th><th>المكان</th><th>المسجلون</th></tr>
+          <tr><td>أحكام التعاقد الحكومي</td><td>الأحد 9 أغسطس</td><td>فندق حياة، الرياض</td><td><b>17</b> / 31 <span class="meta">(أعداد فقط، دون بيانات تواصل)</span></td></tr>
+          <tr><td>أحكام التعاقد الحكومي (دفعة 2)</td><td>14 أكتوبر</td><td>عن بعد</td><td><b>9</b> / 60</td></tr>
+        </table></div>
+        <p class="note" style="margin-top:12px">وفق سياسة المنصة: تظهر لك أعداد المسجلين لحظياً، وتفتح قائمة الأسماء صباح يوم الورشة فقط، ولا تظهر أرقام الجوال أو البريد إطلاقاً.</p>
+      </div>
+
+      <div class="pane" id="trainer-mat">
+        <div class="card" style="padding:18px">
+          <h3 style="font-size:15px;margin-bottom:8px">مواد دفعة 9 أغسطس</h3>
+          <table>
+            <tr><th>الملف</th><th>الإتاحة للمتدربين</th><th>الحالة</th></tr>
+            <tr><td>العرض التقديمي الرئيسي.pdf</td><td>بعد الورشة</td><td><span class="badge bg-ok">مرفوع</span></td></tr>
+            <tr><td>حالات تطبيقية.docx</td><td>قبل الورشة بيوم</td><td><span class="badge bg-ok">مرفوع</span></td></tr>
+          </table>
+          <button class="btn btn-p btn-sm" style="margin-top:12px" onclick="alert('رفع ملف جديد؛ إعداد الإتاحة (قبل أو بعد) تحدده الإدارة لكل دفعة')">⬆ رفع ملف</button>
+        </div>
+      </div>
+
+      <div class="pane" id="trainer-att">
+        <div class="card" style="padding:18px" id="trAttLocked">
+          <h3 style="font-size:15px">قائمة حضور دفعة 9 أغسطس</h3>
+          <p class="meta" style="margin:8px 0">🔒 تفتح القائمة صباح يوم الورشة (لأغراض التفاعل داخل القاعة والتحضير اليدوي الاحتياطي)</p>
+          <button class="btn btn-o btn-sm" onclick="document.getElementById('trAttLocked').style.display='none';document.getElementById('trAttOpen').style.display='block'">محاكاة: انتقل ليوم الورشة</button>
+        </div>
+        <div class="card" style="display:none" id="trAttOpen">
+          <div style="padding:14px 16px;border-bottom:1px solid var(--line)"><b>قائمة الحضور (يوم الورشة)</b> <span class="meta">أسماء ومسميات فقط</span></div>
+          <table>
+            <tr><th>الاسم</th><th>المسمى</th><th>الحالة</th></tr>
+            <tr><td>خالد العتيبي</td><td>أخصائي عقود</td><td><span class="badge bg-ok">حضر</span></td></tr>
+            <tr><td>هند العنزي</td><td>مديرة مشتريات</td><td><span class="badge bg-ok">حضرت</span></td></tr>
+            <tr><td>بدر الحربي</td><td>محلل منافسات</td><td><span class="badge bg-full">لم يصل بعد</span></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="pane" id="trainer-rate">
+        <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
+          <div class="card kpi"><b>4.9</b><span>تقييم المدرب</span></div>
+          <div class="card kpi"><b>4.7</b><span>تقييم المحتوى</span></div>
+          <div class="card kpi"><b>96%</b><span>يوصون بالبرنامج</span></div>
+        </div>
+        <div class="card" style="padding:16px">
+          <p class="meta" style="margin-bottom:8px">أبرز التعليقات (مجهولة المصدر، بعد إجازة الإدارة):</p>
+          <p style="font-size:13.5px">"شرح عملي ممتاز وأمثلة من الواقع" | "أتمنى وقتاً أطول للنقاش" | "أفضل ورشة حضرتها هذا العام"</p>
+        </div>
+      </div>
+
+      <div class="pane" id="trainer-prof">
+        <div class="card" style="padding:18px">
+          <span class="badge bg-warn">التعديل الأخير بانتظار اعتماد الإدارة</span>
+          <div class="cogrid" style="margin-top:12px">
+            <div class="field"><label>النبذة (عربي)</label><textarea rows="3">خبير مشتريات وعقود حكومية، أكثر من 15 عاماً في القطاع الحكومي...</textarea></div>
+            <div class="field"><label>Bio (English)</label><textarea rows="3" dir="ltr">Government procurement and contracts expert with 15+ years...</textarea></div>
+          </div>
+          <button class="btn btn-p btn-sm" onclick="alert('تحفظ مسودة وتذهب لاعتماد الإدارة قبل النشر')">حفظ وإرسال للاعتماد</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADMIN HEADER ============ -->
+<div class="ahead" id="adminHead" style="display:none">
+  <div class="wrap in">
+    <a class="logo" style="color:#fff" onclick="go('admin')"><span class="mk">إ</span> إدارة ورش إبرام</a>
+    <nav class="anav">
+      <a data-nav="admin" class="on" onclick="go('admin')">لوحة اليوم</a>
+      <a data-nav="wizard" onclick="go('wizard')">إنشاء دفعة</a>
+      <a data-nav="mission" onclick="go('mission')">تشغيل يوم الورشة</a>
+      <a data-nav="crm" onclick="go('crm')">CRM</a>
+      <a data-nav="exec" onclick="go('exec')">اللوحة التنفيذية</a>
+      <a data-nav="superadmin" onclick="go('superadmin')" id="superTab" style="display:none">⚙ المشرف الأعلى</a>
+    </nav>
+    <span class="who" id="whoAmI">أ. إرام | مديرة العمليات</span>
+  </div>
+</div>
+
+<!-- ============ ADMIN: TODAY ============ -->
+<section class="screen" id="s-admin">
+  <div class="wrap sec">
+    <h2>لوحة اليوم</h2>
+    <p class="lead">الخميس 9 يوليو 2026 | كل الأرقام لحظية</p>
+    <div class="kpis">
+      <div class="card kpi"><b>18,450 ر.س</b><span>مبيعات اليوم</span><span class="up">▲ 22% عن أمس</span></div>
+      <div class="card kpi"><b>14</b><span>تسجيلات اليوم</span></div>
+      <div class="card kpi"><b>3</b><span>ورش هذا الأسبوع</span></div>
+      <div class="card kpi"><b>2</b><span>طلبات مؤسسية جديدة</span><span class="dn">تنتظر رداً خلال 4 ساعات</span></div>
+    </div>
+    <h3 style="font-size:16px;margin-bottom:10px">تنبيهات تتطلب قراراً</h3>
+    <div class="alert red"><div><b>دفعة "قياس أداء الموردين" إشغالها 31% وتبقى 9 أيام</b><span>القرارات المقترحة: دفع إعلاني موجه، أو تأجيل، أو دمج مع الدفعة القادمة</span></div><button class="btn btn-o btn-sm">اتخاذ قرار</button></div>
+    <div class="alert"><div><b>ورشة "أحكام التعاقد" توشك على الاكتمال (28/31)</b><span>إشارة طلب: يقترح فتح دفعة ثانية أو تفعيل قائمة الانتظار للترويج</span></div><button class="btn btn-o btn-sm" onclick="go('wizard')">استنساخ دفعة</button></div>
+    <div class="alert teal"><div><b>3 مدفوعات فاشلة متكررة لعميل واحد (قيمة 2,400 ر.س)</b><span>فرصة تواصل دعم استباقي قبل فقدان البيع</span></div><button class="btn btn-o btn-sm" onclick="go('crm')">فتح سجل العميل</button></div>
+    <div class="alert"><div><b>طلب استرداد بانتظار الاعتماد (1,350 ر.س)</b><span>وفق السياسة: قبل 7 أيام، يستحق استرداداً كاملاً. يتطلب صلاحية مالية</span></div><button class="btn btn-o btn-sm" onclick="alert('يعتمد بصلاحية المالية ويصدر إشعار دائن إلكتروني آلياً')">مراجعة</button></div>
+  </div>
+</section>
+
+<!-- ============ ADMIN: COHORT WIZARD ============ -->
+<section class="screen" id="s-wizard">
+  <div class="wrap sec" style="max-width:860px">
+    <h2>معالج إنشاء دفعة</h2>
+    <p class="lead">خمس خطوات، ولا يمكن النشر مع نواقص بأي لغة مفعلة</p>
+    <div class="wiz" id="wizBar">
+      <div class="on">1. البرنامج</div><div>2. الموعد والمكان</div><div>3. الأسعار</div><div>4. التسجيل والخصوصية</div><div>5. المعاينة والنشر</div>
+    </div>
+    <div class="card" style="padding:22px">
+      <div class="pane on" id="wiz-1">
+        <div class="field"><label>اختر برنامجاً قائماً أو أنشئ جديداً</label>
+          <select><option>أحكام التعاقد الحكومي والتعديلات النظامية (برنامج قائم)</option><option>إدارة المنافسات عبر منصة اعتماد</option><option>+ برنامج جديد</option></select></div>
+        <p class="note">اختيار برنامج قائم يستنسخ محتواه بلغتيه وتقييماته المتراكمة، وتنشأ الدفعة الجديدة بموعدها وسعرها المستقلين (فصل البرنامج عن الدفعة)</p>
+      </div>
+      <div class="pane" id="wiz-2">
+        <div class="cogrid">
+          <div class="field"><label>تاريخ البدء</label><input type="date" value="2026-10-14"></div>
+          <div class="field"><label>نمط التنفيذ</label><select><option>حضوري</option><option>مباشر عن بعد</option><option>هجين (تذكرتان وسعتان)</option></select></div>
+          <div class="field"><label>المكان / رابط البث</label><input value="فندق حياة، الرياض"></div>
+          <div class="field"><label>السعة</label><input type="number" value="30"></div>
+        </div>
+      </div>
+      <div class="pane" id="wiz-3">
+        <table>
+          <tr><th>الخطة</th><th>السعر</th><th></th></tr>
+          <tr><td>أساسي</td><td><input value="1500" style="max-width:110px"></td><td></td></tr>
+          <tr><td>مع المواد المطبوعة</td><td><input value="1900" style="max-width:110px"></td><td></td></tr>
+        </table>
+        <div class="cogrid" style="margin-top:14px">
+          <div class="field"><label>سعر مبكر (ينتهي بتاريخ)</label><input type="date" value="2026-10-01"></div>
+          <div class="field"><label>خصم المجموعات (3+)</label><input value="10%"></div>
+        </div>
+      </div>
+      <div class="pane" id="wiz-4">
+        <div class="cogrid">
+          <div class="field"><label>فتح التسجيل</label><input type="date" value="2026-08-15"></div>
+          <div class="field"><label>إغلاق التسجيل</label><input type="date" value="2026-10-12"></div>
+          <div class="field"><label>الخصوصية</label><select><option>عامة (تظهر في الكتالوج)</option><option>خاصة (لمنشأة)</option><option>بدعوة فقط</option></select></div>
+          <div class="field"><label>قائمة الانتظار</label><select><option>مفعلة</option><option>معطلة</option></select></div>
+        </div>
+      </div>
+      <div class="pane" id="wiz-5">
+        <div class="alert red" id="wizErr"><div><b>لا يمكن النشر: نواقص في النسخة الإنجليزية</b><span>وصف البرنامج (EN) فارغ | نبذة المدرب (EN) بانتظار مراجعة الترجمة</span></div><button class="btn btn-o btn-sm" onclick="document.getElementById('wizErr').style.display='none';document.getElementById('wizOk').style.display='flex'">محاكاة: استكمال النواقص</button></div>
+        <div class="alert" id="wizOk" style="display:none;border-inline-start-color:var(--ok)"><div><b>النسختان مكتملتان ✓</b><span>جاهزة للنشر أو الجدولة</span></div><button class="btn btn-p btn-sm" onclick="alert('نشرت الدفعة، وانطلق إشعار آلي لشريحة مهتمي هذا المجال في CRM')">نشر الآن</button></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:18px">
+        <button class="btn btn-o btn-sm" onclick="wizGo(-1)">السابق</button>
+        <button class="btn btn-p btn-sm" onclick="wizGo(1)">التالي</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADMIN: MISSION CONTROL ============ -->
+<section class="screen" id="s-mission">
+  <div class="wrap sec">
+    <h2>تشغيل يوم الورشة</h2>
+    <p class="lead">أحكام التعاقد الحكومي | اليوم 9:00 صباحاً | فندق حياة، الرياض</p>
+    <div class="mc">
+      <div class="card">
+        <div style="padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center">
+          <b>المسجلون (31)</b>
+          <input placeholder="🔍 بحث بالاسم للتحضير اليدوي" style="max-width:260px" oninput="filterAtt(this.value)">
+        </div>
+        <div id="attList"></div>
+      </div>
+      <div>
+        <div class="card" style="padding:20px;text-align:center;margin-bottom:14px">
+          <span class="meta">الحضور لحظياً</span>
+          <div class="big"><span id="attN">0</span> <small style="font-size:18px;color:var(--slate)">/ 31</small></div>
+          <div class="seat" style="margin:10px 0"><div class="bar"><b id="attBar" style="background:var(--ok);width:0%"></b></div></div>
+          <button class="btn btn-p" style="width:100%" onclick="scanQR()">📷 محاكاة مسح QR</button>
+          <p class="meta" style="margin-top:8px">الماسح يعمل من جوال المنسق، بوضع دون اتصال يزامن عند عودة الشبكة</p>
+        </div>
+        <div class="card" style="padding:16px">
+          <b style="font-size:14px">إجراءات سريعة</b>
+          <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="alert('ترسل رسالة واتساب جماعية لمن لم يحضر بعد: الورشة بدأت، القاعة رقم 2')">تنبيه المتأخرين برسالة</button>
+          <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="alert('تغلق الدفعة: يجمد الحضور، وتنطلق آلياً الشهادات لمن أتم 80% والاستبانة للجميع خلال 24 ساعة')">إغلاق الدفعة وإطلاق الشهادات</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADMIN: CRM 360 ============ -->
+<section class="screen" id="s-crm">
+  <div class="wrap sec">
+    <h2>سجل العميل 360°</h2>
+    <div class="grid g2" style="grid-template-columns:1fr 320px;align-items:start">
+      <div>
+        <div class="card" style="padding:18px;margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+            <div><h3 style="margin-bottom:2px">م. خالد عبدالله العتيبي</h3>
+              <p class="meta">أخصائي عقود | الهيئة العامة لـ{الجهة} | الرياض | لغة التواصل: عربي</p></div>
+            <div><span class="badge bg-gold">VIP</span> <span class="badge bg-teal">مشتريات</span> <span class="badge bg-teal">حكومي</span></div>
+          </div>
+          <div class="kpis" style="margin:14px 0 0;grid-template-columns:repeat(4,1fr)">
+            <div class="kpi" style="border:1px solid var(--line);border-radius:10px"><b>8,400</b><span>القيمة العمرية ر.س</span></div>
+            <div class="kpi" style="border:1px solid var(--line);border-radius:10px"><b>4 + مؤتمر</b><span>مشترياته</span></div>
+            <div class="kpi" style="border:1px solid var(--line);border-radius:10px"><b>9</b><span>NPS</span></div>
+            <div class="kpi" style="border:1px solid var(--line);border-radius:10px"><b>450</b><span>نقاط الولاء</span></div>
+          </div>
+        </div>
+        <div class="card" style="padding:16px">
+          <b style="font-size:14px">الخط الزمني (كل تفاعل يلتقط آلياً)</b>
+          <div class="log" style="margin-top:10px;display:flex;flex-direction:column;gap:9px">
+            <div>🛒 <b>اليوم</b> | 3 محاولات دفع فاشلة لورشة "التفاوض التعاقدي" (2,400 ر.س) <span class="badge bg-red">تدخل استباقي</span></div>
+            <div>👁 <b>أمس</b> | زار صفحة "التفاوض التعاقدي" مرتين وحفظها في المحفوظات</div>
+            <div>🎓 <b>13 مايو</b> | صدرت شهادة "إدارة المنافسات عبر اعتماد"</div>
+            <div>✅ <b>12 مايو</b> | حضر الورشة كاملة (تحضير QR)</div>
+            <div>🎫 <b>ديسمبر 2025</b> | حضر مؤتمر إبرام 2025، جلسات محور العقود <span class="badge bg-gold">حلقة المؤتمر</span></div>
+            <div>✉ <b>مستمر</b> | يفتح 82% من رسائل البريد | موافقاته: بريد ✓ واتساب ✓ نصية ✗ (موثقة بتاريخها)</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="padding:16px;margin-bottom:14px">
+          <b style="font-size:14px">إجراءات</b>
+          <button class="btn btn-p btn-sm" style="width:100%;margin-top:8px" onclick="alert('يرسل رسالة شخصية بقالب معتمد مع رابط استئناف الدفع بنقرة')">تواصل بشأن الدفع الفاشل</button>
+          <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="alert('يولد كود خصم شخصياً أحادي الاستخدام بصلاحية 7 أيام')">كود خصم شخصي</button>
+          <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="alert('جهته لديها 3 متدربين أفراد: إشارة تلقائية لعرض برنامج مؤسسي في خط المبيعات')">تمرير لخط المبيعات المؤسسي</button>
+        </div>
+        <div class="card" style="padding:16px">
+          <b style="font-size:14px">شرائح ينتمي إليها (ديناميكية)</b>
+          <p style="font-size:13px;margin-top:8px">عملاء نشطون | VIP | مهتمو العقود | حضور مؤتمر 2025 | جهات بها 3+ متدربين أفراد</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADMIN: EXEC DASHBOARD ============ -->
+<section class="screen" id="s-exec">
+  <div class="wrap sec">
+    <h2>اللوحة التنفيذية</h2>
+    <p class="lead">نسخة موجزة ترسل آلياً بالبريد صباح كل أحد</p>
+    <div class="kpis">
+      <div class="card kpi"><b>412 ألف ر.س</b><span>إيراد الشهر</span><span class="up">▲ 96% من المستهدف</span></div>
+      <div class="card kpi"><b>23%</b><span>التحويل المتقاطع مؤتمر ← ورش</span><span class="up">▲ مؤشر من الدرجة الأولى</span></div>
+      <div class="card kpi"><b>4.6</b><span>LTV / CAC</span><span class="up">فوق حد الـ4</span></div>
+      <div class="card kpi"><b>62</b><span>صافي الترويج NPS</span></div>
+    </div>
+    <div class="grid g2">
+      <div class="card" style="padding:18px">
+        <b style="font-size:14px">محركا الإيراد جنباً إلى جنب (بآلاف الريالات)</b>
+        <div class="legend" style="margin-top:8px"><span><i class="a" style="background:var(--navy2)"></i>المؤتمر</span><span><i style="background:var(--teal)"></i>الورش السنوية</span></div>
+        <div class="bars">
+          <div><i class="a" style="height:18px"></i><i class="b" style="height:52px"></i>أبريل</div>
+          <div><i class="a" style="height:14px"></i><i class="b" style="height:64px"></i>مايو</div>
+          <div><i class="a" style="height:22px"></i><i class="b" style="height:71px"></i>يونيو</div>
+          <div><i class="a" style="height:58px"></i><i class="b" style="height:78px"></i>يوليو</div>
+        </div>
+        <p class="meta">إيراد المؤتمر يتصاعد باقتراب ديسمبر، والورش تحافظ على النمو الشهري المتكرر</p>
+      </div>
+      <div class="card" style="padding:18px">
+        <b style="font-size:14px">إنذار مبكر: الدفعات القادمة</b>
+        <table style="margin-top:10px">
+          <tr><th>الدفعة</th><th>الإشغال</th><th>المتبقي</th></tr>
+          <tr><td>أحكام التعاقد الحكومي</td><td><span class="badge bg-ok">90%</span></td><td>31 يوماً</td></tr>
+          <tr><td>إدارة المنافسات (دفعة 3)</td><td><span class="badge bg-ok">45%</span></td><td>40 يوماً</td></tr>
+          <tr><td>قياس أداء الموردين</td><td><span class="badge bg-red">31%</span></td><td>9 أيام ⚠</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="card" style="padding:18px;margin-top:16px">
+      <b style="font-size:14px">خط المبيعات المؤسسي (بالقيمة المرجحة)</b>
+      <div class="pipe" style="margin-top:12px">
+        <div class="pcol"><h4>طلب جديد (2)</h4><div class="pcard"><b>وزارة {س}</b>35 متدرباً | 95 ألف</div><div class="pcard"><b>شركة {ص}</b>12 متدرباً | 40 ألف</div></div>
+        <div class="pcol"><h4>عرض مرسل (2)</h4><div class="pcard"><b>هيئة {ع}</b>حزمة تدريب + رعاية ذهبية | 210 آلاف</div><div class="pcard"><b>أمانة {م}</b>60 ألف</div></div>
+        <div class="pcol"><h4>تفاوض (1)</h4><div class="pcard"><b>صندوق {ف}</b>عقد إطاري سنوي | 320 ألفاً</div></div>
+        <div class="pcol"><h4>فاز هذا الربع (3)</h4><div class="pcard"><b>إجمالي</b>284 ألف ر.س</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUPER ADMIN ============ -->
+<section class="screen" id="s-superadmin">
+  <div class="wrap sec">
+    <h2>لوحة المشرف الأعلى</h2>
+    <p class="lead">صلاحيات الحوكمة العليا | كل فعل هنا يتطلب تحققاً ثنائياً ويسجل بسجل غير قابل للتعديل</p>
+    <div class="grid g2">
+      <div class="card" style="padding:18px">
+        <b style="font-size:14px">مصفوفة الأدوار والصلاحيات</b>
+        <table class="perm" style="margin-top:10px">
+          <tr><th>الوحدة</th><th>عمليات</th><th>تسويق</th><th>مالية</th><th>دعم</th></tr>
+          <tr><td>الدفعات: نشر</td><td><span class="dot g"></span></td><td><span class="dot r"></span></td><td><span class="dot r"></span></td><td><span class="dot r"></span></td></tr>
+          <tr><td>الاسترداد: اعتماد</td><td><span class="dot r"></span></td><td><span class="dot r"></span></td><td><span class="dot g"></span></td><td><span class="dot r"></span></td></tr>
+          <tr><td>الحملات: إرسال جماعي</td><td><span class="dot r"></span></td><td><span class="dot g"></span></td><td><span class="dot r"></span></td><td><span class="dot r"></span></td></tr>
+          <tr><td>العملاء: تصدير</td><td><span class="dot y"></span></td><td><span class="dot r"></span></td><td><span class="dot r"></span></td><td><span class="dot r"></span></td></tr>
+        </table>
+        <p class="meta" style="margin-top:8px">أخضر: مسموح | أصفر: بموافقة المشرف | أحمر: ممنوع. الحسابات اسمية فردية، ويمنع الحساب المشترك</p>
+      </div>
+      <div class="card" style="padding:18px">
+        <b style="font-size:14px">حالة التكاملات</b>
+        <table style="margin-top:10px">
+          <tr><td>بوابة الدفع</td><td><span class="dot g"></span> تعمل</td></tr>
+          <tr><td>الفوترة الإلكترونية (فاتورة)</td><td><span class="dot g"></span> تعمل</td></tr>
+          <tr><td>نظام مؤتمر إبرام (مزامنة العملاء)</td><td><span class="dot g"></span> آخر مزامنة قبل 20 دقيقة</td></tr>
+          <tr><td>واتساب أعمال</td><td><span class="dot y"></span> بطء في التسليم، طابور إعادة محاولة نشط</td></tr>
+          <tr><td>Zoom / Teams</td><td><span class="dot g"></span> تعمل</td></tr>
+          <tr><td>النسخ الاحتياطي</td><td><span class="dot g"></span> آخر نسخة 3:00 فجراً | آخر اختبار استعادة: 12 يونيو ✓</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="card" style="padding:18px;margin-top:16px">
+      <b style="font-size:14px">سجل التدقيق (غير قابل للتعديل)</b>
+      <div class="log" style="margin-top:10px;display:flex;flex-direction:column;gap:8px">
+        <div><b>اليوم 11:42</b> | أ. إرام (عمليات) نشرت دفعة "أحكام التعاقد - أكتوبر" | تحقق ثنائي ✓</div>
+        <div><b>اليوم 10:15</b> | أ. فيصل (مالية) اعتمد استرداداً بقيمة 1,350 ر.س، السبب: ضمن نافذة الاسترداد الكامل</div>
+        <div><b>أمس 16:30</b> | المشرف الأعلى عدل نسبة الضريبة الافتراضية: القيمة قبل 15% وبعد 15% (لا تغيير، مراجعة دورية)</div>
+        <div><b>أمس 09:02</b> | محاولة تصدير قاعدة العملاء من حساب "تسويق" <span class="badge bg-red">رفضت: خارج الصلاحية</span></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+        <button class="btn btn-o btn-sm" onclick="alert('ينفذ طلبات الحذف وفق نظام حماية البيانات الشخصية بإجراء موثق')">طلبات حذف البيانات (PDPL)</button>
+        <button class="btn btn-o btn-sm" onclick="alert('أداة دمج السجلات المكررة: مقارنة حقلاً بحقل مع إمكانية التراجع')">دمج سجلات مكررة</button>
+        <button class="btn btn-o btn-sm" onclick="alert('وضع الصيانة برسالة ثنائية اللغة')">وضع الصيانة</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>نموذج أولي تفاعلي لورش إبرام | كل الأسماء والأرقام توضيحية | يبنى وفق الوثيقة المرجعية الإصدار 2.0</footer>
+
+<script>
+/* ===== data ===== */
+const W=[
+ {id:1,t:'أحكام التعاقد الحكومي والتعديلات النظامية الحديثة',tr:'د. عبدالعزيز الحربي',d:'الأحد 9 أغسطس | يومان (16 ساعة)',mode:'حضوري',city:'الرياض',cat:'عقود',cap:31,sold:14,price:1500,old:1900,early:'ينتهي السعر المبكر خلال 2 يوم و14 ساعة',cls:'t1',plans:[['أساسي',1500],['مع المواد المطبوعة',1900],['VIP بجلسة استشارية',2500]]},
+ {id:2,t:'إدارة المنافسات عبر منصة اعتماد: من الطرح إلى الترسية',tr:'أ. سارة القحطاني',d:'الثلاثاء 18 أغسطس | 3 أمسيات',mode:'عن بعد',city:'أونلاين',cat:'مشتريات',cap:60,sold:27,price:950,cls:'t2',plans:[['أساسي',950],['مع تسجيل مرئي 90 يوماً',1150]]},
+ {id:3,t:'التفاوض التعاقدي وإدارة المطالبات للقيادات',tr:'م. فهد العتيبي',d:'الأربعاء 2 سبتمبر | يوم مكثف',mode:'حضوري',city:'جدة',cat:'تنفيذي',cap:25,sold:22,price:2400,inst:true,cls:'t3',plans:[['مقعد تنفيذي',2400]]},
+ {id:4,t:'قياس أداء الموردين وإدارة العقود بعد الترسية',tr:'د. نوف الشهري',d:'الأحد 13 سبتمبر | يومان',mode:'هجين',city:'الرياض',cat:'عقود',cap:40,sold:40,price:1700,cls:'t4',plans:[['حضوري',1700],['بث مباشر',1100]]},
+ {id:5,t:'أساسيات نظام المنافسات والمشتريات الحكومية',tr:'أ. سارة القحطاني',d:'الأحد 20 سبتمبر | يومان',mode:'عن بعد',city:'أونلاين',cat:'مشتريات',cap:80,sold:12,price:850,cls:'t2',plans:[['أساسي',850]]},
+ {id:6,t:'صياغة العقود الحكومية: ورشة تطبيقية',tr:'د. عبدالعزيز الحربي',d:'الثلاثاء 6 أكتوبر | يومان',mode:'حضوري',city:'الرياض',cat:'عقود',cap:30,sold:9,price:1600,cls:'t1',plans:[['أساسي',1600],['مع المواد',1950]]}
+];
+let cur=null, sel=0, holdTimer=null, order={};
+
+/* ===== helpers ===== */
+function seatState(w){const r=(w.cap-w.sold);if(r<=0)return['full','اكتملت المقاعد','bg-full',100];if(r<=w.cap*.2)return['warn','آخر '+r+' مقاعد','bg-warn',w.sold/w.cap*100];return['ok','المقاعد متاحة','bg-ok',w.sold/w.cap*100];}
+function cardHTML(w){const[st,lb,bg,pc]=seatState(w);
+ return `<article class="card wcard" onclick="openDetails(${w.id})">
+  <div class="top ${w.cls}"><span class="badge">${w.cat==='تنفيذي'?'برنامج تنفيذي':(w.old?'خصم مبكر':'معتمدة')}</span><span class="mode">${w.mode} | ${w.city}</span></div>
+  <div class="bd"><h3>${w.t}</h3><p class="meta">👤 ${w.tr}<br>📅 ${w.d}</p>
+  <div class="seat"><div class="lb" style="color:var(--${st==='ok'?'ok':st==='warn'?'warn':'full'})"><span>${lb}</span><span>${w.sold}/${w.cap}</span></div><div class="bar"><b style="width:${pc}%;background:var(--${st==='ok'?'ok':st==='warn'?'warn':'full'})"></b></div></div>
+  <div class="pb"><div class="pr">${w.old?'<s>'+w.old+'</s>':''}<b>${w.price.toLocaleString()}</b> <small>ر.س</small>${w.inst?'<div class="meta" style="color:var(--teal-d);font-size:11px">أو 4 دفعات مع تابي وتمارا</div>':''}</div>
+  <span class="btn ${st==='full'?'btn-o':'btn-p'} btn-sm">${st==='full'?'قائمة الانتظار':'سجل الآن'}</span></div></div></article>`;}
+
+/* ===== router & roles ===== */
+const custScreens=['home','list','details','checkout','account','verify','corp','org'];
+function go(s){document.querySelectorAll('.screen').forEach(e=>e.classList.remove('on'));
+ document.getElementById('s-'+s).classList.add('on');
+ const isAdmin=['admin','wizard','mission','crm','exec','superadmin'].includes(s);
+ document.getElementById('custHead').style.display=isAdmin?'none':'block';
+ document.getElementById('adminHead').style.display=isAdmin?'block':'none';
+ document.querySelectorAll('.anav a').forEach(a=>a.classList.toggle('on',a.dataset.nav===s));
+ window.scrollTo({top:0});}
+function setRole(r){document.querySelectorAll('.rolebar button').forEach(b=>b.classList.toggle('on',b.dataset.role===r));
+ document.getElementById('superTab').style.display=(r==='super')?'inline-block':'none';
+ document.getElementById('whoAmI').textContent=(r==='super')?'المشرف الأعلى | حساب اسمي بتحقق ثنائي':'أ. إرام | مديرة العمليات';
+ if(r==='cust')go('home');else if(r==='org')go('org');else if(r==='trainer')go('trainer');
+ else if(r==='admin')go('admin');else if(r==='super')go('superadmin');}
+function pane(a,area){a.closest('.side').querySelectorAll('a').forEach(x=>x.classList.remove('on'));a.classList.add('on');
+ document.querySelectorAll('#s-'+area+' .pane').forEach(p=>p.classList.remove('on'));
+ document.getElementById(area+'-'+a.dataset.p).classList.add('on');}
+
+/* ===== listing ===== */
+function checkedVals(id){return[...document.querySelectorAll('#'+id+' input:checked')].map(i=>i.value);}
+function renderList(){const m=checkedVals('fMode'),c=checkedVals('fCat');
+ const f=W.filter(w=>(m.length===0||m.includes(w.mode))&&(c.length===0||c.includes(w.cat)));
+ document.getElementById('listCards').innerHTML=f.length?f.map(cardHTML).join(''):'<div class="card" style="padding:22px;grid-column:1/-1"><b>لا نتائج مطابقة</b><p class="meta">جرب تخفيف الفلاتر، أو سجل اهتمامك ليصلك إشعار عند توفر برنامج مطابق</p><button class="btn btn-o btn-sm" style="margin-top:8px" onclick="alert(\'نموذج التقاط اهتمام: بريد + مجال. كل بحث فاشل يظهر في تقرير شهري: ماذا يطلب الناس ولا نقدمه؟\')">سجل اهتمامك</button></div>';
+ document.getElementById('resCount').textContent=f.length+' برامج';
+ document.querySelectorAll('#fMode .op').forEach(op=>{op.querySelector('.n').textContent=W.filter(w=>w.mode===op.querySelector('input').value).length});
+ document.querySelectorAll('#fCat .op').forEach(op=>{op.querySelector('.n').textContent=W.filter(w=>w.cat===op.querySelector('input').value).length});}
+function clearFilters(){document.querySelectorAll('.filters input').forEach(i=>i.checked=false);renderList();}
+
+/* ===== details ===== */
+function openDetails(id){cur=W.find(w=>w.id===id);sel=0;
+ document.getElementById('dCrumb').textContent=cur.t;
+ document.getElementById('dTitle').textContent=cur.t;
+ document.getElementById('dMeta').textContent='👤 '+cur.tr+'   |   📅 '+cur.d;
+ document.getElementById('dBadges').innerHTML='<span class="badge bg-teal">'+cur.mode+' | '+cur.city+'</span> <span class="badge bg-gold">شهادة موثقة</span>';
+ document.getElementById('dTr').textContent=cur.tr;
+ document.getElementById('dTrIni').textContent=cur.tr.split(' ')[1]?cur.tr.split(' ')[1][0]:'م';
+ document.getElementById('dDate').textContent=cur.d.split('|')[0].trim();
+ document.getElementById('dMode').textContent=cur.mode+' | '+cur.city;
+ const[st,lb]=seatState(cur);
+ document.getElementById('dSeats').textContent=lb+' ('+cur.sold+'/'+cur.cap+')';
+ document.getElementById('dPlans').innerHTML=cur.plans.map((p,i)=>`<div class="plan ${i===0?'on':''}" onclick="pickPlan(this,${i})"><span>${p[0]}</span><b>${p[1].toLocaleString()} ر.س</b></div>`).join('');
+ const e=document.getElementById('dEarly');
+ if(cur.early){e.style.display='block';e.textContent='⏱ '+cur.early;}else e.style.display='none';
+ const full=st==='full';
+ document.getElementById('dCta').style.display=full?'none':'flex';
+ document.getElementById('dWait').hidden=!full;
+ go('details');}
+function pickPlan(el,i){sel=i;el.parentElement.querySelectorAll('.plan').forEach(p=>p.classList.remove('on'));el.classList.add('on');}
+
+/* ===== checkout ===== */
+function startCheckout(){order={w:cur,plan:cur.plans[sel],disc:0};
+ coStep(1);go('checkout');}
+function coStep(n){[1,2,3].forEach(i=>{document.getElementById('co'+i).style.display=i===n?'block':'none';
+ const s=document.getElementById('st'+i);s.className=i<n?'done':(i===n?'on':'');});
+ if(n===2){renderSumm();startHold();}else stopHold();}
+function coNext1(){let ok=true;
+ const name=document.getElementById('fName'),phone=document.getElementById('fPhone'),mail=document.getElementById('fMail');
+ const show=(id,c)=>{document.getElementById(id).style.display=c?'block':'none';if(c)ok=false;};
+ show('eName',name.value.trim().split(/\s+/).length<3);
+ show('ePhone',phone.value.replace(/\D/g,'').length<9);
+ show('eMail',!/^\S+@\S+\.\S+$/.test(mail.value));
+ if(document.getElementById('fInv').value==='ent'){const v=document.getElementById('fVat').value.replace(/\D/g,'');show('eVat',!(v.length===15&&v[0]==='3'&&v[14]==='3'));}
+ if(ok){order.name=name.value;coStep(2);}}
+function renderSumm(){const p=order.plan[1],d=Math.round(p*order.disc),vat=Math.round((p-d)*.15),tot=p-d+vat;
+ document.getElementById('coSumm').innerHTML=
+ `<div class="row"><span>${order.w.t}</span></div>
+  <div class="row"><span>الخطة: ${order.plan[0]}</span><b>${p.toLocaleString()} ر.س</b></div>
+  ${d?`<div class="row" style="color:var(--ok)"><span>خصم الكود</span><b>- ${d.toLocaleString()} ر.س</b></div>`:''}
+  <div class="row"><span>ضريبة القيمة المضافة 15%</span><b>${vat.toLocaleString()} ر.س</b></div>
+  <div class="row tot"><span>الإجمالي</span><b>${tot.toLocaleString()} ر.س</b></div>`;}
+function applyCoupon(){const v=document.getElementById('fCoupon').value.trim().toUpperCase();
+ const ok=v==='IBRAM10';order.disc=ok?.10:0;
+ document.getElementById('eCoupon').style.display=ok?'none':'block';
+ document.getElementById('okCoupon').style.display=ok?'block':'none';renderSumm();}
+function pickPay(b){document.querySelectorAll('#payops button').forEach(x=>x.classList.remove('on'));b.classList.add('on');}
+function coBack(){coStep(1);}
+function coNext2(){coStep(3);
+ document.getElementById('confLine').innerHTML='رقم التسجيل: <b>REG-2026-'+(1000+Math.floor(Math.random()*9000))+'</b> | '+order.w.t+' | '+order.w.d;
+ const q=document.getElementById('qrBox');q.innerHTML='';
+ for(let i=0;i<49;i++){q.innerHTML+='<i class="'+(Math.random()>.45?'':'o')+'"></i>';}}
+function startHold(){stopHold();let t=900;const el=document.getElementById('holdT');
+ holdTimer=setInterval(()=>{t--;if(t<0){stopHold();alert('انتهت مهلة الحجز المؤقت؛ أعيد المقعد للمتاح وبقي طلبك مسودة يمكن استئنافها');coStep(1);return;}
+ el.textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');},1000);}
+function stopHold(){if(holdTimer)clearInterval(holdTimer);}
+
+/* ===== mission control ===== */
+const ATT=['خالد العتيبي|أخصائي عقود','هند العنزي|مديرة مشتريات','بدر الحربي|محلل منافسات','نورة القحطاني|أخصائية مشتريات','فهد الدوسري|مدير عقود','سارة المطيري|منسقة مشاريع','عبدالله الشمري|مشرف توريد','ريم العتيبي|محاسبة عقود'].map(s=>{const[a,b]=s.split('|');return{n:a,r:b,in:false};});
+function renderAtt(f=''){document.getElementById('attList').innerHTML=ATT.filter(a=>a.n.includes(f)).map((a,i)=>
+ `<div class="attrow"><span><b>${a.n}</b> <span class="meta">| ${a.r}</span></span>
+ ${a.in?'<span class="badge bg-ok">✓ حضر</span>':`<button class="btn btn-o btn-sm" onclick="manIn(${ATT.indexOf(a)})">تحضير يدوي</button>`}</div>`).join('');
+ const n=ATT.filter(a=>a.in).length;
+ document.getElementById('attN').textContent=n;
+ document.getElementById('attBar').style.width=(n/31*100)+'%';}
+function filterAtt(v){renderAtt(v);}
+function manIn(i){ATT[i].in=true;renderAtt();}
+function scanQR(){const nx=ATT.find(a=>!a.in);
+ if(!nx){alert('⚠ رمز مكرر: هذا المتدرب حضر مسبقاً الساعة 9:05 (يمنع تمرير الرمز لشخصين)');return;}
+ nx.in=true;renderAtt();}
+
+/* ===== wizard ===== */
+let wz=1;
+function wizGo(d){wz=Math.min(5,Math.max(1,wz+d));
+ document.querySelectorAll('#wizBar div').forEach((el,i)=>{el.className=i+1<wz?'done':(i+1===wz?'on':'');});
+ document.querySelectorAll('#s-wizard .pane').forEach((p,i)=>p.classList.toggle('on',i+1===wz));}
+
+/* ===== conference countdown ===== */
+const confDate=new Date('2026-12-13T08:00:00+03:00');
+function tick(){let ms=confDate-new Date();if(ms<0)ms=0;
+ document.getElementById('cdD').textContent=Math.floor(ms/86400000);
+ document.getElementById('cdH').textContent=String(Math.floor(ms%86400000/3600000)).padStart(2,'0');
+ document.getElementById('cdM').textContent=String(Math.floor(ms%3600000/60000)).padStart(2,'0');}
+tick();setInterval(tick,30000);
+
+/* ===== init ===== */
+document.getElementById('homeCards').innerHTML=W.slice(0,4).map(cardHTML).join('');
+renderList();renderAtt();
+</script>
+</body>
+</html>

@@ -290,7 +290,8 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <h4>نمط التنفيذ</h4>
           <div class="fgroup" id="fMode">
             <label class="op"><input type="checkbox" value="حضوري" onchange="renderList()"> حضوري <span class="n"></span></label>
-            <label class="op"><input type="checkbox" value="عن بعد" onchange="renderList()"> مباشر عن بعد <span class="n"></span></label>
+            <label class="op"><input type="checkbox" value="عن بعد تفاعلي" onchange="renderList()"> 📡 عن بعد تفاعلي (بث مباشر) <span class="n"></span></label>
+            <label class="op"><input type="checkbox" value="عن بعد مسجلة" onchange="renderList()"> 🎥 عن بعد مسجلة (تعلم ذاتي) <span class="n"></span></label>
           </div>
           <h4>المجال</h4>
           <div class="fgroup" id="fCat">
@@ -729,7 +730,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         <div class="card"><table>
           <tr><th>الورشة</th><th>الموعد</th><th>المكان</th><th>المسجلون</th></tr>
           <tr><td>أحكام التعاقد الحكومي</td><td>الأحد 9 أغسطس</td><td>فندق حياة، الرياض</td><td><b>17</b> / 31 <span class="meta">(أعداد فقط، دون بيانات تواصل)</span></td></tr>
-          <tr><td>أحكام التعاقد الحكومي (دفعة 2)</td><td>14 أكتوبر</td><td>عن بعد</td><td><b>9</b> / 60</td></tr>
+          <tr><td>أحكام التعاقد الحكومي (دفعة 2)</td><td>14 أكتوبر</td><td>عن بعد تفاعلي</td><td><b>9</b> / 60</td></tr>
         </table></div>
         <p class="note" style="margin-top:12px">وفق سياسة المنصة: تظهر لك أعداد المسجلين لحظياً، وتفتح قائمة الأسماء صباح يوم الورشة فقط، ولا تظهر أرقام الجوال أو البريد إطلاقاً.</p>
       </div>
@@ -879,7 +880,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
       <div class="pane" id="wiz-2">
         <div class="cogrid">
           <div class="field"><label>تاريخ البدء</label><input type="date" value="2026-10-14"></div>
-          <div class="field"><label>نمط التنفيذ</label><select><option>حضوري</option><option>مباشر عن بعد</option></select></div>
+          <div class="field"><label>نمط التنفيذ</label><select><option>حضوري</option><option>عن بعد تفاعلي (بث مباشر)</option><option>عن بعد مسجلة (نسخة رقمية)</option></select></div>
           <div class="field"><label>المكان / رابط البث</label><input value="فندق حياة، الرياض"></div>
           <div class="field"><label>السعة</label><input type="number" value="30"></div>
         </div>
@@ -902,7 +903,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <div class="field"><label>إغلاق التسجيل</label><input type="date" value="2026-10-12"></div>
           <div class="field"><label>الخصوصية</label><select><option>عامة (تظهر في الكتالوج)</option><option>خاصة (لمنشأة)</option><option>بدعوة فقط</option></select></div>
           <div class="field"><label>قائمة الانتظار</label><select><option>مفعلة</option><option>معطلة</option></select></div>
-          <div class="field"><label>سلسلة رسائل ما قبل الورشة</label><select><option>القالب الحضوري (خريطة + إرشادات + QR)</option><option>قالب عن بعد (رابط البث + بيانات الدخول + الاختبار التقني)</option></select></div>
+          <div class="field"><label>سلسلة رسائل ما قبل الورشة</label><select><option>القالب الحضوري (خريطة + إرشادات + QR)</option><option>قالب عن بعد تفاعلي (رابط البث + بيانات الدخول + الاختبار التقني)</option><option>قالب المسجلة (تفعيل الوصول + رحلة الإكمال)</option></select></div>
           <div class="field"><label>التقييم القبلي / البعدي</label><select><option>مفعل (إلزامي للمنشآت)</option><option>معطل</option></select></div>
         </div>
       </div>
@@ -981,7 +982,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         <tr><td>تفاصيل الحضور</td><td>قبل 24 ساعة</td><td>بريد + واتساب</td><td>الخريطة + إرشادات الوصول + تصريح المواقف + رقم القاعة + QR</td><td><span class="badge bg-teal">مجدولة 8 أغسطس</span></td></tr>
         <tr><td>تنبيه الانطلاق</td><td>قبل ساعة</td><td>واتساب</td><td>القاعة رقم 2 | التسجيل بدأ</td><td><span class="badge bg-teal">مجدولة</span></td></tr>
       </table>
-      <p class="meta" style="margin-top:8px">قالب "عن بعد" يستبدل الخريطة برابط البث وبيانات الدخول ورابط الاختبار التقني تلقائياً. <a class="tag" onclick="alert('معاينة القالبين بلغتي المنصة قبل الاعتماد')">معاينة القوالب</a></p>
+      <p class="meta" style="margin-top:8px">قالب "عن بعد تفاعلي" يستبدل الخريطة برابط البث وبيانات الدخول والاختبار التقني، وقالب "المسجلة" يرسل تفعيل الوصول ثم رسائل تشجيع الإكمال (توقف 7 أيام ← تذكير بنقطة الاستئناف). <a class="tag" onclick="alert('معاينة القالبين بلغتي المنصة قبل الاعتماد')">معاينة القوالب</a></p>
     </div>
     <div class="grid g2">
       <div class="card" style="padding:18px">
@@ -1154,23 +1155,34 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
 /* ===== data ===== */
 const W=[
  {id:1,t:'أحكام التعاقد الحكومي والتعديلات النظامية الحديثة',tr:'د. عبدالعزيز الحربي',d:'الأحد 9 أغسطس | يومان (16 ساعة)',mode:'حضوري',city:'الرياض',cat:'عقود',cap:31,sold:14,price:1500,old:1900,early:'ينتهي السعر المبكر خلال 2 يوم و14 ساعة',cls:'t1',plans:[['أساسي',1500],['مع المواد المطبوعة',1900],['VIP بجلسة استشارية',2500]]},
- {id:2,t:'إدارة المنافسات عبر منصة اعتماد: من الطرح إلى الترسية',tr:'أ. سارة القحطاني',d:'الثلاثاء 18 أغسطس | 3 أمسيات',mode:'عن بعد',city:'أونلاين',cat:'مشتريات',cap:60,sold:27,price:950,cls:'t2',plans:[['أساسي',950],['مع تسجيل مرئي 90 يوماً',1150]]},
+ {id:2,t:'إدارة المنافسات عبر منصة اعتماد: من الطرح إلى الترسية',tr:'أ. سارة القحطاني',d:'الثلاثاء 18 أغسطس | 3 أمسيات',mode:'عن بعد تفاعلي',city:'بث مباشر',cat:'مشتريات',cap:60,sold:27,price:950,cls:'t2',plans:[['أساسي',950],['مع تسجيل مرئي 90 يوماً',1150]]},
  {id:3,t:'التفاوض التعاقدي وإدارة المطالبات للقيادات',tr:'م. فهد العتيبي',d:'الأربعاء 2 سبتمبر | يوم مكثف',mode:'حضوري',city:'جدة',cat:'تنفيذي',cap:25,sold:22,price:2400,inst:true,cls:'t3',plans:[['مقعد تنفيذي',2400]]},
  {id:4,t:'قياس أداء الموردين وإدارة العقود بعد الترسية',tr:'د. نوف الشهري',d:'الأحد 13 سبتمبر | يومان',mode:'حضوري',city:'الرياض',cat:'عقود',cap:40,sold:40,price:1700,cls:'t4',plans:[['أساسي',1700]]},
- {id:5,t:'أساسيات نظام المنافسات والمشتريات الحكومية',tr:'أ. سارة القحطاني',d:'الأحد 20 سبتمبر | يومان',mode:'عن بعد',city:'أونلاين',cat:'مشتريات',cap:80,sold:12,price:850,cls:'t2',plans:[['أساسي',850]]},
+ {id:5,t:'أساسيات نظام المنافسات والمشتريات الحكومية',tr:'أ. سارة القحطاني',d:'الأحد 20 سبتمبر | يومان',mode:'عن بعد تفاعلي',city:'بث مباشر',cat:'مشتريات',cap:80,sold:12,price:850,cls:'t2',plans:[['أساسي',850]]},
+ {id:7,t:'إدارة المنافسات عبر منصة اعتماد — النسخة الرقمية',tr:'أ. سارة القحطاني',d:'متاحة الآن | 3 وحدات، 11 درساً مصغراً',mode:'عن بعد مسجلة',city:'تعلم ذاتي',cat:'مشتريات',cap:0,sold:0,price:450,cls:'t2',rec:true,plans:[['وصول 90 يوماً',450],['وصول سنة كاملة مع التحديثات النظامية',650]]},
  {id:6,t:'صياغة العقود الحكومية: ورشة تطبيقية',tr:'د. عبدالعزيز الحربي',d:'الثلاثاء 6 أكتوبر | يومان',mode:'حضوري',city:'الرياض',cat:'عقود',cap:30,sold:9,price:1600,cls:'t1',plans:[['أساسي',1600],['مع المواد',1950]]}
 ];
 let cur=null, sel=0, holdTimer=null, order={};
 
 /* ===== helpers ===== */
-function seatState(w){const r=(w.cap-w.sold);if(r<=0)return['full','اكتملت المقاعد','bg-full',100];if(r<=w.cap*.2)return['warn','آخر '+r+' مقاعد','bg-warn',w.sold/w.cap*100];return['ok','المقاعد متاحة','bg-ok',w.sold/w.cap*100];}
+function seatState(w){if(w.rec)return['ok','متاحة الآن — وصول فوري','bg-ok',100];const r=(w.cap-w.sold);if(r<=0)return['full','اكتملت المقاعد','bg-full',100];if(r<=w.cap*.2)return['warn','آخر '+r+' مقاعد','bg-warn',w.sold/w.cap*100];return['ok','المقاعد متاحة','bg-ok',w.sold/w.cap*100];}
+/* الشارة العلوية = معلومة قرار متغيرة (ندرة > مهلة > رواج > مستوى > جديد)؛ الاعتماد سطر ثقة ثابت داخل البطاقة */
+function topBadge(w){const r=w.cap-w.sold;
+ if(w.rec)return'🎥 ابدأ فوراً';
+ if(r<=0)return'اكتملت — قائمة انتظار';
+ if(r<=w.cap*.2)return'⏳ آخر '+r+' مقاعد';
+ if(w.early)return'خصم مبكر — ينتهي قريباً';
+ if(w.sold/w.cap>=.6)return'★ الأكثر تسجيلاً';
+ if(w.cat==='تنفيذي')return'برنامج تنفيذي';
+ return'جديد';}
+function modeTag(w){return (w.mode==='حضوري'?'🏨 ':w.mode==='عن بعد تفاعلي'?'📡 ':'🎥 ')+w.mode+' | '+w.city;}
 function cardHTML(w){const[st,lb,bg,pc]=seatState(w);
  return `<article class="card wcard" onclick="openDetails(${w.id})">
-  <div class="top ${w.cls}"><span class="badge">${w.cat==='تنفيذي'?'برنامج تنفيذي':(w.old?'خصم مبكر':'معتمدة')}</span><span class="mode">${w.mode} | ${w.city}</span></div>
-  <div class="bd"><h3>${w.t}</h3><p class="meta">👤 ${w.tr}<br>📅 ${w.d}</p>
-  <div class="seat"><div class="lb" style="color:var(--${st==='ok'?'ok':st==='warn'?'warn':'full'})"><span>${lb}</span><span>${w.sold}/${w.cap}</span></div><div class="bar"><b style="width:${pc}%;background:var(--${st==='ok'?'ok':st==='warn'?'warn':'full'})"></b></div></div>
+  <div class="top ${w.cls}"><span class="badge">${topBadge(w)}</span><span class="mode">${modeTag(w)}</span></div>
+  <div class="bd"><h3>${w.t}</h3><p class="meta">👤 ${w.tr}<br>📅 ${w.d}<br>🎓 شهادة موثقة برمز تحقق عام</p>
+  ${w.rec?'<div class="seat"><div class="lb" style="color:var(--ok)"><span>متاحة الآن — تقدم بوتيرتك</span><span>∞</span></div></div>':`<div class="seat"><div class="lb" style="color:var(--${st==='ok'?'ok':st==='warn'?'warn':'full'})"><span>${lb}</span><span>${w.sold}/${w.cap}</span></div><div class="bar"><b style="width:${pc}%;background:var(--${st==='ok'?'ok':st==='warn'?'warn':'full'})"></b></div></div>`}
   <div class="pb"><div class="pr">${w.old?'<s>'+w.old+'</s>':''}<b>${w.price.toLocaleString()}</b> <small>ر.س</small>${w.inst?'<div class="meta" style="color:var(--teal-d);font-size:11px">أو 4 دفعات مع تابي وتمارا</div>':''}</div>
-  <span class="btn ${st==='full'?'btn-o':'btn-p'} btn-sm">${st==='full'?'قائمة الانتظار':'سجل الآن'}</span></div></div></article>`;}
+  <span class="btn ${st==='full'?'btn-o':'btn-p'} btn-sm">${st==='full'?'قائمة الانتظار':(w.rec?'ابدأ التعلم الآن':'سجل الآن')}</span></div></div></article>`;}
 
 /* ===== router & roles ===== */
 const custScreens=['home','list','details','checkout','account','verify','corp','org'];
@@ -1202,12 +1214,12 @@ function clearFilters(){document.querySelectorAll('.filters input').forEach(i=>i
 
 /* ===== attendance rules per mode ===== */
 function rulesHTML(mode){
- const site='<b>حضوري:</b> مسح رمز QR مرة عند بداية كل يوم تدريبي. نسبة الحضور = أيام الحضور الموثقة ÷ أيام الورشة.';
- const live='<b>عن بعد:</b> يحتسب الحضور آلياً من تقرير مدة الجلسة في منظومة البث — يعد اليوم محضوراً عند تواجدك 80% من مدة البث.';
- if(mode==='حضوري')return site+'<br>الشهادة تصدر آلياً عند 80% فأكثر.';
- return live+'<br>الجلسة تفاعلية: استطلاعات وأسئلة مباشرة وغرف نقاش، وتسجل وتتاح لك 90 يوماً. الشهادة تصدر آلياً عند 80% فأكثر دون أي إجراء منك.';}
+ if(mode==='حضوري')return '<b>🏨 حضوري:</b> مسح رمز QR مرة عند بداية كل يوم تدريبي. نسبة الحضور = أيام الحضور الموثقة ÷ أيام الورشة.<br>الشهادة تصدر آلياً عند 80% فأكثر.';
+ if(mode==='عن بعد تفاعلي')return '<b>📡 عن بعد تفاعلي (بث مباشر):</b> يحتسب حضورك آلياً من تقرير مدة الجلسة — يعد اليوم محضوراً عند تواجدك 80% من مدة البث.<br>الجلسة تفاعلية: استطلاعات وأسئلة مباشرة وغرف نقاش، وتسجل وتتاح لك 90 يوماً. الشهادة تصدر آلياً عند 80% فأكثر دون أي إجراء منك.';
+ return '<b>🎥 عن بعد مسجلة (تعلم ذاتي):</b> وصولك يفعل فور الدفع وتتقدم بوتيرتك.<br>شرط الشهادة: إكمال 100% من الدروس + اجتياز أسئلة الوحدات + التقييم البعدي بنسبة 70%، وتصدر آلياً فور الاجتياز. المشاهدة عبر بث محمي بعلامة مائية باسمك.';}
 function attCardHTML(w){
- if(w.mode==='عن بعد')return '📡 <b>رابط البث وبيانات الدخول</b> تصلك قبل 24 ساعة (وتظهر هنا وفي حسابك)، ويفعل زر الانضمام قبل 30 دقيقة. التوقيت: '+w.d.split('|')[0].trim()+' 7:30 مساءً | أجر <b>الاختبار التقني</b> (الصوت والاتصال) من حسابك قبل الجلسة | أثناء البث: استطلاعات وأسئلة مباشرة وغرف نقاش ودعم فني بالواتساب | حضورك يحتسب آلياً من مدة الجلسة (80%+) وتسجيل الجلسة يتاح لك 90 يوماً.';
+ if(w.rec)return '🎥 <b>وصولك مفعل الآن.</b> ابدأ من حسابك ← تعلمي الرقمي، أو من زر "ابدأ التعلم" في هذه الصفحة. تقدمك يحفظ آلياً وتستأنف من نقطة توقفك من أي جهاز.';
+ if(w.mode==='عن بعد تفاعلي')return '📡 <b>رابط البث وبيانات الدخول</b> تصلك قبل 24 ساعة (وتظهر هنا وفي حسابك)، ويفعل زر الانضمام قبل 30 دقيقة. التوقيت: '+w.d.split('|')[0].trim()+' 7:30 مساءً | أجر <b>الاختبار التقني</b> (الصوت والاتصال) من حسابك قبل الجلسة | أثناء البث: استطلاعات وأسئلة مباشرة وغرف نقاش ودعم فني بالواتساب | حضورك يحتسب آلياً من مدة الجلسة (80%+) وتسجيل الجلسة يتاح لك 90 يوماً.';
  return '🏨 <b>الموقع:</b> '+w.city+' — تصلك الخريطة وإرشادات الوصول وتصريح المواقف ورقم القاعة قبل 24 ساعة. أحضر رمز QR وامسحه عند البوابة صباح كل يوم من أيام الورشة.';}
 
 /* ===== details ===== */
@@ -1216,7 +1228,7 @@ function openDetails(id){cur=W.find(w=>w.id===id);sel=0;
  document.getElementById('dCrumb').textContent=cur.t;
  document.getElementById('dTitle').textContent=cur.t;
  document.getElementById('dMeta').textContent='👤 '+cur.tr+'   |   📅 '+cur.d;
- document.getElementById('dBadges').innerHTML='<span class="badge bg-teal">'+cur.mode+' | '+cur.city+'</span> <span class="badge bg-gold">شهادة موثقة</span>';
+ document.getElementById('dBadges').innerHTML='<span class="badge bg-teal">'+modeTag(cur)+'</span> <span class="badge bg-gold">🎓 شهادة موثقة</span>';
  document.getElementById('dTr').textContent=cur.tr;
  document.getElementById('dTrIni').textContent=cur.tr.split(' ')[1]?cur.tr.split(' ')[1][0]:'م';
  document.getElementById('dDate').textContent=cur.d.split('|')[0].trim();

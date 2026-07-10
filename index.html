@@ -256,7 +256,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
   <div class="wrap">
     <div class="conf">
       <span class="badge bg-gold">الحدث المرساة السنوي</span>
-      <div class="ct"><b>مؤتمر إبرام للمشتريات والمشاريع الحكومية 2026</b><span>13 - 14 ديسمبر | دبل تري باي هيلتون، الرياض</span></div>
+      <div class="ct"><b>مؤتمر إبرام للمشتريات والمشاريع الحكومية 2026</b><span>13 - 14 ديسمبر | دبل تري باي هيلتون، الرياض</span><span style="display:block;color:var(--gold);font-weight:700;font-size:12.5px;margin-top:4px">✦ تذكرتك تشمل حضور جميع ورش البث المباشر (عن بعد تفاعلي) طوال العام — بحجز مسبق للمقعد</span></div>
       <div class="cd"><div><b id="cdD">157</b><span>يوم</span></div><div><b id="cdH">08</b><span>ساعة</span></div><div><b id="cdM">42</b><span>دقيقة</span></div></div>
       <a class="btn btn-g btn-sm" onclick="alert('يحول إلى نظام مؤتمر إبرام القائم')">سجل في المؤتمر</a>
     </div>
@@ -348,6 +348,10 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         <label>اختر الخطة</label>
         <div id="dPlans"></div>
         <div id="dEarly" class="hold" style="display:none"></div>
+        <div id="dConf" style="display:none;background:rgba(226,165,61,.12);border:1.5px solid var(--gold);border-radius:10px;padding:11px 13px;font-size:13px;margin-bottom:10px">
+          <b>✦ مشمولة مع تذكرة مؤتمر إبرام 2026</b><br>حاملو التذكرة يحضرون جميع ورش البث المباشر بلا رسوم — الحجز المسبق إلزامي لضمان المقعد (حصة مخصصة لكل دفعة)، ويطلب تأكيد الحضور قبل 24 ساعة.
+          <br><span class="meta">ليست لديك تذكرة؟ <a class="tag" onclick="alert('يحول إلى نظام مؤتمر إبرام: التذكرة تمنحك المؤتمر + كل ورش البث المباشر طوال العام')">احصل عليها من هنا ←</a></span>
+        </div>
         <button class="btn btn-p" style="width:100%" id="dCta" onclick="startCheckout()">سجل الآن</button>
         <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="alert('انضممت لقائمة الانتظار (أمامك 11 منتظراً). يصلك إشعار فوري عند شغور مقعد بأولوية حجز 24 ساعة، وتظهر إشارة الطلب للإدارة لفتح دفعة جديدة')" id="dWait" hidden>انضم لقائمة الانتظار</button>
         <div style="display:flex;gap:8px;margin-top:10px">
@@ -394,6 +398,12 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
       <div class="hold">⏱ مقعدك محجوز مؤقتاً: <span id="holdT">15:00</span></div>
       <h3 style="margin-bottom:12px">مراجعة الطلب</h3>
       <div class="summ" id="coSumm"></div>
+      <div id="confEnt" style="display:none;background:rgba(226,165,61,.12);border:1.5px solid var(--gold);border-radius:10px;padding:12px;margin-top:14px">
+        <b style="font-size:13.5px">✦ التسجيل بتذكرة مؤتمر إبرام 2026 (بلا رسوم)</b>
+        <div style="display:flex;gap:8px;margin-top:8px"><input id="fTix" placeholder="رقم التذكرة: TIX-2026-XXXXX" dir="ltr" style="text-align:right"><button class="btn btn-gold" onclick="applyTicket()">تحقق</button></div>
+        <div class="err" id="eTix">التذكرة غير موجودة أو مستنفدة — تحقق من الرقم في بريد تأكيد المؤتمر</div>
+        <div class="err" id="okTix" style="color:var(--ok)">✓ تذكرة سارية باسمك — مقعدك محجوز بلا رسوم، ويطلب تأكيد حضورك قبل 24 ساعة</div>
+      </div>
       <div class="field" style="margin-top:14px"><label>كود الخصم (جرب: IBRAM10)</label>
         <div style="display:flex;gap:8px"><input id="fCoupon" placeholder="أدخل الكود" dir="ltr" style="text-align:right"><button class="btn btn-o" onclick="applyCoupon()">تطبيق</button></div>
         <div class="err" id="eCoupon">انتهت صلاحية هذا الكود أو غير مطابق</div>
@@ -406,7 +416,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         <button onclick="pickPay(this)">Apple Pay</button>
         <button onclick="pickPay(this)">تابي | تمارا (4 دفعات)</button>
       </div>
-      <button class="btn btn-p" style="width:100%" onclick="coNext2()">ادفع الآن</button>
+      <button class="btn btn-p" style="width:100%" id="payBtn" onclick="coNext2()">ادفع الآن</button>
       <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="coBack()">رجوع لتعديل البيانات</button>
     </div>
 
@@ -453,7 +463,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
     </aside>
     <div>
       <h2 style="margin-bottom:4px">مرحباً، م. خالد العتيبي</h2>
-      <p class="lead">نقاط الولاء: <b style="color:var(--gold)">450 ★</b> | تستبدل في الورش وتذاكر مؤتمر إبرام</p>
+      <p class="lead">نقاط الولاء: <b style="color:var(--gold)">450 ★</b> | <span class="badge bg-gold">✦ حامل تذكرة مؤتمر 2026</span> تذكرتك تشمل جميع ورش البث المباشر بلا رسوم — احجز مقعدك من صفحة أي ورشة</p>
 
       <div class="pane on" id="account-regs">
         <div class="card" style="padding:16px;margin-bottom:14px;border-inline-start:4px solid var(--teal)">
@@ -471,9 +481,10 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           </div>
         </div>
         <div class="card" style="padding:16px;margin-bottom:14px;border-inline-start:4px solid var(--gold)">
-          <span class="badge bg-gold">بث مباشر قادم</span>
+          <span class="badge bg-gold">بث مباشر قادم</span> <span class="badge bg-teal">مسجل بتذكرة المؤتمر — 0 ر.س</span>
           <h3 style="margin:6px 0 2px">إدارة المنافسات عبر منصة اعتماد: من الطرح إلى الترسية</h3>
           <p class="meta">الثلاثاء 18 أغسطس | 3 أمسيات | 7:30 مساءً عبر البث المباشر</p>
+          <div class="alert" style="margin-top:8px;padding:10px 12px"><div><b>أكد حضورك قبل 24 ساعة</b><span>حجوزات التذكرة غير المؤكدة يعاد مقعدها لقائمة الانتظار تلقائياً — عدل موعدك مجاناً إن تغيرت خطتك</span></div><button class="btn btn-p btn-sm" onclick="this.textContent='✓ مؤكد';this.disabled=true">أؤكد حضوري</button></div>
           <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
             <button class="btn btn-p btn-sm" onclick="alert('يفعل قبل 30 دقيقة من الجلسة. بيانات الدخول وصلتك بالبريد والواتساب وتظهر هنا')">🔒 رابط الانضمام (يفعل قبل 30 دقيقة)</button>
             <button class="btn btn-o btn-sm" onclick="alert('اختبار تقني: الميكروفون والسماعة وسرعة الاتصال والمتصفح — النتيجة: جاهز ✓. ينصح به قبل الجلسة الأولى')">🎧 الاختبار التقني</button>
@@ -905,6 +916,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <div class="field"><label>قائمة الانتظار</label><select><option>مفعلة</option><option>معطلة</option></select></div>
           <div class="field"><label>سلسلة رسائل ما قبل الورشة</label><select><option>القالب الحضوري (خريطة + إرشادات + QR)</option><option>قالب عن بعد تفاعلي (رابط البث + بيانات الدخول + الاختبار التقني)</option><option>قالب المسجلة (تفعيل الوصول + رحلة الإكمال)</option></select></div>
           <div class="field"><label>التقييم القبلي / البعدي</label><select><option>مفعل (إلزامي للمنشآت)</option><option>معطل</option></select></div>
+          <div class="field"><label>حصة مقاعد حاملي تذكرة المؤتمر (لورش البث المباشر)</label><select><option>30% من السعة (الافتراضي)</option><option>50%</option><option>بلا حد</option><option>معطلة لهذه الدفعة</option></select></div>
         </div>
       </div>
       <div class="pane" id="wiz-5">
@@ -979,6 +991,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         <tr><th>الرسالة</th><th>التوقيت</th><th>القنوات</th><th>المحتوى</th><th>الحالة</th></tr>
         <tr><td>تأكيد التسجيل</td><td>فوراً</td><td>بريد + واتساب</td><td>الفاتورة + رمز QR + بطاقة تفاصيل الحضور</td><td><span class="badge bg-ok">أرسلت لـ 17</span></td></tr>
         <tr><td>تذكير مبكر</td><td>قبل 7 أيام</td><td>بريد</td><td>الاستعداد + المواد القبلية + التقييم القبلي</td><td><span class="badge bg-teal">مجدولة 2 أغسطس</span></td></tr>
+        <tr><td>تأكيد حجوزات التذكرة</td><td>قبل 48 ساعة</td><td>بريد + واتساب</td><td>لحاملي تذكرة المؤتمر: أكد حضورك أو أعد مقعدك — غير المؤكد قبل 24 ساعة يعاد لقائمة الانتظار آلياً</td><td><span class="badge bg-teal">آلية (البث المباشر فقط)</span></td></tr>
         <tr><td>تفاصيل الحضور</td><td>قبل 24 ساعة</td><td>بريد + واتساب</td><td>الخريطة + إرشادات الوصول + تصريح المواقف + رقم القاعة + QR</td><td><span class="badge bg-teal">مجدولة 8 أغسطس</span></td></tr>
         <tr><td>تنبيه الانطلاق</td><td>قبل ساعة</td><td>واتساب</td><td>القاعة رقم 2 | التسجيل بدأ</td><td><span class="badge bg-teal">مجدولة</span></td></tr>
       </table>
@@ -1032,6 +1045,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
             <div>👁 <b>أمس</b> | زار صفحة "التفاوض التعاقدي" مرتين وحفظها في المحفوظات</div>
             <div>🎓 <b>13 مايو</b> | صدرت شهادة "إدارة المنافسات عبر اعتماد"</div>
             <div>✅ <b>12 مايو</b> | حضر الورشة كاملة (تحضير QR)</div>
+            <div>✦ <b>يونيو 2026</b> | اشترى تذكرة مؤتمر 2026 (TIX-2026-08114) — استحقاق ورش البث المباشر مفعل | استخدمه مرتين حتى الآن</div>
             <div>🎫 <b>ديسمبر 2025</b> | حضر مؤتمر إبرام 2025، جلسات محور العقود <span class="badge bg-gold">حلقة المؤتمر</span></div>
             <div>✉ <b>مستمر</b> | يفتح 82% من رسائل البريد | موافقاته: بريد ✓ واتساب ✓ نصية ✗ (موثقة بتاريخها)</div>
           </div>
@@ -1046,7 +1060,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         </div>
         <div class="card" style="padding:16px">
           <b style="font-size:14px">شرائح ينتمي إليها (ديناميكية)</b>
-          <p style="font-size:13px;margin-top:8px">عملاء نشطون | VIP | مهتمو العقود | حضور مؤتمر 2025 | جهات بها 3+ متدربين أفراد</p>
+          <p style="font-size:13px;margin-top:8px">عملاء نشطون | VIP | حاملو تذكرة مؤتمر 2026 | مهتمو العقود | حضور مؤتمر 2025 | جهات بها 3+ متدربين أفراد</p>
         </div>
       </div>
     </div>
@@ -1061,6 +1075,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
     <div class="kpis">
       <div class="card kpi"><b>412 ألف ر.س</b><span>إيراد الشهر</span><span class="up">▲ 96% من المستهدف</span></div>
       <div class="card kpi"><b>23%</b><span>التحويل المتقاطع مؤتمر ← ورش</span><span class="up">▲ مؤشر من الدرجة الأولى</span></div>
+      <div class="card kpi"><b>118</b><span>حجز بتذكرة المؤتمر (بث مباشر) | تأكيد الحضور 86%</span></div>
       <div class="card kpi"><b>4.6</b><span>LTV / CAC</span><span class="up">فوق حد الـ4</span></div>
       <div class="card kpi"><b>62</b><span>صافي الترويج NPS</span></div>
       <div class="card kpi"><b>9%</b><span>الإيراد المتكرر (المستهدف 15% خلال 6 أشهر)</span></div>
@@ -1122,7 +1137,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         <table style="margin-top:10px">
           <tr><td>بوابة الدفع</td><td><span class="dot g"></span> تعمل</td></tr>
           <tr><td>الفوترة الإلكترونية (فاتورة)</td><td><span class="dot g"></span> تعمل</td></tr>
-          <tr><td>نظام مؤتمر إبرام (مزامنة العملاء)</td><td><span class="dot g"></span> آخر مزامنة قبل 20 دقيقة</td></tr>
+          <tr><td>نظام مؤتمر إبرام (مزامنة العملاء + التحقق الفوري من التذاكر واستحقاقها)</td><td><span class="dot g"></span> آخر مزامنة قبل 20 دقيقة</td></tr>
           <tr><td>واتساب أعمال</td><td><span class="dot y"></span> بطء في التسليم، طابور إعادة محاولة نشط</td></tr>
           <tr><td>Zoom / Teams</td><td><span class="dot g"></span> تعمل</td></tr>
           <tr><td>تقارير مدة الجلسات (احتساب حضور البث)</td><td><span class="dot g"></span> مزامنة بعد كل جلسة</td></tr>
@@ -1219,7 +1234,7 @@ function rulesHTML(mode){
  return '<b>🎥 عن بعد مسجلة (تعلم ذاتي):</b> وصولك يفعل فور الدفع وتتقدم بوتيرتك.<br>شرط الشهادة: إكمال 100% من الدروس + اجتياز أسئلة الوحدات + التقييم البعدي بنسبة 70%، وتصدر آلياً فور الاجتياز. المشاهدة عبر بث محمي بعلامة مائية باسمك.';}
 function attCardHTML(w){
  if(w.rec)return '🎥 <b>وصولك مفعل الآن.</b> ابدأ من حسابك ← تعلمي الرقمي، أو من زر "ابدأ التعلم" في هذه الصفحة. تقدمك يحفظ آلياً وتستأنف من نقطة توقفك من أي جهاز.';
- if(w.mode==='عن بعد تفاعلي')return '📡 <b>رابط البث وبيانات الدخول</b> تصلك قبل 24 ساعة (وتظهر هنا وفي حسابك)، ويفعل زر الانضمام قبل 30 دقيقة. التوقيت: '+w.d.split('|')[0].trim()+' 7:30 مساءً | أجر <b>الاختبار التقني</b> (الصوت والاتصال) من حسابك قبل الجلسة | أثناء البث: استطلاعات وأسئلة مباشرة وغرف نقاش ودعم فني بالواتساب | حضورك يحتسب آلياً من مدة الجلسة (80%+) وتسجيل الجلسة يتاح لك 90 يوماً.';
+ if(w.mode==='عن بعد تفاعلي')return (order.confT?'✦ <b>حجز بتذكرة المؤتمر (0 ر.س):</b> أكد حضورك قبل 24 ساعة وإلا أعيد المقعد لقائمة الانتظار آلياً.<br>':'')+'📡 <b>رابط البث وبيانات الدخول</b> تصلك قبل 24 ساعة (وتظهر هنا وفي حسابك)، ويفعل زر الانضمام قبل 30 دقيقة. التوقيت: '+w.d.split('|')[0].trim()+' 7:30 مساءً | أجر <b>الاختبار التقني</b> (الصوت والاتصال) من حسابك قبل الجلسة | أثناء البث: استطلاعات وأسئلة مباشرة وغرف نقاش ودعم فني بالواتساب | حضورك يحتسب آلياً من مدة الجلسة (80%+) وتسجيل الجلسة يتاح لك 90 يوماً.';
  return '🏨 <b>الموقع:</b> '+w.city+' — تصلك الخريطة وإرشادات الوصول وتصريح المواقف ورقم القاعة قبل 24 ساعة. أحضر رمز QR وامسحه عند البوابة صباح كل يوم من أيام الورشة.';}
 
 /* ===== details ===== */
@@ -1239,13 +1254,16 @@ function openDetails(id){cur=W.find(w=>w.id===id);sel=0;
  const e=document.getElementById('dEarly');
  if(cur.early){e.style.display='block';e.textContent='⏱ '+cur.early;}else e.style.display='none';
  const full=st==='full';
+ document.getElementById('dConf').style.display=(cur.mode==='عن بعد تفاعلي')?'block':'none';
  document.getElementById('dCta').style.display=full?'none':'flex';
  document.getElementById('dWait').hidden=!full;
  go('details');}
 function pickPlan(el,i){sel=i;el.parentElement.querySelectorAll('.plan').forEach(p=>p.classList.remove('on'));el.classList.add('on');}
 
 /* ===== checkout ===== */
-function startCheckout(){order={w:cur,plan:cur.plans[sel],disc:0};
+function startCheckout(){order={w:cur,plan:cur.plans[sel],disc:0,confT:false};
+ document.getElementById('confEnt').style.display=(cur.mode==='عن بعد تفاعلي')?'block':'none';
+ document.getElementById('okTix').style.display='none';document.getElementById('eTix').style.display='none';
  coStep(1);go('checkout');}
 function coStep(n){[1,2,3].forEach(i=>{document.getElementById('co'+i).style.display=i===n?'block':'none';
  const s=document.getElementById('st'+i);s.className=i<n?'done':(i===n?'on':'');});
@@ -1259,12 +1277,20 @@ function coNext1(){let ok=true;
  if(document.getElementById('fInv').value==='ent'){const v=document.getElementById('fVat').value.replace(/\D/g,'');show('eVat',!(v.length===15&&v[0]==='3'&&v[14]==='3'));}
  if(ok){order.name=name.value;coStep(2);}}
 function renderSumm(){const p=order.plan[1],d=Math.round(p*order.disc),vat=Math.round((p-d)*.15),tot=p-d+vat;
- document.getElementById('coSumm').innerHTML=
+ document.getElementById('coSumm').innerHTML= order.confT?
+ `<div class="row"><span>${order.w.t}</span></div>
+  <div class="row"><span>✦ تسجيل بتذكرة مؤتمر إبرام 2026</span><b style="color:var(--ok)">مشمول — 0 ر.س</b></div>
+  <div class="row tot"><span>الإجمالي</span><b>0 ر.س</b></div>`:
  `<div class="row"><span>${order.w.t}</span></div>
   <div class="row"><span>الخطة: ${order.plan[0]}</span><b>${p.toLocaleString()} ر.س</b></div>
   ${d?`<div class="row" style="color:var(--ok)"><span>خصم الكود</span><b>- ${d.toLocaleString()} ر.س</b></div>`:''}
   <div class="row"><span>ضريبة القيمة المضافة 15%</span><b>${vat.toLocaleString()} ر.س</b></div>
-  <div class="row tot"><span>الإجمالي</span><b>${tot.toLocaleString()} ر.س</b></div>`;}
+  <div class="row tot"><span>الإجمالي</span><b>${tot.toLocaleString()} ر.س</b></div>`;
+ const pb=document.getElementById('payBtn');if(pb)pb.textContent=order.confT?'أكد الحجز (0 ر.س)':'ادفع الآن';}
+function applyTicket(){const v=document.getElementById('fTix').value.trim().toUpperCase();
+ const ok=/^TIX-2026-\d{5}$/.test(v);order.confT=ok;
+ document.getElementById('eTix').style.display=ok?'none':'block';
+ document.getElementById('okTix').style.display=ok?'block':'none';renderSumm();}
 function applyCoupon(){const v=document.getElementById('fCoupon').value.trim().toUpperCase();
  const ok=v==='IBRAM10';order.disc=ok?.10:0;
  document.getElementById('eCoupon').style.display=ok?'none':'block';

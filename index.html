@@ -400,7 +400,10 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
       <div class="summ" id="coSumm"></div>
       <div id="confEnt" style="display:none;background:rgba(226,165,61,.12);border:1.5px solid var(--gold);border-radius:10px;padding:12px;margin-top:14px">
         <b style="font-size:13.5px">✦ التسجيل بتذكرة مؤتمر إبرام 2026 (بلا رسوم)</b>
-        <div style="display:flex;gap:8px;margin-top:8px"><input id="fTix" placeholder="رقم التذكرة: TIX-2026-XXXXX" dir="ltr" style="text-align:right"><button class="btn btn-gold" onclick="applyTicket()">تحقق</button></div>
+        <p class="meta" style="margin-top:4px">إن اشتريت تذكرتك بنفس جوالك أو بريدك، يظهر استحقاقك مفعلاً هنا تلقائياً فور إدخال بياناتك — لا تحتاج رقم التذكرة. الإدخال اليدوي للحالات الاستثنائية فقط (شراء بجوال مختلف).</p>
+        <div id="tixAuto" style="display:none;background:#E5F5EE;border-radius:8px;padding:9px 11px;font-size:13px;margin-top:8px">✓ <b>مطابقة تلقائية:</b> وجدنا تذكرة سارية مرتبطة بجوالك (TIX-2026-08114) — طبق الاستحقاق، ومقعدك بلا رسوم</div>
+        <button class="btn btn-o btn-sm" style="margin-top:8px" onclick="autoTicket()">محاكاة: بياناتي تطابق مشتري تذكرة</button>
+        <div style="display:flex;gap:8px;margin-top:8px"><input id="fTix" placeholder="أو أدخل رقم التذكرة يدوياً: TIX-2026-XXXXX" dir="ltr" style="text-align:right"><button class="btn btn-gold" onclick="applyTicket()">تحقق</button></div>
         <div class="err" id="eTix">التذكرة غير موجودة أو مستنفدة — تحقق من الرقم في بريد تأكيد المؤتمر</div>
         <div class="err" id="okTix" style="color:var(--ok)">✓ تذكرة سارية باسمك — مقعدك محجوز بلا رسوم، ويطلب تأكيد حضورك قبل 24 ساعة</div>
       </div>
@@ -463,7 +466,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
     </aside>
     <div>
       <h2 style="margin-bottom:4px">مرحباً، م. خالد العتيبي</h2>
-      <p class="lead">نقاط الولاء: <b style="color:var(--gold)">450 ★</b> | <span class="badge bg-gold">✦ حامل تذكرة مؤتمر 2026</span> تذكرتك تشمل جميع ورش البث المباشر بلا رسوم — احجز مقعدك من صفحة أي ورشة</p>
+      <p class="lead">نقاط الولاء: <b style="color:var(--gold)">450 ★</b> | <span class="badge bg-gold">✦ حامل تذكرة مؤتمر 2026</span> TIX-2026-08114 (ربطت آلياً بجوالك عند شرائها) | صالحة حتى 31 ديسمبر 2026 | تشمل جميع ورش البث المباشر بلا رسوم — استخدمتها في ورشتين حتى الآن</p>
 
       <div class="pane on" id="account-regs">
         <div class="card" style="padding:16px;margin-bottom:14px;border-inline-start:4px solid var(--teal)">
@@ -493,6 +496,11 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <div style="background:var(--paper);border-radius:10px;padding:12px;margin-top:10px;font-size:13px">
             <b>📡 رحلة جلستك:</b> قبلها — الرابط وبيانات الدخول والاختبار التقني قبل 24 ساعة | أثناءها — استطلاعات وأسئلة مباشرة وغرف نقاش، وحضورك يحتسب آلياً من مدة تواجدك (80%+ من مدة البث)، ودعم فني بالواتساب | بعدها — تسجيل الجلسة يتاح خلال ساعتين (90 يوماً) مع المواد والتقييم
           </div>
+        </div>
+        <div class="card" style="padding:14px;margin-bottom:14px;border-inline-start:4px solid var(--teal)">
+          <span class="badge bg-teal">مقعد جهة العمل — 0 ر.س</span>
+          <p style="font-size:14px;margin-top:6px"><b>إدارة المطالبات التعاقدية</b> | 24 - 25 أغسطس | دفعة خاصة بجهتك</p>
+          <p class="meta">سجلتك جهة عملك — لا رسوم ولا كلمة مرور: حسابك فعل برابط الترحيب، وتصلك نفس رحلة الرسائل والتقييم القبلي وتفاصيل الحضور، وشهادتك تظهر لك ولمسؤول جهتك</p>
         </div>
         <div class="card"><table>
           <tr><th>البرنامج</th><th>الموعد</th><th>الحالة</th><th></th></tr>
@@ -675,15 +683,39 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <p style="font-size:14px"><b>برنامج خاص: إدارة المطالبات التعاقدية</b> | 24 - 25 أغسطس | دفعة مغلقة لا تظهر في الكتالوج العام</p>
           <p class="meta">مسجل: 18 من 20 | تصل روابط الترحيب للمتدربين آلياً بعد رفع الأسماء</p>
         </div>
+        <div class="card" style="padding:16px;margin-top:14px;border-inline-start:4px solid var(--gold)">
+          <h3 style="font-size:15px;margin-bottom:8px">✦ رصيد مقاعد العقد</h3>
+          <table>
+            <tr><th>البرنامج المتعاقد عليه</th><th>المقاعد</th><th>مفعل</th><th>بانتظار التفعيل</th></tr>
+            <tr><td>إدارة المطالبات التعاقدية (دفعة مغلقة)</td><td>18 / 20</td><td><span class="badge bg-ok">14</span></td><td><span class="badge bg-warn">4 — تذكير آلي أرسل</span></td></tr>
+            <tr><td>أحكام التعاقد الحكومي (مقاعد في الدفعات العامة)</td><td>9 / 15</td><td><span class="badge bg-ok">9</span></td><td>—</td></tr>
+            <tr><td>النسخ الرقمية المسجلة (اشتراك مؤسسي)</td><td>26 / 40</td><td><span class="badge bg-ok">26</span></td><td>—</td></tr>
+          </table>
+          <p class="note" style="margin-top:8px">المقعد غير المفعل خلال 7 أيام يظهر لك هنا لاسترداده ونقله لموظف آخر — لا مقاعد تضيع من رصيد عقدكم.</p>
+        </div>
       </div>
 
       <div class="pane" id="org-emp">
-        <div style="display:flex;gap:8px;margin-bottom:10px">
-          <button class="btn btn-p btn-sm" onclick="alert('يحمل قالب إكسل، وعند رفعه تنشأ سجلات المتدربين وتطابق آلياً بالجوال وترسل رسائل الترحيب')">⬆ رفع أسماء (تسجيل جماعي)</button>
+        <div class="card" style="padding:16px;margin-bottom:14px">
+          <b style="font-size:14px">تسجيل المنسوبين — طريقتان</b>
+          <div class="grid g2" style="margin-top:10px;gap:10px">
+            <div style="border:1px solid var(--line);border-radius:10px;padding:12px">
+              <b style="font-size:13.5px">1. رفع كشف أسماء</b>
+              <p class="meta" style="margin:4px 0 8px">قالب إكسل ← تنشأ السجلات وتطابق بالجوال ← رسائل ترحيب برابط تفعيل سحري (بلا كلمة مرور) ← يجد الموظف برنامجه جاهزاً بلا أي دفع</p>
+              <button class="btn btn-p btn-sm" onclick="alert('يحمل قالب إكسل، وعند رفعه تنشأ السجلات وتخصم المقاعد من رصيد العقد وترسل روابط التفعيل آلياً')">⬆ رفع أسماء</button>
+            </div>
+            <div style="border:1px solid var(--line);border-radius:10px;padding:12px">
+              <b style="font-size:13.5px">2. رابط الدعوة الذاتي</b>
+              <p class="meta" style="margin:4px 0 8px">شارك الرابط داخلياً — يسجل الموظف بنفسه ويقبل آلياً إن كان بريده على نطاق جهتكم (entity.gov.sa@)، وما عداه ينتظر اعتمادك. يتوقف الرابط تلقائياً عند نفاد المقاعد</p>
+              <div style="display:flex;gap:6px"><input value="ibram.sa/join/ENTITY-8842" dir="ltr" style="text-align:left;font-size:12px" readonly><button class="btn btn-o btn-sm" onclick="alert('نسخ الرابط + خيار QR للوحات الإعلانات الداخلية')">نسخ</button></div>
+              <p class="meta" style="margin-top:6px">طلب بانتظار اعتمادك: <b>1</b> (بريد خارج النطاق) <a class="tag" onclick="alert('اعتماد أو رفض مع سبب يصل للموظف')">مراجعة</a></p>
+            </div>
+          </div>
         </div>
         <div class="card"><table>
           <tr><th>المتدرب</th><th>البرنامج</th><th>الحضور</th><th>الشهادة</th></tr>
-          <tr><td>سارة المطيري</td><td>إدارة المطالبات التعاقدية</td><td><span class="badge bg-teal">مسجلة</span></td><td>-</td></tr>
+          <tr><td>سارة المطيري</td><td>إدارة المطالبات التعاقدية</td><td><span class="badge bg-teal">مسجلة — فعلت حسابها ✓</span></td><td>-</td></tr>
+          <tr><td>ماجد الحربي</td><td>إدارة المطالبات التعاقدية</td><td><span class="badge bg-warn">لم يفعل (8 أيام)</span></td><td><a class="tag" onclick="alert('يسترد المقعد لرصيد العقد فوراً ويتاح تخصيصه لموظف آخر، مع إشعار لطيف للموظف')">استرداد المقعد</a></td></tr>
           <tr><td>عبدالله الشمري</td><td>أحكام التعاقد الحكومي</td><td><span class="badge bg-ok">حضر 100%</span></td><td><a class="tag">تحميل</a></td></tr>
           <tr><td>نورة القحطاني</td><td>أحكام التعاقد الحكومي</td><td><span class="badge bg-ok">حضرت 88%</span></td><td><a class="tag">تحميل</a></td></tr>
           <tr><td>فهد الدوسري</td><td>أحكام التعاقد الحكومي</td><td><span class="badge bg-red">تغيب</span></td><td>-</td></tr>
@@ -995,7 +1027,18 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         <tr><td>تفاصيل الحضور</td><td>قبل 24 ساعة</td><td>بريد + واتساب</td><td>الخريطة + إرشادات الوصول + تصريح المواقف + رقم القاعة + QR</td><td><span class="badge bg-teal">مجدولة 8 أغسطس</span></td></tr>
         <tr><td>تنبيه الانطلاق</td><td>قبل ساعة</td><td>واتساب</td><td>القاعة رقم 2 | التسجيل بدأ</td><td><span class="badge bg-teal">مجدولة</span></td></tr>
       </table>
-      <p class="meta" style="margin-top:8px">قالب "عن بعد تفاعلي" يستبدل الخريطة برابط البث وبيانات الدخول والاختبار التقني، وقالب "المسجلة" يرسل تفعيل الوصول ثم رسائل تشجيع الإكمال (توقف 7 أيام ← تذكير بنقطة الاستئناف). <a class="tag" onclick="alert('معاينة القالبين بلغتي المنصة قبل الاعتماد')">معاينة القوالب</a></p>
+      <p class="meta" style="margin-top:8px">قالب "عن بعد تفاعلي" يستبدل الخريطة برابط البث وبيانات الدخول والاختبار التقني، وقالب "المسجلة" يرسل تفعيل الوصول ثم رسائل تشجيع الإكمال (توقف 7 أيام ← تذكير بنقطة الاستئناف). ولدفعات المنشآت: رابط ترحيب وتفعيل فور رفع الأسماء ← تذكير غير المفعلين بعد 3 أيام ← إشعار المسؤول بالمقاعد الخاملة بعد 7 أيام لاستردادها. <a class="tag" onclick="alert('معاينة القالبين بلغتي المنصة قبل الاعتماد')">معاينة القوالب</a></p>
+    </div>
+    <div class="card" style="padding:18px;margin-bottom:14px;border-inline-start:4px solid var(--gold)">
+      <b style="font-size:14px">✦ سلسلة حاملي تذكرة المؤتمر (تنطلق آلياً بإشعار فوري من نظام المؤتمر لحظة الشراء)</b>
+      <table class="seq" style="margin-top:10px">
+        <tr><th>الرسالة</th><th>التوقيت</th><th>المحتوى</th><th>الحالة</th></tr>
+        <tr><td>تفعيل الاستحقاق</td><td>فور شراء التذكرة</td><td>حسابك جاهز (مطابقة بالجوال/البريد) — تذكرتك تشمل كل ورش البث المباشر، تصفح واحجز مقعدك</td><td><span class="badge bg-ok">آلية — 412 مرسلة</span></td></tr>
+        <tr><td>ورش الشهر القادمة</td><td>شهرياً</td><td>ورش البث المشمولة بتذكرتك هذا الشهر + المقاعد المتبقية من حصة التذاكر</td><td><span class="badge bg-ok">آلية</span></td></tr>
+        <tr><td>لم تستخدم استحقاقك</td><td>بعد 45 يوماً بلا حجز</td><td>تذكير بقيمة تذكرتك: ورشتان قادمتان تناسبان اهتمامك (من CRM)</td><td><span class="badge bg-teal">آلية</span></td></tr>
+        <tr><td>إلغاء الاستحقاق</td><td>عند استرداد التذكرة</td><td>يلغى الاستحقاق وأي حجوزات قادمة بإشعار مسبق، وتعاد المقاعد للانتظار</td><td><span class="badge bg-teal">آلية — حوكمة</span></td></tr>
+      </table>
+      <p class="note" style="margin-top:8px">تذاكر رعاية المنشآت (مثل مقاعد الراعي الذهبي) تفعل استحقاقاتها لكل اسم مرشح ترفعه المنشأة، وتظهر في رصيد مقاعد عقدها.</p>
     </div>
     <div class="grid g2">
       <div class="card" style="padding:18px">
@@ -1137,7 +1180,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         <table style="margin-top:10px">
           <tr><td>بوابة الدفع</td><td><span class="dot g"></span> تعمل</td></tr>
           <tr><td>الفوترة الإلكترونية (فاتورة)</td><td><span class="dot g"></span> تعمل</td></tr>
-          <tr><td>نظام مؤتمر إبرام (مزامنة العملاء + التحقق الفوري من التذاكر واستحقاقها)</td><td><span class="dot g"></span> آخر مزامنة قبل 20 دقيقة</td></tr>
+          <tr><td>نظام مؤتمر إبرام: إشعار فوري (Webhook) لحظة شراء/استرداد التذكرة ← إنشاء الحساب وتفعيل/إلغاء الاستحقاق آلياً بمطابقة الجوال والبريد + تحقق يدوي احتياطي</td><td><span class="dot g"></span> آخر إشعار قبل 4 دقائق | 412 استحقاقاً نشطاً</td></tr>
           <tr><td>واتساب أعمال</td><td><span class="dot y"></span> بطء في التسليم، طابور إعادة محاولة نشط</td></tr>
           <tr><td>Zoom / Teams</td><td><span class="dot g"></span> تعمل</td></tr>
           <tr><td>تقارير مدة الجلسات (احتساب حضور البث)</td><td><span class="dot g"></span> مزامنة بعد كل جلسة</td></tr>
@@ -1287,6 +1330,9 @@ function renderSumm(){const p=order.plan[1],d=Math.round(p*order.disc),vat=Math.
   <div class="row"><span>ضريبة القيمة المضافة 15%</span><b>${vat.toLocaleString()} ر.س</b></div>
   <div class="row tot"><span>الإجمالي</span><b>${tot.toLocaleString()} ر.س</b></div>`;
  const pb=document.getElementById('payBtn');if(pb)pb.textContent=order.confT?'أكد الحجز (0 ر.س)':'ادفع الآن';}
+function autoTicket(){order.confT=true;
+ document.getElementById('tixAuto').style.display='block';
+ document.getElementById('eTix').style.display='none';document.getElementById('okTix').style.display='none';renderSumm();}
 function applyTicket(){const v=document.getElementById('fTix').value.trim().toUpperCase();
  const ok=/^TIX-2026-\d{5}$/.test(v);order.confT=ok;
  document.getElementById('eTix').style.display=ok?'none':'block';

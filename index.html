@@ -3,13 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ورش إبرام | النموذج الأولي التفاعلي الكامل</title>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>منصة الأنشطة والبرامج المصاحبة لمؤتمر إبرام | النموذج الأولي التفاعلي</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#14283C;--navy2:#1B3A5C;--teal:#2BA8D8;--teal-d:#1E86AE;--gold:#E2A53D;--paper:#F6F8FA;--ink:#22364B;--slate:#5B7186;--line:#E3E9EF;--ok:#2E9E6B;--warn:#C9762B;--red:#C0392B;--full:#8A94A0;--r:12px;--sh:0 8px 24px rgba(20,40,60,.08)}
+:root{--navy:#0D2238;--navy2:#1B3A5C;--teal:#2BA8D8;--teal-d:#1E86AE;--gold:#E2A53D;--paper:#F6F8FA;--ink:#22364B;--slate:#5B7186;--line:#E3E9EF;--ok:#2E9E6B;--warn:#C9762B;--red:#C0392B;--full:#8A94A0;--r:12px;--sh:0 8px 24px rgba(20,40,60,.08)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:15px}
-h1,h2,h3{font-family:"Amiri","IBM Plex Sans Arabic",serif;color:var(--navy)}
+body{font-family:"Tajawal",Tahoma,sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:15px}
+h1,h2,h3{font-family:"Tajawal",Tahoma,sans-serif;font-weight:800;color:var(--navy)}
+/* هوية إبرام: السكة الذهبية والنجمة الرباعية */
+.rail{height:3px;background:linear-gradient(90deg,transparent,var(--gold) 18%,var(--gold) 82%,transparent)}
+.star{color:var(--gold);font-style:normal}
+.lesson{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-top:1px solid var(--line);font-size:13.5px}
+.lesson .st-done{color:var(--ok);font-weight:700}.lesson .st-cur{color:var(--teal-d);font-weight:700}.lesson .st-lock{color:var(--slate)}
+.modhead{background:#F1F5F8;padding:9px 12px;font-weight:700;font-size:13px;color:var(--navy2);display:flex;justify-content:space-between}
+.qopt{display:block;border:1.5px solid var(--line);border-radius:9px;padding:9px 12px;margin-top:8px;font-size:13.5px;cursor:pointer;background:#fff;width:100%;text-align:right}
+.qopt.good{border-color:var(--ok);background:#E5F5EE}.qopt.bad{border-color:var(--red);background:#F9E7E4}
+.prog{height:8px;border-radius:100px;background:#EBEEF1;overflow:hidden}.prog b{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--gold))}
+.subs{background:linear-gradient(150deg,var(--navy),var(--navy2));color:#fff;border-radius:var(--r);padding:22px;position:relative;overflow:hidden}
+.subs h3{color:#fff}.subs::after{content:"✦";position:absolute;inset-inline-start:18px;top:10px;font-size:44px;color:rgba(226,165,61,.25)}
+.seq td{font-size:12.5px}
 a{text-decoration:none;color:inherit;cursor:pointer}
 button{font-family:inherit;cursor:pointer}
 .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
@@ -46,7 +58,7 @@ td{padding:10px 12px;border-top:1px solid var(--line)}
 .chead{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:46px;z-index:90}
 .chead .in{display:flex;align-items:center;gap:20px;height:60px}
 .logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--navy);font-size:16.5px}
-.logo .mk{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--navy2),var(--teal));display:grid;place-items:center;color:#fff;font-family:"Amiri";font-size:18px}
+.logo .mk{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--navy),var(--navy2));border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-family:"Amiri";font-size:18px}
 .cnav{display:flex;gap:18px;font-size:14px;font-weight:500}
 .cnav a:hover,.cnav a.on{color:var(--teal-d)}
 .chead .grow{flex:1}
@@ -203,13 +215,13 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
   <button data-role="trainer" onclick="setRole('trainer')">مدرب</button>
   <button data-role="admin" onclick="setRole('admin')">فريق الإدارة</button>
   <button data-role="super" onclick="setRole('super')">المشرف الأعلى</button>
-  <span style="margin-inline-start:auto;font-size:11px">بيانات توضيحية | ورش إبرام</span>
+  <span style="margin-inline-start:auto;font-size:11px">بيانات توضيحية | منصة الأنشطة والبرامج المصاحبة لمؤتمر إبرام</span>
 </div>
 
 <!-- ============ CUSTOMER HEADER ============ -->
 <div class="chead" id="custHead">
   <div class="wrap in">
-    <a class="logo" onclick="go('home')"><span class="mk">إ</span> ورش إبرام</a>
+    <a class="logo" onclick="go('home')"><span class="mk">✦</span> <span>منصة الأنشطة والبرامج المصاحبة <small style="display:block;font-size:11px;color:var(--slate);font-weight:500">لمؤتمر إبرام للمشتريات والمشاريع الحكومية</small></span></a>
     <nav class="cnav">
       <a data-nav="list" onclick="go('list')">الورش والبرامج</a>
       <a onclick="go('corp')">تدريب المنشآت</a>
@@ -221,15 +233,16 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
     <a class="btn btn-o btn-sm" onclick="go('account')">👤 حسابي</a>
     <a class="btn btn-p btn-sm" onclick="go('list')">تصفح الورش</a>
   </div>
+<div class="rail"></div>
 </div>
 
 <!-- ============ SCREEN: HOME ============ -->
 <section class="screen on" id="s-home">
   <div class="hero">
     <div class="wrap">
-      <span class="badge bg-gold" style="margin-bottom:14px">الامتداد السنوي لمؤتمر إبرام</span>
-      <h1>ورش <em>إبرام</em>: تدريب متخصص في المشتريات والعقود على مدار العام</h1>
-      <p>ورش عملية وبرامج تنفيذية بشهادات موثقة، وتجربة تسجيل لا تتجاوز الدقيقتين.</p>
+      <span class="badge bg-gold" style="margin-bottom:14px">✦ الذراع السنوي لمؤتمر إبرام للمشتريات والمشاريع الحكومية</span>
+      <h1>منصة <em>الأنشطة والبرامج</em> المصاحبة لمؤتمر إبرام</h1>
+      <p>ورش حضورية وبث مباشر ودورات مسجلة في المشتريات والعقود الحكومية على مدار العام، بشهادات موثقة ورحلة متكاملة من التسجيل إلى قياس الأثر.</p>
       <a class="btn btn-p" onclick="go('list')">تصفح الورش القادمة</a>
       <a class="btn btn-o" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.5)" onclick="go('corp')">تدريب المنشآت</a>
       <div class="trust">
@@ -246,6 +259,15 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
       <div class="ct"><b>مؤتمر إبرام للمشتريات والمشاريع الحكومية 2026</b><span>13 - 14 ديسمبر | دبل تري باي هيلتون، الرياض</span></div>
       <div class="cd"><div><b id="cdD">157</b><span>يوم</span></div><div><b id="cdH">08</b><span>ساعة</span></div><div><b id="cdM">42</b><span>دقيقة</span></div></div>
       <a class="btn btn-g btn-sm" onclick="alert('يحول إلى نظام مؤتمر إبرام القائم')">سجل في المؤتمر</a>
+    </div>
+    <div class="subs" style="margin-top:14px">
+      <span class="badge bg-gold">جديد | توصية الدراسة الاستشارية</span>
+      <h3 style="margin:8px 0 4px">الاشتراك السنوي: مكتبة إبرام الرقمية</h3>
+      <p style="font-size:14px;color:#C9D6E2;max-width:640px">وصول كامل للدورات المسجلة بوحداتها وأسئلتها التفاعلية، وتحديثات نظامية فور صدور التعديلات، وخصم 20% على الورش الحضورية وتذكرة المؤتمر. فردي 1,200 ر.س/سنة | مؤسسي حسب عدد المقاعد.</p>
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        <a class="btn btn-gold btn-sm" onclick="alert('صفحة اشتراك: خطة فردية ومؤسسية، فوترة سنوية، ويفعل الوصول فوراً')">اشترك الآن</a>
+        <a class="btn btn-o btn-sm" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)" onclick="setRole('cust');go('account');setTimeout(()=>openLearn(),50)">جرب تجربة التعلم الرقمي ←</a>
+      </div>
     </div>
   </div>
   <div class="wrap sec" style="padding-top:10px">
@@ -309,8 +331,12 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <div class="rev"><span class="st">★★★★★</span><p>"محتوى عملي مباشر، طبقت ما تعلمته في أول منافسة بعد الورشة بأسبوع." <b>أ. محمد الغامدي</b> | أخصائي عقود، جهة حكومية</p></div>
           <div class="rev"><span class="st">★★★★★</span><p>"أفضل ما فيها الحالات الواقعية والنقاش. الشهادة وصلتني في اليوم التالي." <b>أ. هند العنزي</b> | إدارة المشتريات</p></div>
         </div>
+        <div class="card"><h3>قواعد الحضور والشهادة</h3>
+          <div id="dRules" style="font-size:13.5px"></div>
+          <p class="note" style="margin-top:8px">تعرض هذه القاعدة قبل إتمام التسجيل وتثبت في بطاقة تفاصيل الحضور، ويجمد الاحتساب عند إغلاق الدفعة.</p>
+        </div>
         <div class="card"><h3>أسئلة شائعة عن الورشة</h3>
-          <div class="faqi" onclick="this.classList.toggle('open')"><b>هل الشهادة معتمدة؟</b><p>نعم، شهادة موثقة برمز تحقق عام تصدر آلياً خلال 24 ساعة من انتهاء الورشة لمن أتم 80% من الحضور.</p></div>
+          <div class="faqi" onclick="this.classList.toggle('open')"><b>هل الشهادة معتمدة؟</b><p>نعم، شهادة موثقة برمز تحقق عام تصدر آلياً خلال 24 ساعة من انتهاء الورشة لمن أتم 80% من الحضور وفق قواعد الاحتساب المعلنة أعلاه.</p></div>
           <div class="faqi" onclick="this.classList.toggle('open')"><b>هل يمكن لجهة عملي دفع الرسوم؟</b><p>نعم، حمل الملف التعريفي وعرض السعر من هذه الصفحة، وعند الموافقة تصدر فاتورة ضريبية باسم الجهة.</p></div>
           <div class="faqi" onclick="this.classList.toggle('open')"><b>ما سياسة الإلغاء؟</b><p>استرداد كامل قبل 7 أيام، و50% قبل 72 ساعة، ورصيد محفظة بعد ذلك.</p></div>
         </div>
@@ -323,7 +349,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         <div id="dPlans"></div>
         <div id="dEarly" class="hold" style="display:none"></div>
         <button class="btn btn-p" style="width:100%" id="dCta" onclick="startCheckout()">سجل الآن</button>
-        <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="alert('نموذج قصير: بريدك وجوالك، ويصلك إشعار فوري عند شغور مقعد بأولوية 24 ساعة')" id="dWait" hidden>انضم لقائمة الانتظار</button>
+        <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="alert('انضممت لقائمة الانتظار (أمامك 11 منتظراً). يصلك إشعار فوري عند شغور مقعد بأولوية حجز 24 ساعة، وتظهر إشارة الطلب للإدارة لفتح دفعة جديدة')" id="dWait" hidden>انضم لقائمة الانتظار</button>
         <div style="display:flex;gap:8px;margin-top:10px">
           <button class="btn btn-o btn-sm" style="flex:1" onclick="alert('يفتح محادثة واتساب أعمال')">استفسر واتساب</button>
           <button class="btn btn-o btn-sm" style="flex:1" onclick="alert('يولد PDF تعريفياً بترويسة إبرام لرفعه لجهة العمل')">الملف التعريفي PDF</button>
@@ -391,6 +417,16 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
       <p class="meta" id="confLine"></p>
       <div class="qr" id="qrBox"></div>
       <p style="font-size:13px;color:var(--slate)">هذا رمز حضورك الشخصي. سيصلك أيضاً بالبريد والواتساب مع الفاتورة الإلكترونية</p>
+      <div class="card" style="padding:16px;text-align:right;box-shadow:none;border-inline-start:4px solid var(--gold);margin-top:6px">
+        <b style="font-size:14px">✦ بطاقة تفاصيل الحضور</b>
+        <div id="attCard" style="font-size:13.5px;margin-top:6px"></div>
+        <p class="meta" style="margin-top:8px">رحلة رسائلك المجدولة: تأكيد الآن ✓ ← تذكير قبل 7 أيام ← تفاصيل الحضور قبل 24 ساعة ← تنبيه قبل ساعة. تصل بالبريد والواتساب حسب موافقاتك.</p>
+      </div>
+      <div class="card" style="padding:14px;text-align:right;box-shadow:none;margin-top:6px;border-inline-start:4px solid var(--teal)">
+        <b style="font-size:14px">📋 التقييم القبلي (5 دقائق)</b>
+        <p style="font-size:13px;margin-top:4px">10 أسئلة تقيس نقطة انطلاقك قبل البرنامج، وتقارن آلياً بنتيجتك البعدية لقياس أثر تدريبك. إلزامي لبرامج المنشآت واختياري للأفراد.</p>
+        <button class="btn btn-o btn-sm" style="margin-top:8px" onclick="alert('يفتح التقييم القبلي: 10 أسئلة اختيار من متعدد، تحفظ النتيجة في سجلك وتظهر في تقرير الأثر')">ابدأ التقييم القبلي</button>
+      </div>
       <div style="display:flex;gap:8px;justify-content:center;margin:16px 0;flex-wrap:wrap">
         <button class="btn btn-o btn-sm" onclick="alert('يحمل ملف ICS متوافقاً مع تقويم آبل وقوقل وأوتلوك')">📅 أضف للتقويم</button>
         <button class="btn btn-o btn-sm" onclick="alert('يفتح الفاتورة الضريبية PDF المتوافقة مع فاتورة')">🧾 الفاتورة</button>
@@ -409,6 +445,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
   <div class="wrap dash">
     <aside class="card side">
       <a class="on" data-p="regs" onclick="pane(this,'account')">🎫 تسجيلاتي</a>
+      <a data-p="learn" onclick="pane(this,'account')">🎥 تعلمي الرقمي</a>
       <a data-p="certs" onclick="pane(this,'account')">🎓 شهاداتي</a>
       <a data-p="invs" onclick="pane(this,'account')">🧾 فواتيري</a>
       <a data-p="saved" onclick="pane(this,'account')">♡ المحفوظات</a>
@@ -428,12 +465,65 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
             <button class="btn btn-o btn-sm" onclick="alert('ملف ICS')">أضف للتقويم</button>
             <button class="btn btn-o btn-sm" onclick="alert('يعرض سياسة التعديل: مجاني قبل 72 ساعة حسب التوفر')">تعديل أو إلغاء</button>
           </div>
+          <div style="background:var(--paper);border-radius:10px;padding:12px;margin-top:10px;font-size:13px">
+            <b>✦ تفاصيل الحضور (حضوري):</b> فندق حياة، الرياض — قاعة الملقا (الدور 2) | <a class="tag" onclick="alert('يفتح الموقع في خرائط قوقل مع إرشادات الوصول')">افتح الخريطة</a> | مواقف مجانية بتصريح يصلك مع رسالة الـ 24 ساعة | التسجيل من 8:30 | امسح رمزك عند بوابة القاعة صباح كل يوم من يومي الورشة (قاعدة الاحتساب: أيام الحضور ÷ يومين، والشهادة عند 80%+)
+            <br><span class="meta">رسائلك القادمة: تذكير 2 أغسطس ← التفاصيل والتصريح 8 أغسطس ← تنبيه 9 أغسطس 8:00 ص</span>
+          </div>
         </div>
         <div class="card"><table>
           <tr><th>البرنامج</th><th>الموعد</th><th>الحالة</th><th></th></tr>
-          <tr><td>إدارة المنافسات عبر منصة اعتماد</td><td>12 مايو 2026</td><td><span class="badge bg-ok">حضرت</span></td><td><a class="tag" onclick="alert('يفتح تسجيل الورشة المرئي، متاح 90 يوماً')">مشاهدة التسجيل</a></td></tr>
+          <tr><td>إدارة المنافسات عبر منصة اعتماد</td><td>12 مايو 2026</td><td><span class="badge bg-ok">حضرت</span></td><td><a class="tag" onclick="openLearn()">النسخة الرقمية ←</a></td></tr>
           <tr><td>أساسيات نظام المنافسات والمشتريات</td><td>3 فبراير 2026</td><td><span class="badge bg-ok">حضرت</span></td><td><a class="tag" onclick="pane(document.querySelector('[data-p=certs]'),'account')">الشهادة</a></td></tr>
         </table></div>
+      </div>
+
+      <div class="pane" id="account-learn">
+        <div class="card" style="padding:16px;margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center">
+            <div><span class="badge bg-teal">دورة مسجلة | ضمن اشتراكك</span>
+              <h3 style="margin:6px 0 2px">إدارة المنافسات عبر منصة اعتماد — النسخة الرقمية</h3>
+              <p class="meta">3 وحدات | 11 درساً (12–18 دقيقة للدرس) | سؤال تفاعلي بعد كل وحدة</p></div>
+            <button class="btn btn-p btn-sm" onclick="alert('يستأنف المشغل من الدقيقة 07:32 من الدرس 2-3 حيث توقفت آخر مرة')">▶ استأنف من حيث توقفت</button>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:12px">
+            <div class="prog" style="flex:1"><b style="width:64%"></b></div><b style="font-size:13px;color:var(--teal-d)">64%</b>
+          </div>
+          <p class="meta">شرط الشهادة الرقمية: إكمال 100% من الدروس واجتياز أسئلة الوحدات والتقييم البعدي بنسبة 70%+</p>
+        </div>
+        <div class="card" style="margin-bottom:14px">
+          <div class="modhead"><span>الوحدة 1: تهيئة المنافسة وطرحها</span><span style="color:var(--ok)">مكتملة ✓</span></div>
+          <div class="lesson"><span>1-1 إنشاء المنافسة وبياناتها الأساسية</span><span class="st-done">✓ 14 د</span></div>
+          <div class="lesson"><span>1-2 كراسة الشروط والمواصفات رقمياً</span><span class="st-done">✓ 17 د</span></div>
+          <div class="lesson"><span>1-3 الطرح والإعلان والأسئلة والأجوبة</span><span class="st-done">✓ 13 د</span></div>
+          <div class="lesson" style="background:#F8FBF9"><span>🧠 سؤال الوحدة 1</span><span class="st-done">مجتاز ✓</span></div>
+          <div class="modhead"><span>الوحدة 2: فتح العروض والتقييم</span><span style="color:var(--teal-d)">أنت هنا</span></div>
+          <div class="lesson"><span>2-1 لجنة فتح العروض إلكترونياً</span><span class="st-done">✓ 15 د</span></div>
+          <div class="lesson"><span>2-2 التقييم الفني والمالي</span><span class="st-done">✓ 18 د</span></div>
+          <div class="lesson"><span>2-3 التأهيل اللاحق ومعالجة الملاحظات</span><span class="st-cur">▶ 07:32 / 16 د</span></div>
+          <div style="padding:12px;border-top:1px solid var(--line)">
+            <b style="font-size:13.5px">🧠 سؤال الوحدة 2 (يفتح بعد إكمال دروسها):</b>
+            <p style="font-size:13.5px;margin:6px 0 2px">متى يجوز للجنة فحص العروض طلب توضيحات من المتنافسين؟</p>
+            <button class="qopt" onclick="quiz(this,false)">في أي وقت وبأي وسيلة تواصل مباشرة</button>
+            <button class="qopt" onclick="quiz(this,true)">عبر المنصة حصراً ودون تعديل جوهر العرض أو سعره</button>
+            <button class="qopt" onclick="quiz(this,false)">لا يجوز طلب أي توضيح بعد فتح العروض</button>
+            <p class="meta" id="quizFb" style="display:none;margin-top:6px"></p>
+          </div>
+          <div class="modhead"><span>الوحدة 3: الترسية والتعاقد</span><span class="st-lock">🔒 تفتح بإكمال الوحدة 2</span></div>
+          <div class="lesson"><span>3-1 قرار الترسية وفترة التوقف</span><span class="st-lock">🔒 16 د</span></div>
+          <div class="lesson"><span>3-2 إصدار العقد وربطه باعتماد</span><span class="st-lock">🔒 15 د</span></div>
+        </div>
+        <div class="grid g2">
+          <div class="card" style="padding:16px">
+            <b style="font-size:14px">📋 التقييم البعدي</b>
+            <p style="font-size:13px;margin-top:4px">يفتح بإكمال كل الوحدات. نتيجتك القبلية: <b>55%</b> — تقارن آلياً وتظهر في شهادتك وتقرير جهتك.</p>
+            <button class="btn btn-o btn-sm" style="margin-top:8px" disabled>🔒 أكمل الدروس أولاً</button>
+          </div>
+          <div class="card" style="padding:16px">
+            <b style="font-size:14px">🔔 تحديث نظامي</b>
+            <p style="font-size:13px;margin-top:4px">صدر تعديل على المادة 154 — أضيف درس تكميلي (6 دقائق) للوحدة 3 وأشعر كل المشتركين آلياً.</p>
+            <span class="badge bg-gold">ميزة الاشتراك السنوي</span>
+          </div>
+        </div>
       </div>
 
       <div class="pane" id="account-certs">
@@ -445,7 +535,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
             <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
               <button class="btn btn-o btn-sm" onclick="alert('يحمل الشهادة PDF بلغة حسابك مع خيار النسخة الإنجليزية')">تحميل PDF</button>
               <button class="btn btn-o btn-sm" onclick="go('verify')">صفحة التحقق</button>
-              <button class="btn btn-p btn-sm" onclick="alert('ينشر بطاقة الشهادة على لينكدإن باسم البرنامج وورش إبرام')">مشاركة على لينكدإن</button>
+              <button class="btn btn-p btn-sm" onclick="alert('ينشر بطاقة الشهادة على لينكدإن باسم البرنامج ومنصة إبرام')">مشاركة على لينكدإن</button>
             </div>
           </div>
           <div class="card" style="padding:18px">
@@ -504,7 +594,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         <div class="row"><span>الحامل</span><b>خالد عبدالله العتيبي</b></div>
         <div class="row"><span>البرنامج</span><b>إدارة المنافسات عبر منصة اعتماد (16 ساعة)</b></div>
         <div class="row"><span>تاريخ الإصدار</span><b>13 مايو 2026</b></div>
-        <div class="row"><span>الجهة</span><b>ورش إبرام | إنسبيراكور للاستشارات</b></div>
+        <div class="row"><span>الجهة</span><b>منصة الأنشطة والبرامج المصاحبة لمؤتمر إبرام | إنسبيراكور للاستشارات</b></div>
       </div>
     </div>
   </div>
@@ -553,6 +643,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <div class="card kpi"><b>42</b><span>متدرباً مسجلاً هذا العام</span></div>
           <div class="card kpi"><b>91%</b><span>نسبة الحضور</span><span class="up">▲ ممتازة</span></div>
           <div class="card kpi"><b>36</b><span>شهادة صادرة</span></div>
+          <div class="card kpi"><b>+27</b><span>نقطة متوسط أثر التدريب (قبلي/بعدي)</span><span class="up">▲ موثق</span></div>
           <div class="card kpi"><b>8 / 10</b><span>مقاعد الرعاية المتبقية للمؤتمر</span></div>
         </div>
         <div class="card" style="padding:16px">
@@ -581,6 +672,19 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <p class="meta" style="margin-bottom:10px">تولد آلياً عند إغلاق كل دفعة: تقرير حضور تفصيلي + الشهادات + ملخص التقييمات + خطاب إتمام، بصيغ تلائم متطلبات جهات الدعم (هدف)</p>
           <button class="btn btn-p btn-sm" onclick="alert('يحمل ملفاً مضغوطاً بالحزمة كاملة PDF')">تحميل الحزمة الختامية</button>
         </div>
+        <div class="card" style="padding:18px;margin-top:14px;border-inline-start:4px solid var(--gold)">
+          <h3 style="font-size:15px">✦ تقرير أثر التدريب (قبلي / بعدي)</h3>
+          <p class="meta" style="margin:6px 0 10px">يقيس مستوى "التعلم" لا مجرد الحضور — جاهز للرفع لجهات الدعم ولقياس عائد استثمار جهتكم</p>
+          <table>
+            <tr><th>البرنامج</th><th>متوسط قبلي</th><th>متوسط بعدي</th><th>الأثر</th></tr>
+            <tr><td>أحكام التعاقد الحكومي</td><td>58%</td><td>86%</td><td><span class="badge bg-ok">+28 نقطة</span></td></tr>
+            <tr><td>إدارة المنافسات عبر اعتماد</td><td>61%</td><td>87%</td><td><span class="badge bg-ok">+26 نقطة</span></td></tr>
+          </table>
+          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+            <button class="btn btn-p btn-sm" onclick="alert('PDF تفصيلي: أثر كل متدرب، وتوزيع النتائج، وتوصيات المتابعة بعد 90 يوماً')">تحميل تقرير الأثر PDF</button>
+            <button class="btn btn-o btn-sm" onclick="alert('يجدول استبانة متابعة سلوكية بعد 90 يوماً للمتدربين ومديريهم (المستوى الثالث: انتقال الأثر لبيئة العمل)')">متابعة الأثر بعد 90 يوماً</button>
+          </div>
+        </div>
       </div>
 
       <div class="pane" id="org-fin">
@@ -601,6 +705,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
       <a class="on" data-p="ws" onclick="pane(this,'trainer')">📚 ورشي القادمة</a>
       <a data-p="mat" onclick="pane(this,'trainer')">📎 موادي</a>
       <a data-p="att" onclick="pane(this,'trainer')">✅ قائمة الحضور</a>
+      <a data-p="quiz" onclick="pane(this,'trainer')">🧠 بنك الأسئلة والتقييم</a>
       <a data-p="rate" onclick="pane(this,'trainer')">⭐ تقييماتي</a>
       <a data-p="prof" onclick="pane(this,'trainer')">👤 ملفي التعريفي</a>
     </aside>
@@ -646,6 +751,28 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         </div>
       </div>
 
+      <div class="pane" id="trainer-quiz">
+        <div class="card" style="padding:18px;margin-bottom:14px">
+          <h3 style="font-size:15px;margin-bottom:8px">التقييم القبلي / البعدي — أحكام التعاقد الحكومي</h3>
+          <table>
+            <tr><th>الأداة</th><th>الأسئلة</th><th>الحالة</th></tr>
+            <tr><td>التقييم القبلي</td><td>10 أسئلة</td><td><span class="badge bg-ok">معتمد ومفعل</span></td></tr>
+            <tr><td>التقييم البعدي (مكافئ الصعوبة)</td><td>10 أسئلة</td><td><span class="badge bg-warn">بانتظار اعتماد الإدارة</span></td></tr>
+          </table>
+          <button class="btn btn-p btn-sm" style="margin-top:12px" onclick="alert('محرر أسئلة اختيار من متعدد، مع خيار التوليد الآلي من الحقيبة التدريبية بمراجعتك واعتماد الإدارة قبل التفعيل')">+ إضافة أو توليد أسئلة</button>
+        </div>
+        <div class="card" style="padding:18px">
+          <h3 style="font-size:15px;margin-bottom:8px">أسئلة وحدات النسخة الرقمية — إدارة المنافسات عبر اعتماد</h3>
+          <table>
+            <tr><th>الوحدة</th><th>السؤال التفاعلي</th><th>نسبة الإجابة الصحيحة من أول محاولة</th></tr>
+            <tr><td>1: تهيئة المنافسة وطرحها</td><td><span class="badge bg-ok">مفعل</span></td><td>82%</td></tr>
+            <tr><td>2: فتح العروض والتقييم</td><td><span class="badge bg-ok">مفعل</span></td><td>64% <span class="badge bg-warn">راجع صياغة الدرس 2-2</span></td></tr>
+            <tr><td>3: الترسية والتعاقد</td><td><span class="badge bg-warn">مسودة</span></td><td>—</td></tr>
+          </table>
+          <p class="note" style="margin-top:10px">انخفاض نسبة الإجابة الصحيحة يظهر لك آلياً كإشارة لمراجعة الدرس المرتبط — التحسين المستمر جزء من دورك.</p>
+        </div>
+      </div>
+
       <div class="pane" id="trainer-rate">
         <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
           <div class="card kpi"><b>4.9</b><span>تقييم المدرب</span></div>
@@ -675,11 +802,12 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
 <!-- ============ ADMIN HEADER ============ -->
 <div class="ahead" id="adminHead" style="display:none">
   <div class="wrap in">
-    <a class="logo" style="color:#fff" onclick="go('admin')"><span class="mk">إ</span> إدارة ورش إبرام</a>
+    <a class="logo" style="color:#fff" onclick="go('admin')"><span class="mk">✦</span> إدارة منصة الأنشطة والبرامج | إبرام</a>
     <nav class="anav">
       <a data-nav="admin" class="on" onclick="go('admin')">لوحة اليوم</a>
       <a data-nav="wizard" onclick="go('wizard')">إنشاء دفعة</a>
       <a data-nav="mission" onclick="go('mission')">تشغيل يوم الورشة</a>
+      <a data-nav="comms" onclick="go('comms')">الرسائل والانتظار</a>
       <a data-nav="crm" onclick="go('crm')">CRM</a>
       <a data-nav="exec" onclick="go('exec')">اللوحة التنفيذية</a>
       <a data-nav="superadmin" onclick="go('superadmin')" id="superTab" style="display:none">⚙ المشرف الأعلى</a>
@@ -728,6 +856,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <div class="field"><label>المكان / رابط البث</label><input value="فندق حياة، الرياض"></div>
           <div class="field"><label>السعة</label><input type="number" value="30"></div>
         </div>
+        <p class="note">⚖ بند حوكمة مؤجل: البرامج المدفوعة بنمط "عن بعد" أو "هجين" مربوطة ببوابة إلزامية (متطلب ترخيص التعليم الإلكتروني) تفعل قبل الإطلاق التجاري للمحتوى الرقمي — لا تمنع النشر حالياً وتظهر كتذكير للإدارة.</p>
       </div>
       <div class="pane" id="wiz-3">
         <table>
@@ -746,6 +875,8 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <div class="field"><label>إغلاق التسجيل</label><input type="date" value="2026-10-12"></div>
           <div class="field"><label>الخصوصية</label><select><option>عامة (تظهر في الكتالوج)</option><option>خاصة (لمنشأة)</option><option>بدعوة فقط</option></select></div>
           <div class="field"><label>قائمة الانتظار</label><select><option>مفعلة</option><option>معطلة</option></select></div>
+          <div class="field"><label>سلسلة رسائل ما قبل الورشة</label><select><option>القالب الحضوري (خريطة + إرشادات + QR)</option><option>قالب عن بعد (رابط البث + بيانات الدخول)</option><option>هجين (قالبان حسب التذكرة)</option></select></div>
+          <div class="field"><label>التقييم القبلي / البعدي</label><select><option>مفعل (إلزامي للمنشآت)</option><option>معطل</option></select></div>
         </div>
       </div>
       <div class="pane" id="wiz-5">
@@ -764,7 +895,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
 <section class="screen" id="s-mission">
   <div class="wrap sec">
     <h2>تشغيل يوم الورشة</h2>
-    <p class="lead">أحكام التعاقد الحكومي | اليوم 9:00 صباحاً | فندق حياة، الرياض</p>
+    <p class="lead">أحكام التعاقد الحكومي | اليوم الأول من يومين | 9:00 صباحاً | فندق حياة، الرياض — مسح مستقل لكل يوم تدريبي</p>
     <div class="mc">
       <div class="card">
         <div style="padding:14px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center">
@@ -779,13 +910,51 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <div class="big"><span id="attN">0</span> <small style="font-size:18px;color:var(--slate)">/ 31</small></div>
           <div class="seat" style="margin:10px 0"><div class="bar"><b id="attBar" style="background:var(--ok);width:0%"></b></div></div>
           <button class="btn btn-p" style="width:100%" onclick="scanQR()">📷 محاكاة مسح QR</button>
-          <p class="meta" style="margin-top:8px">الماسح يعمل من جوال المنسق، بوضع دون اتصال يزامن عند عودة الشبكة</p>
+          <p class="meta" style="margin-top:8px">الماسح يعمل من جوال المنسق، بوضع دون اتصال يزامن عند عودة الشبكة. قاعدة الاحتساب: نسبة الحضور = أيام الحضور الموثقة ÷ أيام الورشة، وللبث تحتسب آلياً من تقرير مدة الجلسة (80% من مدة البث)</p>
         </div>
         <div class="card" style="padding:16px">
           <b style="font-size:14px">إجراءات سريعة</b>
           <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="alert('ترسل رسالة واتساب جماعية لمن لم يحضر بعد: الورشة بدأت، القاعة رقم 2')">تنبيه المتأخرين برسالة</button>
-          <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="alert('تغلق الدفعة: يجمد الحضور، وتنطلق آلياً الشهادات لمن أتم 80% والاستبانة للجميع خلال 24 ساعة')">إغلاق الدفعة وإطلاق الشهادات</button>
+          <button class="btn btn-o btn-sm" style="width:100%;margin-top:8px" onclick="alert('تغلق الدفعة: يجمد الاحتساب، وتنطلق آلياً الشهادات لمن أتم 80% وفق قواعد الاحتساب، والتقييم البعدي والاستبانة للجميع خلال 24 ساعة')">إغلاق الدفعة وإطلاق الشهادات</button>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADMIN: COMMS & WAITLIST ============ -->
+<section class="screen" id="s-comms">
+  <div class="wrap sec">
+    <h2>رسائل ما قبل الورشة، وقوائم الانتظار، والأكواد</h2>
+    <p class="lead">سلاسل آلية بقوالب معتمدة تتغير حسب نمط التنفيذ — لا رسالة يدوية إلا بالاستثناء</p>
+    <div class="card" style="padding:18px;margin-bottom:14px">
+      <b style="font-size:14px">سلسلة دفعة "أحكام التعاقد الحكومي" — 9 أغسطس (حضوري)</b>
+      <table class="seq" style="margin-top:10px">
+        <tr><th>الرسالة</th><th>التوقيت</th><th>القنوات</th><th>المحتوى</th><th>الحالة</th></tr>
+        <tr><td>تأكيد التسجيل</td><td>فوراً</td><td>بريد + واتساب</td><td>الفاتورة + رمز QR + بطاقة تفاصيل الحضور</td><td><span class="badge bg-ok">أرسلت لـ 17</span></td></tr>
+        <tr><td>تذكير مبكر</td><td>قبل 7 أيام</td><td>بريد</td><td>الاستعداد + المواد القبلية + التقييم القبلي</td><td><span class="badge bg-teal">مجدولة 2 أغسطس</span></td></tr>
+        <tr><td>تفاصيل الحضور</td><td>قبل 24 ساعة</td><td>بريد + واتساب</td><td>الخريطة + إرشادات الوصول + تصريح المواقف + رقم القاعة + QR</td><td><span class="badge bg-teal">مجدولة 8 أغسطس</span></td></tr>
+        <tr><td>تنبيه الانطلاق</td><td>قبل ساعة</td><td>واتساب</td><td>القاعة رقم 2 | التسجيل بدأ</td><td><span class="badge bg-teal">مجدولة</span></td></tr>
+      </table>
+      <p class="meta" style="margin-top:8px">قالب "عن بعد" يستبدل الخريطة برابط البث وبيانات الدخول تلقائياً، و"الهجين" يرسل لكل تذكرة قالبها. <a class="tag" onclick="alert('معاينة القالبين بلغتي المنصة قبل الاعتماد')">معاينة القوالب</a></p>
+    </div>
+    <div class="grid g2">
+      <div class="card" style="padding:18px">
+        <b style="font-size:14px">قوائم الانتظار</b>
+        <table style="margin-top:10px">
+          <tr><th>الدفعة</th><th>المنتظرون</th><th>إجراء</th></tr>
+          <tr><td>قياس أداء الموردين (40/40)</td><td><b>12</b></td><td><button class="btn btn-o btn-sm" onclick="alert('عند شغور مقعد: إشعار آلي لأول المنتظرين بأولوية حجز 24 ساعة، ثم التالي. 12 منتظراً = إشارة قوية لفتح دفعة ثانية')">فتح دفعة من الانتظار</button></td></tr>
+          <tr><td>أحكام التعاقد الحكومي (28/31)</td><td><b>3</b></td><td><span class="meta">تلقائي عند الاكتمال</span></td></tr>
+        </table>
+      </div>
+      <div class="card" style="padding:18px">
+        <b style="font-size:14px">أكواد الخصم</b>
+        <table style="margin-top:10px">
+          <tr><th>الكود</th><th>الخصم</th><th>الاستخدام</th><th>الحالة</th></tr>
+          <tr><td>IBRAM10</td><td>10%</td><td>84 مرة</td><td><span class="badge bg-ok">فعال</span></td></tr>
+          <tr><td>CONF26 (لحضور المؤتمر)</td><td>20%</td><td>—</td><td><span class="badge bg-teal">يفعل بعد المؤتمر</span></td></tr>
+        </table>
+        <button class="btn btn-o btn-sm" style="margin-top:10px" onclick="alert('كود جديد: نسبة أو مبلغ، سقف استخدام، صلاحية، وربط بشريحة CRM')">+ كود جديد</button>
       </div>
     </div>
   </div>
@@ -848,6 +1017,8 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
       <div class="card kpi"><b>23%</b><span>التحويل المتقاطع مؤتمر ← ورش</span><span class="up">▲ مؤشر من الدرجة الأولى</span></div>
       <div class="card kpi"><b>4.6</b><span>LTV / CAC</span><span class="up">فوق حد الـ4</span></div>
       <div class="card kpi"><b>62</b><span>صافي الترويج NPS</span></div>
+      <div class="card kpi"><b>9%</b><span>الإيراد المتكرر (المستهدف 15% خلال 6 أشهر)</span></div>
+      <div class="card kpi"><b>61%</b><span>إكمال الدورات المسجلة (المستهدف 60%)</span><span class="up">▲ فوق المستهدف</span></div>
     </div>
     <div class="grid g2">
       <div class="card" style="padding:18px">
@@ -908,6 +1079,8 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <tr><td>نظام مؤتمر إبرام (مزامنة العملاء)</td><td><span class="dot g"></span> آخر مزامنة قبل 20 دقيقة</td></tr>
           <tr><td>واتساب أعمال</td><td><span class="dot y"></span> بطء في التسليم، طابور إعادة محاولة نشط</td></tr>
           <tr><td>Zoom / Teams</td><td><span class="dot g"></span> تعمل</td></tr>
+          <tr><td>تقارير مدة الجلسات (احتساب حضور البث)</td><td><span class="dot g"></span> مزامنة بعد كل جلسة</td></tr>
+          <tr><td>منصة الفيديو للدورات المسجلة (CDN)</td><td><span class="dot g"></span> تعمل | حماية المحتوى بعلامة مائية باسم المشترك</td></tr>
           <tr><td>النسخ الاحتياطي</td><td><span class="dot g"></span> آخر نسخة 3:00 فجراً | آخر اختبار استعادة: 12 يونيو ✓</td></tr>
         </table>
       </div>
@@ -929,7 +1102,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
   </div>
 </section>
 
-<footer>نموذج أولي تفاعلي لورش إبرام | كل الأسماء والأرقام توضيحية | يبنى وفق الوثيقة المرجعية الإصدار 2.0</footer>
+<footer>✦ منصة الأنشطة والبرامج المصاحبة لمؤتمر إبرام | نموذج أولي تفاعلي — كل الأسماء والأرقام توضيحية | الإصدار 3.0 بعد تطبيق الدراسة الاستشارية (يوليو 2026)</footer>
 
 <script>
 /* ===== data ===== */
@@ -957,7 +1130,7 @@ function cardHTML(w){const[st,lb,bg,pc]=seatState(w);
 const custScreens=['home','list','details','checkout','account','verify','corp','org'];
 function go(s){document.querySelectorAll('.screen').forEach(e=>e.classList.remove('on'));
  document.getElementById('s-'+s).classList.add('on');
- const isAdmin=['admin','wizard','mission','crm','exec','superadmin'].includes(s);
+ const isAdmin=['admin','wizard','mission','comms','crm','exec','superadmin'].includes(s);
  document.getElementById('custHead').style.display=isAdmin?'none':'block';
  document.getElementById('adminHead').style.display=isAdmin?'block':'none';
  document.querySelectorAll('.anav a').forEach(a=>a.classList.toggle('on',a.dataset.nav===s));
@@ -981,8 +1154,21 @@ function renderList(){const m=checkedVals('fMode'),c=checkedVals('fCat');
  document.querySelectorAll('#fCat .op').forEach(op=>{op.querySelector('.n').textContent=W.filter(w=>w.cat===op.querySelector('input').value).length});}
 function clearFilters(){document.querySelectorAll('.filters input').forEach(i=>i.checked=false);renderList();}
 
+/* ===== attendance rules per mode ===== */
+function rulesHTML(mode){
+ const site='<b>حضوري:</b> مسح رمز QR مرة عند بداية كل يوم تدريبي. نسبة الحضور = أيام الحضور الموثقة ÷ أيام الورشة.';
+ const live='<b>عن بعد:</b> يحتسب الحضور آلياً من تقرير مدة الجلسة في منظومة البث — يعد اليوم محضوراً عند تواجدك 80% من مدة البث.';
+ if(mode==='حضوري')return site+'<br>الشهادة تصدر آلياً عند 80% فأكثر.';
+ if(mode==='عن بعد')return live+'<br>الشهادة تصدر آلياً عند 80% فأكثر، دون أي إجراء منك.';
+ return site+'<br>'+live+'<br><b>الهجين:</b> تطبق قاعدة كل نمط على تذكرته، والشهادة عند 80% من إجمالي أيام/جلسات البرنامج.';}
+function attCardHTML(w){
+ if(w.mode==='عن بعد')return '📡 <b>رابط البث وبيانات الدخول</b> تصلك قبل 24 ساعة بالبريد والواتساب (وتظهر هنا وفي حسابك). التوقيت: '+w.d.split('|')[0].trim()+' 7:30 مساءً | ادخل قبل 10 دقائق لاختبار الصوت | حضورك يحتسب آلياً من مدة الجلسة (80%+).';
+ if(w.mode==='هجين')return '🏨 <b>تذكرة الحضوري:</b> الموقع والخريطة وتصريح المواقف تصلك قبل 24 ساعة + امسح رمزك صباح كل يوم.<br>📡 <b>تذكرة البث:</b> الرابط وبيانات الدخول قبل 24 ساعة، والحضور يحتسب آلياً.';
+ return '🏨 <b>الموقع:</b> '+w.city+' — تصلك الخريطة وإرشادات الوصول وتصريح المواقف ورقم القاعة قبل 24 ساعة. أحضر رمز QR وامسحه عند البوابة صباح كل يوم من أيام الورشة.';}
+
 /* ===== details ===== */
 function openDetails(id){cur=W.find(w=>w.id===id);sel=0;
+ document.getElementById('dRules').innerHTML=rulesHTML(cur.mode);
  document.getElementById('dCrumb').textContent=cur.t;
  document.getElementById('dTitle').textContent=cur.t;
  document.getElementById('dMeta').textContent='👤 '+cur.tr+'   |   📅 '+cur.d;
@@ -1030,6 +1216,7 @@ function applyCoupon(){const v=document.getElementById('fCoupon').value.trim().t
 function pickPay(b){document.querySelectorAll('#payops button').forEach(x=>x.classList.remove('on'));b.classList.add('on');}
 function coBack(){coStep(1);}
 function coNext2(){coStep(3);
+ document.getElementById('attCard').innerHTML=attCardHTML(order.w);
  document.getElementById('confLine').innerHTML='رقم التسجيل: <b>REG-2026-'+(1000+Math.floor(Math.random()*9000))+'</b> | '+order.w.t+' | '+order.w.d;
  const q=document.getElementById('qrBox');q.innerHTML='';
  for(let i=0;i<49;i++){q.innerHTML+='<i class="'+(Math.random()>.45?'':'o')+'"></i>';}}
@@ -1037,6 +1224,16 @@ function startHold(){stopHold();let t=900;const el=document.getElementById('hold
  holdTimer=setInterval(()=>{t--;if(t<0){stopHold();alert('انتهت مهلة الحجز المؤقت؛ أعيد المقعد للمتاح وبقي طلبك مسودة يمكن استئنافها');coStep(1);return;}
  el.textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');},1000);}
 function stopHold(){if(holdTimer)clearInterval(holdTimer);}
+
+/* ===== digital learning ===== */
+function openLearn(){go('account');
+ const a=document.querySelector('[data-p=learn]');if(a)pane(a,'account');}
+function quiz(el,ok){
+ el.parentElement.querySelectorAll('.qopt').forEach(b=>b.classList.remove('good','bad'));
+ el.classList.add(ok?'good':'bad');
+ const fb=document.getElementById('quizFb');fb.style.display='block';
+ fb.innerHTML=ok?'✓ إجابة صحيحة — اكتملت الوحدة 2 وفتحت الوحدة 3، وارتفع تقدمك إلى 73%':'✗ غير صحيحة — راجع الدرس 2-3 (الدقيقة 09:40) ثم أعد المحاولة، ولا يؤثر ذلك على شهادتك';
+ if(ok){document.querySelector('.prog b').style.width='73%';}}
 
 /* ===== mission control ===== */
 const ATT=['خالد العتيبي|أخصائي عقود','هند العنزي|مديرة مشتريات','بدر الحربي|محلل منافسات','نورة القحطاني|أخصائية مشتريات','فهد الدوسري|مدير عقود','سارة المطيري|منسقة مشاريع','عبدالله الشمري|مشرف توريد','ريم العتيبي|محاسبة عقود'].map(s=>{const[a,b]=s.split('|');return{n:a,r:b,in:false};});

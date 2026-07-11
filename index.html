@@ -404,7 +404,16 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           </div>
           <div class="err" id="ePhone">رقم الجوال غير صحيح لمفتاح الدولة المختار</div></div>
         <div class="field"><label>البريد الإلكتروني</label><input id="fMail" placeholder="name@entity.gov.sa"><div class="err" id="eMail">تحقق من كتابة البريد</div></div>
-        <div class="field"><label>جهة العمل (اختياري)</label><input placeholder="مثال: الهيئة العامة لـ..."></div>
+        <div class="field"><label>جهة العمل <b style="color:var(--red)">*</b></label><input id="fOrg" placeholder="مثال: الهيئة العامة لـ..."><div class="err" id="eOrg">جهة العمل إلزامية</div></div>
+        <div class="field"><label>المسمى الوظيفي <b style="color:var(--red)">*</b></label><input id="fJob" placeholder="مثال: أخصائي عقود"><div class="err" id="eJob">المسمى الوظيفي إلزامي</div></div>
+        <div class="field"><label>القطاع <b style="color:var(--red)">*</b></label>
+          <select id="fSector">
+            <option value="">اختر القطاع...</option>
+            <option value="gov">حكومي</option>
+            <option value="semi">شبه حكومي</option>
+            <option value="priv">خاص</option>
+          </select>
+          <div class="err" id="eSector">اختيار القطاع إلزامي</div></div>
       </div>
       <div class="field"><label>نوع الفاتورة</label>
         <select id="fInv" onchange="document.getElementById('vatWrap').style.display=this.value=='ent'?'block':'none'">
@@ -426,7 +435,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
       </div>
       <button class="btn btn-o btn-sm" style="width:100%;margin-bottom:8px;border-style:dashed" onclick="demoFill()">⚡ محاكاة: تعبئة بيانات تجريبية (للاستعراض السريع)</button>
       <button class="btn btn-p" style="width:100%" onclick="coNext1()">متابعة إلى الدفع</button>
-      <p class="meta" style="text-align:center;margin-top:8px">لن يطلب منك إنشاء كلمة مرور؛ ينشأ حسابك تلقائياً ويصلك رابط تفعيل بعد التأكيد</p>
+      <p class="meta" style="text-align:center;margin-top:8px">لن يطلب منك إنشاء كلمة مرور؛ ينشأ حسابك تلقائياً ويصلك رابط تفعيل بعد التأكيد. جهة عملك ومسماك وقطاعك تظهر في شهادتك وتقارير جهتك وترشح لك البرامج الأنسب</p>
     </div>
 
     <!-- step 2 -->
@@ -703,7 +712,10 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
           <div class="field"><label>البريد الرسمي</label><input placeholder="name@entity.gov.sa" dir="ltr" style="text-align:left"></div>
           <div class="field"><label>رقم الجوال</label><input placeholder="+966 5x xxx xxxx" dir="ltr" style="text-align:left"></div>
         </div>
-        <div class="field"><label>حجم المجموعة</label><select><option>10 - 25 متدرباً</option><option>26 - 50</option><option>أكثر من 50</option></select></div>
+        <div class="cogrid">
+          <div class="field"><label>القطاع <b style="color:var(--red)">*</b></label><select><option value="">اختر القطاع...</option><option>حكومي</option><option>شبه حكومي</option><option>خاص</option></select></div>
+          <div class="field"><label>حجم المجموعة</label><select><option>10 - 25 متدرباً</option><option>26 - 50</option><option>أكثر من 50</option></select></div>
+        </div>
         <button class="btn btn-gold" style="width:100%" onclick="alert('ينشئ فرصة آلياً في خط المبيعات وينبه مسؤول النجاح المؤسسي. الوعد المعلن: أول رد خلال 4 ساعات عمل')">أرسل الطلب</button>
         <p class="meta" style="text-align:center;margin-top:8px">يصلك رد خلال 4 ساعات عمل | بياناتك تعالج وفق سياسة الخصوصية ونظام حماية البيانات الشخصية</p>
       </div>
@@ -1274,7 +1286,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
     <a style="color:#B9C8D6" onclick="go('verify')">التحقق من شهادة</a>
     <a style="color:#B9C8D6" onclick="alert('الدعم: واتساب أعمال + بريد support@... | الأحد - الخميس 8:30 ص - 5:30 م، ورد آلي خارجها')">الدعم والتواصل</a>
   </div>
-  ✦ منصة الأنشطة والبرامج المصاحبة لمؤتمر إبرام | نموذج أولي تفاعلي — كل الأسماء والأرقام توضيحية | الإصدار 3.3 — معالجة ثغرات فحص شامل: موافقات نظامية إلزامية، تحسينات وصولية وSEO، وتدقيق لغوي (يوليو 2026)
+  ✦ منصة الأنشطة والبرامج المصاحبة لمؤتمر إبرام | نموذج أولي تفاعلي — كل الأسماء والأرقام توضيحية | الإصدار 3.4 — حقول إلزامية لقاعدة البيانات والتسويق: جهة العمل والمسمى الوظيفي والقطاع (يوليو 2026)
 </footer>
 
 <script>
@@ -1395,8 +1407,14 @@ function coNext1(){let ok=true;
  const cc=document.getElementById('fCC').value,ph=phone.value.replace(/\D/g,'');
  show('ePhone',cc==='+966'?!(ph.length===9&&ph[0]==='5'):ph.length<8);
  show('eMail',!/^\S+@\S+\.\S+$/.test(mail.value));
+ show('eOrg',!document.getElementById('fOrg').value.trim());
+ show('eJob',!document.getElementById('fJob').value.trim());
+ show('eSector',!document.getElementById('fSector').value);
  if(document.getElementById('fInv').value==='ent'){const v=document.getElementById('fVat').value.replace(/\D/g,'');show('eVat',!(v.length===15&&v[0]==='3'&&v[14]==='3'));}
  if(ok){order.name=name.value;order.phone=cc+' '+phone.value;
+  order.org=document.getElementById('fOrg').value.trim();
+  order.job=document.getElementById('fJob').value.trim();
+  order.sector={gov:'حكومي',semi:'شبه حكومي',priv:'خاص'}[document.getElementById('fSector').value];
   if(otpOk){coStep(2);return;}
   const ob=document.getElementById('otpBox');ob.style.display='block';
   if(ob.scrollIntoView)ob.scrollIntoView({behavior:'smooth',block:'center'});document.getElementById('fOtp').focus();}}
@@ -1442,14 +1460,17 @@ function addRegToAccount(){const c=document.getElementById('account-regs');
  d.style.cssText='padding:16px;margin-bottom:14px;border-inline-start:4px solid var(--ok)';
  d.innerHTML=`<span class="badge bg-ok">تسجيلك الجديد — قبل لحظات</span>
   <h3 style="margin:6px 0 2px">${order.w.t}</h3>
-  <p class="meta">📅 ${order.w.d} | ${modeTag(order.w)} | باسم: ${order.name||'—'} | ${order.phone||''}</p>
+  <p class="meta">📅 ${order.w.d} | ${modeTag(order.w)} | باسم: ${order.name||'—'} (${order.job||''} — ${order.org||''} | قطاع ${order.sector||''})</p>
   <p class="meta">✉ وصلك التأكيد بالبريد والواتساب الموثقين، وجدولت رحلة رسائلك آلياً</p>`;
  c.prepend(d);}
 function demoFill(){document.getElementById('fName').value='خالد عبدالله العتيبي';
  document.getElementById('fCC').value='+966';
  document.getElementById('fPhone').value='551234567';
  document.getElementById('fMail').value='khalid@entity.gov.sa';
- ['eName','ePhone','eMail','eVat'].forEach(i=>{const e=document.getElementById(i);if(e)e.style.display='none';});}
+ document.getElementById('fOrg').value='الهيئة العامة للمشتريات';
+ document.getElementById('fJob').value='أخصائي عقود';
+ document.getElementById('fSector').value='gov';
+ ['eName','ePhone','eMail','eVat','eOrg','eJob','eSector'].forEach(i=>{const e=document.getElementById(i);if(e)e.style.display='none';});}
 let otpOk=false;
 
 /* ===== post-registration journey simulator ===== */

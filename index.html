@@ -389,6 +389,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         </select>
       </div>
       <div class="field" id="vatWrap" style="display:none"><label>الرقم الضريبي للمنشأة (15 رقماً)</label><input id="fVat" placeholder="3xxxxxxxxxxxxx3" dir="ltr" style="text-align:right"><div class="err" id="eVat">الرقم الضريبي المدخل غير صحيح</div></div>
+      <button class="btn btn-o btn-sm" style="width:100%;margin-bottom:8px;border-style:dashed" onclick="demoFill()">⚡ محاكاة: تعبئة بيانات تجريبية (للاستعراض السريع)</button>
       <button class="btn btn-p" style="width:100%" onclick="coNext1()">متابعة إلى الدفع</button>
       <p class="meta" style="text-align:center;margin-top:8px">لن يطلب منك إنشاء كلمة مرور؛ ينشأ حسابك تلقائياً ويصلك رابط تفعيل بعد التأكيد</p>
     </div>
@@ -434,6 +435,12 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
         <b style="font-size:14px">✦ بطاقة تفاصيل الحضور</b>
         <div id="attCard" style="font-size:13.5px;margin-top:6px"></div>
         <p class="meta" style="margin-top:8px">رحلة رسائلك المجدولة: تأكيد الآن ✓ ← تذكير قبل 7 أيام ← تفاصيل الحضور قبل 24 ساعة ← تنبيه قبل ساعة. تصل بالبريد والواتساب حسب موافقاتك.</p>
+      </div>
+      <div class="card" style="padding:16px;text-align:right;box-shadow:none;margin-top:6px;border-inline-start:4px solid var(--navy2)">
+        <b style="font-size:14px">🧭 جرب رحلتك كاملة بعد التسجيل (محاكاة تفاعلية)</b>
+        <p class="meta" style="margin-top:4px">من رسالة ما قبل البرنامج حتى إصدار الشهادة — انقر المراحل بترتيبها، كل مرحلة تفتح التي بعدها</p>
+        <div id="jSteps" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px"></div>
+        <div id="jBody" style="margin-top:12px;background:#F6F8FA;border:1px solid var(--line);border-radius:10px;padding:13px;font-size:13.5px;line-height:1.9"></div>
       </div>
       <div class="card" style="padding:14px;text-align:right;box-shadow:none;margin-top:6px;border-inline-start:4px solid var(--teal)">
         <b style="font-size:14px">📋 التقييم القبلي (5 دقائق)</b>
@@ -623,9 +630,9 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
       <button class="btn btn-p" style="width:100%;margin-top:10px" onclick="document.getElementById('vRes').style.display='block'">تحقق</button>
       <div id="vRes" style="display:none;margin-top:16px;text-align:right" class="summ">
         <div class="row"><span>الحالة</span><b style="color:var(--ok)">✓ شهادة صحيحة وسارية</b></div>
-        <div class="row"><span>الحامل</span><b>خالد عبدالله العتيبي</b></div>
-        <div class="row"><span>البرنامج</span><b>إدارة المنافسات عبر منصة اعتماد (16 ساعة)</b></div>
-        <div class="row"><span>تاريخ الإصدار</span><b>13 مايو 2026</b></div>
+        <div class="row"><span>الحامل</span><b id="vHolder">خالد عبدالله العتيبي</b></div>
+        <div class="row"><span>البرنامج</span><b id="vProg">إدارة المنافسات عبر منصة اعتماد (16 ساعة)</b></div>
+        <div class="row"><span>تاريخ الإصدار</span><b id="vDate">13 مايو 2026</b></div>
         <div class="row"><span>الجهة</span><b>منصة الأنشطة والبرامج المصاحبة لمؤتمر إبرام | إنسبيراكور للاستشارات</b></div>
       </div>
     </div>
@@ -1207,7 +1214,7 @@ footer{background:var(--navy);color:#8FA3B5;text-align:center;font-size:12px;pad
   </div>
 </section>
 
-<footer>✦ منصة الأنشطة والبرامج المصاحبة لمؤتمر إبرام | نموذج أولي تفاعلي — كل الأسماء والأرقام توضيحية | الإصدار 3.0 بعد تطبيق الدراسة الاستشارية (يوليو 2026)</footer>
+<footer>✦ منصة الأنشطة والبرامج المصاحبة لمؤتمر إبرام | نموذج أولي تفاعلي — كل الأسماء والأرقام توضيحية | الإصدار 3.1 — إضافة محاكاة رحلة ما بعد التسجيل كاملة (يوليو 2026)</footer>
 
 <script>
 /* ===== data ===== */
@@ -1347,7 +1354,70 @@ function coNext2(){coStep(3);
  document.getElementById('attCard').innerHTML=attCardHTML(order.w);
  document.getElementById('confLine').innerHTML='رقم التسجيل: <b>REG-2026-'+(1000+Math.floor(Math.random()*9000))+'</b> | '+order.w.t+' | '+order.w.d;
  const q=document.getElementById('qrBox');q.innerHTML='';
- for(let i=0;i<49;i++){q.innerHTML+='<i class="'+(Math.random()>.45?'':'o')+'"></i>';}}
+ for(let i=0;i<49;i++){q.innerHTML+='<i class="'+(Math.random()>.45?'':'o')+'"></i>';}
+ initJourney();}
+function demoFill(){document.getElementById('fName').value='خالد عبدالله العتيبي';
+ document.getElementById('fPhone').value='+966551234567';
+ document.getElementById('fMail').value='khalid@entity.gov.sa';
+ ['eName','ePhone','eMail','eVat'].forEach(i=>{const e=document.getElementById(i);if(e)e.style.display='none';});}
+
+/* ===== post-registration journey simulator ===== */
+let jMax=0,jQuiz=false,jCert=null;
+function jStages(){const m=order.w.mode;
+ if(m==='عن بعد تفاعلي')return[
+  {t:'📩 رسالة قبل 24 ساعة',h:()=>`<b>وصلتك بالبريد والواتساب:</b> رابط الانضمام للجلسة + بيانات الدخول باسمك (دون كلمة مرور) + زر <b>الاختبار التقني</b> للصوت والاتصال.<br><span class="meta">خياران تشغيليان جاهزان بنفس الرحلة للمتدرب: <b>تكامل Zoom / Teams</b> (الرابط يرسل آلياً من المنصة وينضم المتدرب من المتصفح مباشرة دون تثبيت تطبيق أو إنشاء حساب) أو <b>الفصل الافتراضي المدمج بالمنصة</b> — القرار للإدارة لكل دفعة، والرابط في الحالتين يظهر هنا وفي "حسابي" ويفعل قبل 30 دقيقة.</span><br><button class="btn btn-o btn-sm" style="margin-top:8px" onclick="alert('الاختبار التقني: ✓ الميكروفون  ✓ السماعة  ✓ سرعة الاتصال مناسبة للبث')">🎧 جرب الاختبار التقني</button>`},
+  {t:'📡 الفصل الافتراضي',h:()=>`<div style="background:var(--navy);color:#fff;border-radius:9px;padding:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><span><b style="color:#F0B95A">REC ●</b> بث مباشر — ${order.w.t.split(':')[0]}</span><span style="font-size:12px">👥 27 متصلاً | مدة تواجدك تحتسب آلياً</span></div><div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><button class="btn btn-o btn-sm" onclick="alert('استطلاع مباشر أطلقه المدرب — إجابتك سجلت ضمن التفاعل')">📊 استطلاع</button><button class="btn btn-o btn-sm" onclick="alert('انتقلت لغرفة نقاش مصغرة (5 متدربين) لمدة 10 دقائق')">👥 غرفة نقاش</button><button class="btn btn-o btn-sm" onclick="alert('سؤالك وصل للمدرب وسيجيب في فقرة الأسئلة')">✋ سؤال مباشر</button></div><p class="meta" style="margin-top:8px">حضورك يحتسب آلياً من تقرير مدة الجلسة — يعد اليوم محضوراً عند تواجدك 80% من مدة البث، وتسجيل الجلسة يتاح لك خلال ساعتين لمدة 90 يوماً.</p>`},
+  {t:'✅ تأكيد الحضور',h:()=>`<b>احتسب حضورك آلياً:</b> تواجدت <b style="color:var(--ok)">96%</b> من مدة البث عبر الأمسيات الثلاث — <span class="badge bg-ok">الشرط متحقق (80%+)</span><br><span class="meta">لا يحتاج المتدرب أي إجراء يدوي: تقرير مدة الجلسة يزامن من نظام البث بعد كل أمسية ويظهر في "حسابي" وفي لوحة الإدارة.</span>`},
+  {t:'🧠 التقييم البعدي',h:jQuizHTML},
+  {t:'🎓 إصدار الشهادة',h:jCertHTML}];
+ if(m==='حضوري')return[
+  {t:'📩 رسالة قبل 24 ساعة',h:()=>`<b>وصلتك بالبريد والواتساب:</b> الخريطة وإرشادات الوصول + تصريح المواقف + رقم القاعة + رمز QR الشخصي.<br><span class="meta">نفس الرمز الظاهر أعلاه في تأكيدك — لا يحتاج المتدرب طباعة شيء، يكفي إبرازه من جواله.</span>`},
+  {t:'📷 مسح QR عند البوابة',h:()=>`صباح كل يوم تدريبي يمسح المنسق رمزك عند بوابة القاعة.<br><button class="btn btn-p btn-sm" style="margin-top:8px" onclick="this.outerHTML='<span class=badge style=background:#E5F5EE;color:var(--ok)>✓ وثق حضور اليوم الأول 9:02 صباحاً</span>'">محاكاة: مسح رمزي الآن</button><p class="meta" style="margin-top:8px">الماسح يعمل من جوال المنسق حتى دون اتصال ويزامن عند عودة الشبكة، ويرفض الرمز المكرر.</p>`},
+  {t:'✅ تأكيد الحضور',h:()=>`<b>اكتملت أيامك:</b> حضرت <b style="color:var(--ok)">2 من 2</b> أيام (100%) — <span class="badge bg-ok">الشرط متحقق (80%+)</span><br><span class="meta">نسبة الحضور = أيام الحضور الموثقة بالمسح ÷ أيام الورشة، وتجمد عند إغلاق الدفعة.</span>`},
+  {t:'🧠 التقييم البعدي',h:jQuizHTML},
+  {t:'🎓 إصدار الشهادة',h:jCertHTML}];
+ return[
+  {t:'⚡ تفعيل الوصول',h:()=>`<b>وصولك مفعل فور الدفع:</b> وصلك رابط تفعيل سحري (دون كلمة مرور) وتبدأ من "حسابي ← تعلمي الرقمي".<br><button class="btn btn-o btn-sm" style="margin-top:8px" onclick="openLearn()">افتح تجربة التعلم الرقمي ←</button>`},
+  {t:'🎥 الدروس وأسئلة الوحدات',h:()=>`3 وحدات، 11 درساً مصغراً (12–18 دقيقة)، سؤال تفاعلي إلزامي بعد كل وحدة، وتقدمك يحفظ وتستأنف من أي جهاز.<br><span class="meta">المشاهدة عبر بث محمي بعلامة مائية باسمك، وشرط الشهادة إكمال 100% من الدروس واجتياز أسئلة الوحدات.</span>`},
+  {t:'🧠 التقييم البعدي',h:jQuizHTML},
+  {t:'🎓 إصدار الشهادة',h:jCertHTML}];}
+function jQuizHTML(){return `<b>سؤال من التقييم البعدي (10 أسئلة في النسخة الفعلية):</b><br>متى يجوز للجنة فحص العروض طلب توضيحات من المتنافسين؟
+ <button class="qopt" onclick="jAnswer(this,false)">في أي وقت وبأي وسيلة تواصل مباشرة</button>
+ <button class="qopt" onclick="jAnswer(this,true)">عبر المنصة حصراً ودون تعديل جوهر العرض أو سعره</button>
+ <button class="qopt" onclick="jAnswer(this,false)">لا يجوز طلب أي توضيح بعد فتح العروض</button>
+ <div id="jQfb" style="display:none;margin-top:8px;font-weight:700"></div>`;}
+function jAnswer(el,ok){el.parentElement.querySelectorAll('.qopt').forEach(b=>b.classList.remove('good','bad'));
+ el.classList.add(ok?'good':'bad');const fb=document.getElementById('jQfb');fb.style.display='block';
+ if(ok){jQuiz=true;fb.style.color='var(--ok)';fb.textContent='✓ اجتزت التقييم البعدي بنسبة 90% — نتيجتك القبلية 55%، أثر تدريبك +35 نقطة. فتحت مرحلة إصدار الشهادة';
+  if(jMax<jStages().length-1)jMax=jStages().length-1;jTabs();}
+ else{fb.style.color='var(--red)';fb.textContent='✗ غير صحيحة — في النسخة الفعلية تظهر لك إحالة للمادة النظامية ذات الصلة ويمكنك إعادة المحاولة';}}
+function jCertHTML(){if(!jQuiz)return '🔒 <b>تصدر الشهادة آلياً</b> خلال 24 ساعة من انتهاء البرنامج بعد تحقق شرطي الحضور والتقييم البعدي — اجتز سؤال المرحلة السابقة لمحاكاة الإصدار.';
+ if(!jCert)jCert='IBR-2026-'+(10000+Math.floor(Math.random()*89999));
+ const nm=order.name||'خالد عبدالله العتيبي';
+ return `<div style="border:2px solid var(--gold);border-radius:10px;padding:14px;background:linear-gradient(150deg,#fff,#FDF7EC)">
+  <span class="star" style="font-size:20px">✦</span> <b>شهادة حضور موثقة</b><br>
+  <b style="font-size:16px;color:var(--navy)">${nm}</b><br>${order.w.t}<br>
+  <span class="meta">16 ساعة تدريبية | صدرت آلياً خلال 24 ساعة | رمز التحقق العام: <b dir="ltr">${jCert}</b></span>
+  <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+   <button class="btn btn-o btn-sm" onclick="alert('يحمل PDF بترويسة المنصة وتوقيع رقمي ورمز QR للتحقق')">تحميل PDF</button>
+   <button class="btn btn-p btn-sm" onclick="jVerify()">تحقق منها كأي جهة خارجية ←</button>
+   <button class="btn btn-o btn-sm" onclick="alert('مشاركة مباشرة على لينكدإن ببطاقة الشهادة')">مشاركة لينكدإن</button>
+  </div></div>
+  <p class="meta" style="margin-top:8px">الشهادة تظهر في "حسابي ← شهاداتي"، ولمتدربي المنشآت تظهر أيضاً لمسؤول جهتهم في لوحة المنشأة.</p>`;}
+function jVerify(){document.getElementById('vCode').value=jCert;
+ document.getElementById('vHolder').textContent=order.name||'خالد عبدالله العتيبي';
+ document.getElementById('vProg').textContent=order.w.t+' (16 ساعة)';
+ document.getElementById('vDate').textContent='صدرت اليوم — '+new Date().toLocaleDateString('ar-SA');
+ document.getElementById('vRes').style.display='block';go('verify');}
+let jCur=0;
+function initJourney(){jMax=0;jQuiz=false;jCert=null;jCur=0;jShow(0);}
+function jTabs(){const S=jStages();
+ document.getElementById('jSteps').innerHTML=S.map((s,i)=>
+  `<button class="btn btn-sm ${i===jCur?'btn-p':(i<=jMax?'btn-o':'')}" style="${i<=jMax?'':'background:#EBEEF1;color:#8A94A0;cursor:not-allowed;'}border-radius:100px;font-size:12.5px" onclick="${i<=jMax?`jShow(${i})`:''}">${i+1}. ${s.t}</button>`).join('<span style="align-self:center;color:var(--slate)">←</span>');}
+function jShow(i){const S=jStages();if(i>jMax)return;jCur=i;
+ document.getElementById('jBody').innerHTML=S[i].h();
+ if(i===jMax&&jMax<S.length-1&&!(S[i].t.includes('التقييم'))){jMax++;}
+ jTabs();}
 function startHold(){stopHold();let t=900;const el=document.getElementById('holdT');
  holdTimer=setInterval(()=>{t--;if(t<0){stopHold();alert('انتهت مهلة الحجز المؤقت؛ أعيد المقعد للمتاح وبقي طلبك مسودة يمكن استئنافها');coStep(1);return;}
  el.textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');},1000);}
